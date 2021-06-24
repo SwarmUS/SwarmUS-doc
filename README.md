@@ -33,3 +33,11 @@ Deploying to GitHub Pages is done by using this command:
 ```sh
 mkdocs gh-deploy
 ```
+
+# Writing Some Documentation
+
+When adding a new page, make sure to route the file in the `mkdocs.yml` file, under `nav`. MkDocs will generate the documentation using the provided hierarchy. New pages should all be added under the `sections` folder.
+
+# Automatic Deployments
+
+A GitHub Actions pipeline will automatically deploy the documentation when there is a new push in the `master` branch.

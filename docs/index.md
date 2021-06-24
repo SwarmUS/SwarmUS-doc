@@ -3,8 +3,6 @@
 A comprehensive, generic and easy-to-use swarm robotics platform.
 
 ---
-<!-- ![SwarmUS Logo](img/swarmus_logo_black_on_white.png) -->
-
 
  SwarmUS is a project that helps creating swarms using existing robots. It is a generic development platform that empowers researchers and robotics enthousiasts with the ability to deploy some code easily to their robots. SwarmUS provides the basic infrastructure needed for robots to form a swarm : a decentralized communication stack and a localisation module that help robots locate one another without the need for a common reference.
 
