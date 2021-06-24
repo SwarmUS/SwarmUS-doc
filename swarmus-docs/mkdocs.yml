@@ -1,4 +1,7 @@
-site_name: My Docs
+site_name: The SwarmUS Project
 site_url: https://example.com/
 theme: 
   name: material
+# nav:
+#   - Home: 'index.md'
+#   - About: 'about/about.md'
