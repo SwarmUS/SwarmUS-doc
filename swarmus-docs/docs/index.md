@@ -47,7 +47,7 @@ The HiveBoard is connected to a robot's embedded computer using an Ethernet cabl
 <!-- TOTO add some links to the appropriate pages when they are created. -->
 
 ## Where to go from here
-This documentation provides some guides that will help setting up the different sub-systems that compose the SwarmUS platform. Users that simply want to try ou the platform will want to follow these [User Guides](user-guide/index.md).
+This documentation provides some guides that will help setting up the different sub-systems that compose the SwarmUS platform. Users that simply want to try ou the platform will want to follow these [User Guides](user-guide/index.md). More thorough information about the inner workings of the various software components can also be found in the [Reference](reference/index.md) section.
 
 If you want to contribute to the SwarmUS project, or if you want to understand the rationale behind the design choices, the [Developer Guides](developer-guide/index.md) will help you dig deeper in the project.
 

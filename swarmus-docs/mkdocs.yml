@@ -9,9 +9,16 @@ nav:
   - Home: 'index.md'
   - User Guides: 
     - User Guides Home: 'user-guide/index.md'
-    - Getting Started: 'user-guide/getting-started.md'
+    - "HiveMindBridge: Getting Started": 'user-guide/hivemind-bridge-getting-started.md'
   - Developer Guides:
     - Developer Guides Home: 'developer-guide/index.md'
+  - Reference:
+    - Reference Home: 'reference/index.md'
+    - HiveMindBridge:
+      - Registering Custom Actions: 'reference/HiveMindBridge/registering-custom-actions.md'
+      - Defining Callbacks: 'reference/HiveMindBridge/defining-callbacks.md'
+      - Defining Manifests: 'reference/HiveMindBridge/defining-manifests.md'
+      - Example Logger Implementation: 'reference/HiveMindBridge/logger.md'
   - Hardware:
     - Hardware Home: 'hardware/index.md'
   - About: 'about/about.md'
