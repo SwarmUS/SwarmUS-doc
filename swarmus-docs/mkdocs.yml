@@ -8,20 +8,20 @@ copyright: Copyright &copy; 2021 - SwarmUS
 nav:
   - Home: 'index.md'
   - User Guides: 
-    - User Guides Home: 'user-guide/index.md'
-    - "HiveMindBridge: Getting Started": 'user-guide/hivemind-bridge-getting-started.md'
+    - User Guides Home: 'sections/user-guide/index.md'
+    - "HiveMindBridge: Getting Started": 'sections/user-guide/hivemind-bridge-getting-started.md'
   - Developer Guides:
-    - Developer Guides Home: 'developer-guide/index.md'
+    - Developer Guides Home: 'sections/developer-guide/index.md'
   - Reference:
-    - Reference Home: 'reference/index.md'
+    - Reference Home: 'sections/reference/index.md'
     - HiveMindBridge:
-      - Registering Custom Actions: 'reference/HiveMindBridge/registering-custom-actions.md'
-      - Defining Callbacks: 'reference/HiveMindBridge/defining-callbacks.md'
-      - Defining Manifests: 'reference/HiveMindBridge/defining-manifests.md'
-      - Example Logger Implementation: 'reference/HiveMindBridge/logger.md'
+      - Registering Custom Actions: 'sections/reference/HiveMindBridge/registering-custom-actions.md'
+      - Defining Callbacks: 'sections/reference/HiveMindBridge/defining-callbacks.md'
+      - Defining Manifests: 'sections/reference/HiveMindBridge/defining-manifests.md'
+      - Example Logger Implementation: 'sections/reference/HiveMindBridge/logger.md'
   - Hardware:
-    - Hardware Home: 'hardware/index.md'
-  - About: 'about/about.md'
+    - Hardware Home: 'sections/hardware/index.md'
+  - About: 'sections/about/about.md'
 
 theme: 
   name: material
