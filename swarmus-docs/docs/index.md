@@ -1,25 +1,54 @@
 # The SwarmUS Project
 
-![SwarmUS Logo](img/swarmus_logo_black_on_white.png)
+A comprehensive, generic and easy-to-use swarm robotics platform.
+
+---
+<!-- ![SwarmUS Logo](img/swarmus_logo_black_on_white.png) -->
+
 
  SwarmUS is a project that helps creating swarms using existing robots. It is a generic development platform that empowers researchers and robotics enthousiasts with the ability to deploy some code easily to their robots. SwarmUS provides the basic infrastructure needed for robots to form a swarm : a decentralized communication stack and a localisation module that help robots locate one another without the need for a common reference.
 
+## How SwarmUS works
+
+The SwarmUS platform is built around a printed circuit board (PCB) called the **HiveBoard**. This board can be attached to any robot using an Ethernet cable. The HiveBoard provides the three necessary features to form a robot swarm :
+
+1. A **decentralized communication stack** that allows the robots to exchange information and remote procedure calls.
+2. An **interlocalisation module** that allows robots to determine their relative position between one another. Each robot can therefore determine the **distance** and **angle** of another robot with respect to its own position.
+3. A **coordination language** that allows the user to program some behavioral logic for the swarm. The language used in the SwarmUS platform is [Buzz](https://github.com/MISTLab/Buzz).
+
+Forming a swarm using existing robots is as simple as plugging a HiveBoard in every robot, writing some coordination code, and interfacing this with each robot's program. The coordination code running on the HiveBoards will then control each individual robot in a coherent manner, in order to achieve some collective goals.
+
+The swarm can then be controlled by an Android application called **HiveAR**. This app allows the user to control the execution of the program, as well as to diagnose the state of each individual robots using a graphical user interface which uses augmented reality (AR). The app is a member of the swarm and uses its own HiveBoard to communicate with the other agents.
+
+![How SwarmUS Works](img/how-swarmus-works.png)
+*When using SwarmUS, each agent needs to have its own HiveBoard. The swarm can be heterogenous, meaning that the robots can work together even if they don't have all the same capabilities.*
+
 ## Architecture
 
-![High-level architecture](img/high-level-architecture-hb-robot.jpg)
+The SwarmUS platform is a decentralized system that comprises a number of different sub-systems. Let's dig in the architecture. This will help understanding how to use SwarmUS.
 
- The HiveBoard is a printed circuit board designed specifically for SwarmUS. It boasts a microcontroller that manages the platform firmware.
+![High-level architecture](img/architecture-hb-robot.png)
+*A high-level view of the architecture of the SwarmUS platform*
 
- * The HiveBoard provides a **decentralized communication stack** that allows the robots to exchange information and remote procedure calls. The communication stack is managed by the ESP32 module on the HiveBoard.
- * The HiveBoard provides a **localisation module** that allows robots to determine their relative position between one another. Each robot can therefore determine the **distance** and **angle** of another robot with respect to its own position. The localisation module is managed by the two DecaWave modules on the HiveBoard.
- * The firmware that runs on the HiveBoard is called the **HiveMind**. It provides some platform services that allow users to register custom functions.
- * The HiveMind also includes a **Buzz** VM. Buzz is a high-level programming language and runtime specifically designed to govern swarms of robots. More information on the Buzz projets can be found [here](https://github.com/MISTLab/Buzz).
+At the center of the system lies the HiveBoard, a printed circuit board designed specifically for SwarmUS. It boasts an **STM-32** microcontroller (MCU) that manages the platform firmware, as well as a second MCU (**ESP-32**) that handles the WiFi communication stack. 
 
- INSERT LINK TO HIVESIGHT DATASHEET HERE
+The HiveBoard can host up to six auxiliary boards, called **BeeBoards**. These boards are simply antennas and Ultra-wideband (UWB) chips that are used to calculate the position of the other robots.
 
-## ROS Bridge
+The HiveBoard is connected to a robot's embedded computer using an Ethernet cable. On the diagram shown above, the robot is assumed to run ROS, along with a few services. Note however that SwarmUS is completely ROS-agnostic and could be used on any software stack.
 
- The ROS Bridge is a ROS package that provides an interface between the HiveBoard services (Buzz, localisation, communication) and an existing ROS context. It is meant to be easily integrated with a robot that already boasts some embedded code.
+<!-- TODO add some images of the assembled HB/BB -->
 
- * The ROS Bridge provides a **messaging API** that allows bidirectional communication between the HiveBoard and the ROS context using TCP. The messaging API can be used to send remote procedure calls between the HiveBoard and the ROS Bridge.
- * The ROS Bridge also provides a **callback manager** that allows users to build their own application on top of the platform services. The callback manager is meant to process the remote procedure calls from the messaging API.
+**HiveMind** is the firmware that runs on the STM-32 MCU. This firmware manages three key features: the messaging service, the interlocalisation service, and the Buzz VM, which runs the user-code for the swarm's coordination.
+
+**HiveConnect** is the firmware that runs on the ESP-32 MCU. It provides the WiFi communication stack to the messaging service, and allows the configuration of various network topologies, including mesh.
+
+**HiveMindBridge** is a C++ library that provides an interface with the HiveBoard. It is meant to be used as a compatibility layer between the robot's existing program and the HiveBoard's services.
+
+<!-- TOTO add some links to the appropriate pages when they are created. -->
+
+## Where to go from here
+This documentation provides some guides that will help setting up the different sub-systems that compose the SwarmUS platform. Users that simply want to try ou the platform will want to follow these [User Guides](user-guide/index.md).
+
+If you want to contribute to the SwarmUS project, or if you want to understand the rationale behind the design choices, the [Developer Guides](developer-guide/index.md) will help you dig deeper in the project.
+
+For more information about the hardware developed for the SwarmUS project, visit the [Hardware](hardware/index.md) sections.
