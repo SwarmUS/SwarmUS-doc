@@ -19,7 +19,9 @@ When a function should return some payload, the data should be wrapped in a `Cal
 
 ## `CallbackReturn` objects
 
-`CallbackReturn` objects should be used to return some payload to the caller of a callback. When the payload is returned, _it is wrapped in a function call request_, and the payload is passed as arguments. For example, let's say we have registered a function `getStatus()` on the robot that returns two values of type int. The two values indicate arbitrary states for elements in the robot (e.g. is the Roboclaw controller ok, is a particular sensor working properly, etc.).
+`CallbackReturn` objects should be used to return some payload to the caller of a callback. When the payload is returned, _it is wrapped in a function call request_ (aka a remote procedure call), and the payload is passed as arguments. This allows the callback to return the data in an asynchronous manner, so that the caller does not need to block its execution flow while waiting for the response. This further helps managing a swarm of robots where the agents might disconnect and reconnect randomly.
+
+For example, let's say we have registered a function `getStatus()` on the robot that returns two values of type int. The two values indicate arbitrary states for elements in the robot (e.g. is the Roboclaw controller ok, is a particular sensor working properly, etc.).
 
 ```cpp
 CallbackFunction getStatus = [&](CallbackArgs args,
@@ -55,7 +57,7 @@ Remote caller                                               Robot
 
 ```
 
-> When you implement you swarm solution, make sure to check that the return function calls are implemented on the remote caller, this will be a frequent cause of bugs. Also, do make sure that the arguments match with the return values of the callback.
+> When you implement you swarm solution, make sure to check that the return function calls are implemented on the remote caller, this will be a frequent cause of bugs. Remember: "returning" a value after the execution of a callback will really just make a function call request on the caller's side with the return values as arguments. Also, do make sure that the arguments match with the return values of the callback.
 
 ## Asynchronicity
 

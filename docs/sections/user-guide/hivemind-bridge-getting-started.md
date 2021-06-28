@@ -3,6 +3,7 @@
 This page presents an overview of the steps necessary in order to start a minimal implementation of HiveMindBridge. Let us first describe the scenario that this quickstart guide aims to accomplish.
 
 We will instantiate HiveMindBridge on a robot that has moving capabilities in 2D. The robot will expose two simple functions to the swarm. Both functions are callable by other swarm agents or by the robot's HiveBoard:
+
 * `moveBy(float x, float y)`: this function will forward moving commands to the robot's navigtion stack. `moveBy` is the entrypoint to control the robot's position remotely. The function does not return any payload.
 * `getStatus()`: this function will return some payload containing some information about the robot's state.
 
@@ -58,11 +59,24 @@ int main(int argc, char** argv) {
     // to the navigation stack using a ROS publisher.
     CallbackFunction moveByCallback = [&](CallbackArgs args,
                                           int argsLength) -> std::optional<CallbackReturn> {
+        if (argsLength != 2) {
+            ROS_WARN("Received incorrect number of arguments in moveBy");
+            return {};
+        }
+
         swarmus_ros_navigation::MoveByMessage moveByMessage;
 
-        moveByMessage.distance_x = std::get<float>(args[0].getArgument()); // The arguments are contained 
+        auto* x = std::get_if<float>(&args[0].getArgument()); // The arguments are contained 
         // in `args`. The body of the function is where users should define the position of the arguments.
-        moveByMessage.distance_y = std::get<float>(args[1].getArgument());
+        auto* y = std::get_if<float>(&args[1].getArgument());
+
+        if (x == nullptr || y == nullptr) {
+            ROS_WARN("Received invalid argument type in moveBy");
+            return {};
+        }
+
+        moveByMessage.distance_x = *x;
+        moveByMessage.distance_y = *y;
 
         // Publish on moveby topic
         moveByPublisher.publish(moveByMessage);
@@ -146,10 +160,23 @@ The `moveBy(float x, float y)` function takes two arguments and returns no paylo
 ```cpp
 CallbackFunction moveByCallback = [&](CallbackArgs args,
                                         int argsLength) -> std::optional<CallbackReturn> {
+    if (argsLength != 2) {
+        ROS_WARN("Received incorrect number of arguments in moveBy");
+        return {};
+    }
+    
     swarmus_ros_navigation::MoveByMessage moveByMessage;
 
-    moveByMessage.distance_x = std::get<float>(args[0].getArgument());
-    moveByMessage.distance_y = std::get<float>(args[1].getArgument());
+    auto* x = std::get_if<float>(&args[0].getArgument());
+    auto* y = std::get_if<float>(&args[1].getArgument());
+
+    if (x == nullptr || y == nullptr) {
+        ROS_WARN("Received invalid argument type in moveBy");
+        return {};
+    }
+
+    moveByMessage.distance_x = *x;
+    moveByMessage.distance_y = *y;
 
     moveByPublisher.publish(moveByMessage);
 

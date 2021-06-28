@@ -8,7 +8,7 @@ A comprehensive, generic and easy-to-use swarm robotics platform.
 
 ## How SwarmUS works
 
-The SwarmUS platform is built around a printed circuit board (PCB) called the **HiveBoard**. This board can be attached to any robot using an Ethernet cable. The HiveBoard provides the three necessary features to form a robot swarm :
+The SwarmUS platform is built around a printed circuit board (PCB) called the **HiveBoard**. This board can be attached to any robot using an Ethernet or Micro-USB cable. The HiveBoard provides the three necessary features to form a robot swarm :
 
 1. A **decentralized communication stack** that allows the robots to exchange information and remote procedure calls.
 2. An **interlocalisation module** that allows robots to determine their relative position between one another. Each robot can therefore determine the **distance** and **angle** of another robot with respect to its own position.
