@@ -1,0 +1,54 @@
+site_name: The SwarmUS Project
+site_url: https://swarmus.github.io/SwarmUS-doc/
+repo_url: https://github.com/SwarmUS/
+repo_name: SwarmUS
+edit_uri: ""
+copyright: Copyright &copy; 2021 - SwarmUS
+
+nav:
+  - Home: 'index.md'
+  - User Guides: 
+    - User Guides Home: 'sections/user-guide/index.md'
+    - "HiveMindBridge: Getting Started": 'sections/user-guide/hivemind-bridge-getting-started.md'
+  - Developer Guides:
+    - Developer Guides Home: 'sections/developer-guide/index.md'
+  - Reference:
+    - Reference Home: 'sections/reference/index.md'
+    - HiveMindBridge:
+      - Registering Custom Actions: 'sections/reference/HiveMindBridge/registering-custom-actions.md'
+      - Defining Callbacks: 'sections/reference/HiveMindBridge/defining-callbacks.md'
+      - Defining Manifests: 'sections/reference/HiveMindBridge/defining-manifests.md'
+      - Example Logger Implementation: 'sections/reference/HiveMindBridge/logger.md'
+  - Hardware:
+    - Hardware Home: 'sections/hardware/index.md'
+  - About: 'sections/about/about.md'
+
+theme: 
+  name: material
+  palette:
+    - scheme: slate
+      primary: orange
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+    - scheme: default
+      primary: orange
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+
+  features:
+    - navigation.tabs
+    - navigation.top
+  logo: assets/SVG_S_Swarm_Abeille.svg
+  favicon: assets/SVG_S_Swarm_Abeille.svg
+  icon:
+    repo: fontawesome/brands/github
+
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/swarmus/
+    - icon: fontawesome/brands/github
+      link: https://github.com/SwarmUS
+  disqus: swarmus
