@@ -1,6 +1,6 @@
 # Getting Started with HiveMindBridge
 
-This page presents an overview of the steps necessary in order to start a minimal implementation of HiveMindBridge. Let us first describe the scenario that this quickstart guide aims to accomplish.
+This page presents an overview of the steps necessary in order to start a minimal implementation of HiveMindBridge to make a robot remote-controllable.
 
 We will instantiate HiveMindBridge on a robot that has moving capabilities in 2D. The robot will expose two simple functions to the swarm. Both functions are callable by other swarm agents or by the robot's HiveBoard:
 
@@ -20,7 +20,7 @@ Instantiating a `HiveMindBridge` object is done using the class' only constructo
 HiveMindBridge(int tcpPort, ILogger& logger)
 ```
 
-HiveMindBridge uses a TCP socket underneath and requires that the user provide a port for the connection. The second input argument is a logger that must be injected. The logger must implement the `ILogger` interface (a basic working implementation is provided [here](../reference/HiveMindBridge/logger.md)).
+HiveMindBridge uses a TCP socket server underneath and requires that the user provide a port for the connection. The second input argument is a logger that must be injected. The logger must implement the `ILogger` interface (a basic working implementation is provided [here](../../reference/HiveMindBridge/logger.md)).
 
 ## Full example
 
@@ -139,7 +139,7 @@ Logger logger;
 HiveMindBridge bridge(port, logger);
 ```
 
-To create a `HiveMindBridge` instance, the user must provide a logger that implements the `ILogger` interface (see [here](../reference/HiveMindBridge/logger.md) for a full example). The `port` input argument is needed in order to bind the TCP socket used by HiveMindBridge. 
+To create a `HiveMindBridge` instance, the user must provide a logger that implements the `ILogger` interface (see [here](../../reference/HiveMindBridge/logger.md) for a full example). The `port` input argument is needed in order to bind the TCP socket used by HiveMindBridge. 
 
 > HiveMindBridge acts as a TCP _server_ and will wait for clients to initiate a connection.
 
@@ -149,9 +149,9 @@ The example above shows the registration of two functions, `moveBy(x, y)` and `g
 
 Registering custom actions is always done by following three steps : 
 
-1. Define the callback that describes the behaviour of the custom action (see [Defining Callbacks](../reference/HiveMindBridge/defining-callbacks.md)).
-2. Define the manifest that describes the input arguments of the callback (see [Defining Manifests](../reference/HiveMindBridge/defining-manifests.md). This is optional, as some callbacks will not require any input arguments)
-3. Register the custom action in the `HiveMindBridge` object (see [Registering Custom Actions](../reference/HiveMindBridge/registering-custom-actions.md)).
+1. Define the callback that describes the behaviour of the custom action (see [Defining Callbacks](../../reference/HiveMindBridge/defining-callbacks.md)).
+2. Define the manifest that describes the input arguments of the callback (see [Defining Manifests](../../reference/HiveMindBridge/defining-manifests.md). This is optional, as some callbacks will not require any input arguments)
+3. Register the custom action in the `HiveMindBridge` object (see [Registering Custom Actions](../../reference/HiveMindBridge/registering-custom-actions.md)).
 
 **Registering `moveBy(float x, float y)`**
 
@@ -193,11 +193,11 @@ bridge.registerCustomAction("moveBy", moveByCallback, moveByManifest);
 
 Since the function returns no payload, the user must simply return an empty struct.
 
-> Notice that the order of the arguments match between the manifest and the callback's body. This allows the other swarm element to send the arguments correctly. For more information on this, see [Defining Manifests](../reference/HiveMindBridge/defining-manifests.md).
+> Notice that the order of the arguments match between the manifest and the callback's body. This allows the other swarm element to send the arguments correctly. For more information on this, see [Defining Manifests](../../reference/HiveMindBridge/defining-manifests.md).
 
 **Registering `getStatus()`**
 
-The `getStatus()` function takes no input arguments, but will return some payload. The return payload is wrapped in  a CallbackReturn type that takes the return values in an array. This is because the return payload is wrapped in a function call request that will be placed on the remote caller. See [Defining Callbacks](../reference/HiveMindBridge/defining-callbacks.md) for more details.
+The `getStatus()` function takes no input arguments, but will return some payload. The return payload is wrapped in  a CallbackReturn type that takes the return values in an array. This is because the return payload is wrapped in a function call request that will be placed on the remote caller. See [Defining Callbacks](../../reference/HiveMindBridge/defining-callbacks.md) for more details.
 
 ```cpp
     CallbackFunction getStatus = [&](CallbackArgs args,
@@ -214,7 +214,7 @@ The `getStatus()` function takes no input arguments, but will return some payloa
     bridge.registerCustomAction("getStatus", getStatus);
 ```
 
-> This example does not have any real logic. In some cases, there could be a need to implement some complex logic, and even some blocking calls to check the state of some robot peripherals. Since all callbacks are run asynchronously, the user can use blocking calls in the body of the callback. See [Defining Callbacks](../reference/HiveMindBridge/defining-callbacks.md) for more information on this.
+> This example does not have any real logic. In some cases, there could be a need to implement some complex logic, and even some blocking calls to check the state of some robot peripherals. Since all callbacks are run asynchronously, the user can use blocking calls in the body of the callback. See [Defining Callbacks](../../reference/HiveMindBridge/defining-callbacks.md) for more information on this.
 
 ### Registering event hooks
 
