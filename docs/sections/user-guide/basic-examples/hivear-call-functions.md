@@ -12,4 +12,6 @@ Comment lister les fonctions disponibles sur les robots/boards
 
 Comment appeler les fonctions (faire flasher une led remote, faire printer Hello world)
 
+checklist for each section of the required hardware and/or software set-up
+
  -->

@@ -9,4 +9,6 @@ Mettre un lien vers une page qui explique comment calibrer l'interloc, à créer
 
 Montrer un exemple d'un HB branché via Ethernet dans un ordi. Le HB a un code qui acquisitionne l'interloc d'un 2e HB à toutes les secondes et qui retransmet les valeurs au bridge. Le bridge print les valeurs.
 
+checklist for each section of the required hardware and/or software set-up
+
  -->

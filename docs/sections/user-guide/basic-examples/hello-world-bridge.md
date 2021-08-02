@@ -11,4 +11,6 @@ Exemple basique d'implémentation de bridge qui enregistre une fonction qui prin
 
 Code Buzz qui call la fonction qui va printer Hello world.
 
+checklist for each section of the required hardware and/or software set-up
+
  -->

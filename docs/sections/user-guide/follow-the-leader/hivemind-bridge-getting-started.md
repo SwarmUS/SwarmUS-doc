@@ -20,7 +20,7 @@ Instantiating a `HiveMindBridge` object is done using the class' only constructo
 HiveMindBridge(int tcpPort, ILogger& logger)
 ```
 
-HiveMindBridge uses a TCP socket underneath and requires that the user provide a port for the connection. The second input argument is a logger that must be injected. The logger must implement the `ILogger` interface (a basic working implementation is provided [here](../../reference/HiveMindBridge/logger.md)).
+HiveMindBridge uses a TCP socket server underneath and requires that the user provide a port for the connection. The second input argument is a logger that must be injected. The logger must implement the `ILogger` interface (a basic working implementation is provided [here](../../reference/HiveMindBridge/logger.md)).
 
 ## Full example
 
