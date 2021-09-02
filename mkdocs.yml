@@ -21,12 +21,14 @@ nav:
           - "Adding Buzz scripts to the mix": "sections/user-guide/follow-the-leader/buzz-scripts-getting-started.md"
   - Developer Guides:
       - Developer Guides Home: "sections/developer-guide/index.md"
-      - HiveMind:
-          - HiveMind developer guide: "sections/developer-guide/hive-mind/index.md"
-          - BittyBuzz Virtual Machine developer guide:
-              - Compilation: "sections/developer-guide/bbvm/compilation.md"
   - Reference:
       - Reference Home: "sections/reference/index.md"
+      - HiveMind:
+          - HiveMind preface: "sections/reference/HiveMind/hivemind-preface.md"
+          - HiveMind and the Host: "sections/reference/HiveMind/hivemind-host.md"
+          - HiveMind and the Swarm: "sections/reference/HiveMind/hivemind-swarm.md"
+          - HiveMind API: "sections/reference/HiveMind/hivemind-api.md"
+          - BittyBuzz Virtual Machine: "sections/reference/HiveMind/bbzvm/index.md"
       - HiveMindBridge:
           - Registering Custom Actions: "sections/reference/HiveMindBridge/registering-custom-actions.md"
           - Defining Callbacks: "sections/reference/HiveMindBridge/defining-callbacks.md"
