@@ -1,6 +1,6 @@
 # HiveMind and the Host
 
-The host robot generally only provides functionalities to interact with the physical world and should not have swarm related decision. Once connected, the HiveMind will coordinate the swarm and use the calls provided by the robot to interact with the physical world.
+The host robot generally only provides functionalities to interact with the physical world and should not have swarm related decision. Once connected, the HiveMind will coordinate the swarm and use the calls provided by the robot to interact with the physical world. In other words, the robot is passive and the decisions are made by the Buzz script.
 
 For example, the HiveMind could request the robot to move to an x,y position, relative to its current position, thus the "moveBy" function would be called on the host.
 
