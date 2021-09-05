@@ -10,11 +10,11 @@ The HiveMind has multiple roles in the swarm:
     - The BBVM
     - Other agents in the swarm
         - The communication between the components of the swarm is generally handled by the [HiveConnect](https://github.com/SwarmUS/HiveConnect) <!-- TODO: change to the hive connect link to the reference section instead of repo-->
-- Provides an API for the host robot. The API allows to :
-    - Get the list of robots currently in the whole swarm network
-    - Get the current neighbors of the robot
-    - Get information on a neighbor such as distance, angle and if the neighbor is in the line of sight (LOS)
-    - Send bytes to another robot in the swarm
-    - Call a function of another robot in the swarm
-    - Call a buzz function in the swarm
+- Provides an [API for the host robot](hivemind-api.md). The API allows:
+    - [Get the list of robots currently in the whole swarm network](hivemind-api.md#swarm-list)
+    - [Get the current neighbors of a robot](hivemind-api.md#neighbors-list)
+    - [Get information on a neighbor such as distance, angle and if the neighbor is in the line of sight (LOS)](hivemind-api.md#neighbor)
+    - [Send bytes to another robot in the swarm](hivemind-api.md#bytes)
+    - [Call a function of another robot in the swarm](hivemind-api.md#function-call)
+    - [Call a buzz function in the swarm](hivemind-api.md#function-call)
 

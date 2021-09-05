@@ -10,65 +10,65 @@ Here is the message hierarchy:
 
 Here is a description of the Messages:
 
-- Request and Response:
+- Request and Response: <a name="request"></a>
   Requests and Reponses available for the user.
 
-    - GenericResponse:
+    - GenericResponse: <a name="gen-request"></a>
       A generic response can be used to indicate success or failure. The details field can be used to log on the other side. When there is no payload on a request, a GenericResponse is used as an ACK.
 
-    - UserCall:
+    - UserCall: <a name="user-call"></a>
       Regroup multiple messages. All UserCalls can be to/from Buzz or the host.
 
-        - FunctionCall:
+        - FunctionCall: <a name="function-call"></a>
           Used to call a function to a host or Buzz script. The function name needs to match the one that was registered, the number of arguments and their types needs to match. 
 
-        - FunctionListLength:
+        - FunctionListLength: <a name="function-list-length"></a>
           Used to get the total number of registered functions. See [FunctionDescription](#FunctionDescription)
 
-        - FunctionDescription:
+        - FunctionDescription: <a name="function-description"></a>
           To obtain the description of a function, such as its name, number of arguments, arguments name and the arguments types. Note that you access function descriptions by list index, which starts at 0. So if the function list length is 5, the valid list indexes are [0,1,2,3,4].
 
-    - HiveMindHostAPI:
+    - HiveMindHostAPI: <a name="hivemind-host"></a>
       API that the HiveMind exposes to the host, this includes an API for the interlocalisation, bytes and swarmlist
 
-          - Bytes:
+          - Bytes: <a name="bytes"></a>
             A request used to send bytes, ACK with a generic response. Note that each Bytes message is a packet of a bigger payload, you can reassemble the total packet with the packet id, packet number and a boolean that identifies the last packet. You need to concatenate the data to get the original byte stream.
 
-          - Neighbor:
+          - Neighbor: <a name="neighbor"></a>
             Get the information on a particular neighbor (distance, orientation, line of sight).
 
-          - NeighborsList:
+          - NeighborsList: <a name="neighbors-list"></a>
             Get a list of ids containing the current neighbors. Note that you only get their id, you need to make a [Neighbor Request](#Neighbor) to obtain the data.
 
-          - SwarmList:
+          - SwarmList: <a name="swarm-list"></a>
             Get a list of ids containing the current agents in the swarm.
 
-- Greeting:
+- Greeting: <a name="greeting"></a>
   The first message sent to the HiveMind needs to be a greet (can be with garbage value). The HiveMind will reply with a Greet with its ID, allowing the host to know its id in the swarm. This is required to make requests in the swarm. The greeting should be the first thing to be sent on connection.
 
-- NetworkAPI:
+- NetworkAPI: <a name="network-api"></a>
   Internal message to manage connections with other members in the swarm. Not relevant to the user.
 
-    - IpDiscovery:
+    - IpDiscovery: <a name="ip-discovery"></a>
       Used to discover new IP addresses in the network.
 
-- InterlocAPI:
+- InterlocAPI: <a name="interloc-api"></a>
   Messages internal to the interlocalisation. You can calibrate your setup using the [CalibrationMessage](#CalibrationMessage) You can use [PythonTool](https://github.com/SwarmUS/PythonTool/tree/master) which is a small wrapper in python, allowing the calibration for the interlocalisation.
 
-    - CalibrationMessage:
+    - CalibrationMessage: <a name="calibration"></a>
       Used for calibration of the physical setup for the interlocalisation.
 
-    - SetCalibrationDistance:
+    - SetCalibrationDistance: <a name="calib-distance"></a>
       Set the calibration distance.
 
-    - StartCalibration:
+    - StartCalibration: <a name="start-calib"></a>
       Starts the calibration.
 
-    - StopCalibration:
+    - StopCalibration: <a name="stop-calib"></a>
       Stops the calibration
 
-    - CalibrationEnded:
+    - CalibrationEnded: <a name="calib-ended"></a>
       ACK on the ending of the calibration
 
-- BuzzMessage:
+- BuzzMessage: <a name="buzz-msg"></a>
   Internal message to Buzz to share data between the virtual machines in the swarm.
