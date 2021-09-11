@@ -14,5 +14,5 @@ The HiveMind communicates via protobuf messages with the host. One can send a Re
 Note that this doesn't mean request are sequential. If you send a Request to the HiveMind, the next message will **not** necessarily be the Response you just requested, you should treat messages as events and handle them accordingly, not as an atomic transaction.
 Only the Request and Response messages (and those composed in it) are for the user to call, the others are internal messages for swarm functionalities.
 
-To be a host you need to implement all the functionalities in the Request and Response messages, since this can be time consuming, a C++ implementation is already provided [here](https://github.com/SwarmUS/HiveMindBridge). Then you can register simply register your required functions.
+To be a host you need to implement all the functionalities in the Request and Response messages, since this can be time consuming, a C++ implementation is already provided [here](../../../user-guide/basic-examples/hello-world-bridge/). Then you can register simply register your required functions.
 <!-- TODO: Change link to HiveMindBridge peface?-->
