@@ -6,33 +6,39 @@ edit_uri: ""
 copyright: Copyright &copy; 2021 - SwarmUS
 
 nav:
-  - Home: 'index.md'
-  - User Guides: 
-    - User Guides Home: 'sections/user-guide/index.md'
-    - Basic Examples:
-      - Making a LED Flash using Buzz: 'sections/user-guide/basic-examples/led-flash-buzz.md'
-      - Flashing a LED on a remote Hiveboard: 'sections/user-guide/basic-examples/led-flash-remote-hiveboard.md'
-      - Writing "Hello World" to a robot: 'sections/user-guide/basic-examples/hello-world-bridge.md'
-      - Calling functions from HiveAR: 'sections/user-guide/basic-examples/hivear-call-functions.md'
-      - Acquiring a remote Hiveboard's position: 'sections/user-guide/basic-examples/basic-interloc.md'
-    - Follow the leader example:
-      - Introduction to the use-case: 'sections/user-guide/follow-the-leader/index.md'
-      - "HiveMindBridge: Getting Started": 'sections/user-guide/follow-the-leader/hivemind-bridge-getting-started.md'
-      - "Adding Buzz scripts to the mix": 'sections/user-guide/follow-the-leader/buzz-scripts-getting-started.md'
+  - Home: "index.md"
+  - User Guides:
+      - User Guides Home: "sections/user-guide/index.md"
+      - Basic Examples:
+          - Making a LED Flash using Buzz: "sections/user-guide/basic-examples/led-flash-buzz.md"
+          - Flashing a LED on a remote Hiveboard: "sections/user-guide/basic-examples/led-flash-remote-hiveboard.md"
+          - Writing "Hello World" to a robot: "sections/user-guide/basic-examples/hello-world-bridge.md"
+          - Calling functions from HiveAR: "sections/user-guide/basic-examples/hivear-call-functions.md"
+          - Acquiring a remote Hiveboard's position: "sections/user-guide/basic-examples/basic-interloc.md"
+      - Follow the leader example:
+          - Introduction to the use-case: "sections/user-guide/follow-the-leader/index.md"
+          - "HiveMindBridge: Getting Started": "sections/user-guide/follow-the-leader/hivemind-bridge-getting-started.md"
+          - "Adding Buzz scripts to the mix": "sections/user-guide/follow-the-leader/buzz-scripts-getting-started.md"
   - Developer Guides:
-    - Developer Guides Home: 'sections/developer-guide/index.md'
+      - Developer Guides Home: "sections/developer-guide/index.md"
   - Reference:
-    - Reference Home: 'sections/reference/index.md'
-    - HiveMindBridge:
-      - Registering Custom Actions: 'sections/reference/HiveMindBridge/registering-custom-actions.md'
-      - Defining Callbacks: 'sections/reference/HiveMindBridge/defining-callbacks.md'
-      - Defining Manifests: 'sections/reference/HiveMindBridge/defining-manifests.md'
-      - Example Logger Implementation: 'sections/reference/HiveMindBridge/logger.md'
+      - Reference Home: "sections/reference/index.md"
+      - HiveMind:
+          - HiveMind preface: "sections/reference/HiveMind/hivemind-preface.md"
+          - HiveMind and the Host: "sections/reference/HiveMind/hivemind-host.md"
+          - HiveMind and the Swarm: "sections/reference/HiveMind/hivemind-swarm.md"
+          - HiveMind API: "sections/reference/HiveMind/hivemind-api.md"
+          - BittyBuzz Virtual Machine: "sections/reference/HiveMind/bbzvm/index.md"
+      - HiveMindBridge:
+          - Registering Custom Actions: "sections/reference/HiveMindBridge/registering-custom-actions.md"
+          - Defining Callbacks: "sections/reference/HiveMindBridge/defining-callbacks.md"
+          - Defining Manifests: "sections/reference/HiveMindBridge/defining-manifests.md"
+          - Example Logger Implementation: "sections/reference/HiveMindBridge/logger.md"
   - Hardware:
-    - Hardware Home: 'sections/hardware/index.md'
-  - About: 'sections/about/about.md'
+      - Hardware Home: "sections/hardware/index.md"
+  - About: "sections/about/about.md"
 
-theme: 
+theme:
   name: material
   palette:
     - scheme: slate
