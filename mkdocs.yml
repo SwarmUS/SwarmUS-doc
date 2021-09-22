@@ -42,6 +42,11 @@ nav:
       - Networking:
           - Configuring the Wi-Fi network: "sections/reference/Networking/configure-wifi.md"
           - HiveConnect: "sections/reference/Networking/hiveconnect.md"
+      - HiveAR:
+          - Preface: "sections/reference/HiveAR/hivear-preface.md"
+          - Commands: "sections/reference/HiveAR/hivear-commands.md"
+          - Visualization: "sections/reference/HiveAR/hivear-visualization.md"
+          - Configuration: "sections/reference/HiveAR/hivear-configuration.md"
   - Hardware:
       - Hardware Home: "sections/hardware/index.md"
       - HiveBoard:
