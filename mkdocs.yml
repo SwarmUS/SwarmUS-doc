@@ -19,10 +19,10 @@ nav:
           - Introduction to the use-case: "sections/user-guide/follow-the-leader/index.md"
           - "HiveMindBridge: Getting Started": "sections/user-guide/follow-the-leader/hivemind-bridge-getting-started.md"
           - "Adding Buzz scripts to the mix": "sections/user-guide/follow-the-leader/buzz-scripts-getting-started.md"
-  - Developer Guides:
-      - Developer Guides Home: "sections/developer-guide/index.md"
   - Reference:
       - Reference Home: "sections/reference/index.md"
+      - Buzz:
+          - Available APIs: "sections/reference/Buzz/available-apis.md"
       - HiveMind:
           - HiveMind preface: "sections/reference/HiveMind/hivemind-preface.md"
           - HiveMind and the Host: "sections/reference/HiveMind/hivemind-host.md"
