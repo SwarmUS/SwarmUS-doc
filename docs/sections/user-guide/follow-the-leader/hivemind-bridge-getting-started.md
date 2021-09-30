@@ -1,3 +1,5 @@
+TODO REMOVE THIS PAGE.
+
 # Getting Started with HiveMindBridge
 
 This page presents an overview of the steps necessary in order to start a minimal implementation of HiveMindBridge to make a robot remote-controllable.
