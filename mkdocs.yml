@@ -36,6 +36,7 @@ nav:
           - Example Logger Implementation: "sections/reference/HiveMindBridge/logger.md"
   - Hardware:
       - Hardware Home: "sections/hardware/index.md"
+      - Available UI: "sections/hardware/hiveboard-ui.md"
   - About: "sections/about/about.md"
 
 theme:
