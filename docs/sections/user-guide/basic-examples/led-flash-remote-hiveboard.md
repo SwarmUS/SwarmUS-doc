@@ -1,4 +1,4 @@
-# Flasing an LED on a remote Hiveboard
+# Flasing a LED on a remote Hiveboard
 
 Now that a [LED is flashing on a local Hiveboard](led-flash-buzz.md), let us now light up a LED on a remote Hiveboard.
 
