@@ -1,6 +1,8 @@
 # Controlling a robot using Buzz
 
-Now that the code that runs on your Hiveboard can flash a led [of its own](led-flash-buzz.md) or one from a [remote board](led-flash-remote-hiveboard.md), let's establish a connection between a Hiveboard and a robot's embedded computer. The goal here is to use a Buzz script to tele-operate a robot.
+Now that the code that runs on your Hiveboard can flash an LED [of its own](led-flash-buzz.md) or one from a [remote board](led-flash-remote-hiveboard.md), let's establish a connection between a Hiveboard and a robot's embedded computer. The goal here is to use a Buzz script to tele-operate a robot.
+
+![Controlling a robot using a Buzz script running on a HiveBoard](img/buzz-control-robot-case.png)
 
 ## Initial Setup
 
@@ -46,7 +48,7 @@ This (minimal) configuration will yield a simple robot that can be remote-contro
 
 ### Prerequisites to using HiveMindBridge
 
-HiveMindBridge is a C++ library that must be installed on a system, and then included to a software project using CMake. Before implmenting the ROS node that uses HiveMindBridge, follow [these instructions](https://github.com/SwarmUS/HiveMindBridge#readme) to build and install HiveMindBridge on the host computer. Make sure to use the provided commands from the CMake example within your ROS package's `CMakeLists.txt`. You might want to check [this example](https://github.com/SwarmUS/SwarmUS-ROS/tree/master/src/swarmus_turtlebot) implementation of a Bridge with a TurtleBot3.
+HiveMindBridge is a C++ library that must be installed on a system, and then included to a software project using CMake. Before implementing the ROS node that uses HiveMindBridge, follow [these instructions](https://github.com/SwarmUS/HiveMindBridge#readme) to build and install HiveMindBridge on the host computer. Make sure to use the provided commands from the CMake example within your ROS package's `CMakeLists.txt`. You might want to check [this example](https://github.com/SwarmUS/SwarmUS-ROS/tree/master/src/swarmus_turtlebot) implementation of a Bridge with a TurtleBot 3.
 
 ### `HiveMindBridge`: the unique entrypoint to the library
 
@@ -194,7 +196,7 @@ Registering custom actions is always done by following three steps :
 
 **Registering `moveBy(float x, float y)`**
 
-The `moveBy(float x, float y)` function takes two arguments and returns no payload. This functon simply forwards the two input arguments to the navigation stack by publishing on a ROS topic.
+The `moveBy(float x, float y)` function takes two arguments and returns no payload. This function simply forwards the two input arguments to the navigation stack by publishing on a ROS topic.
 
 ```cpp
 CallbackFunction moveByCallback = [&](CallbackArgs args,
@@ -281,17 +283,57 @@ while (ros::ok()) {
 }
 ```
 
+## Writing a Buzz Script to Control the Robot
+
+Now that we have written a bridge for the host-side, let's write a Buzz script that sends `MoveBy` commands over to the host.
+
+Open the `HiveMind` codebase and navigate to the folder `src/bittybuzz/buzz_scripts`, where the user-defined Buzz scripts are located.
+
+> The basics on how create and flash a Buzz script to a HiveBoard are explained in a [previous User Guide](led-flash-buzz.md).
+
+Create a new file called `teleop.bzz` containing the following commands. In `main.bzz`, make sure to include `teleop.bzz` at the top of the file.
+
+```python
+include "utils/executor.bzz"
+
+function tick(){
+    log("Calling host function...");
+    call_host_function(id, "moveBy", {.0 = 1.0, .1 = 1.0});
+}
+
+function create_exec(){
+    exec = executor.new(10, tick);
+    return exec;
+}
+```
+
+This script creates an `executor` (see [this previous User Guide](led-flash-buzz.md) for more on `executors`) which will run the `tick` function periodically. This function contains a `call_host_function()` command that will call a function that was exposed by the host's bridge.
+
+You must provide three arguments to this function:
+
+* The `id` of the current HiveBoard. This is accessed via a global object `id`. The Agent ID is specific to each board and is destined to be shared between the HiveBoard and its host.
+
+* The name of the function to be called on the host. **The spelling of this string must be exactly the same as the function registered against the host's bridge**.
+
+* An array of parameters that are to be passed to the function.
+
+Refer to the [API documentation](https://swarmus.github.io/HiveMind/namespaceBittyBuzzUserFunctions.html) for a complete description of all the available functions.
+
+You may now flash the HiveBoard with this code.
+
 ## Greeting the HiveBoard
 
 Now that we have a working bridge implementation, let's test that it can talk with HiveMind, the HiveBoard's firmware. First, make sure that everything is connected like in the [image shown earlier](#initial-setup).
 
-On you PC, open a the COM port to view the logs from the HiveBoard (Usually `USBtty2`). You should see some messages indicating that the HiveBoard `Could not connect to server 192.168.1.101 : 55551`.
+On you PC, open the COM port to view the logs from the HiveBoard (Usually `USBtty2`). You should see some messages indicating that the HiveBoard `Could not connect to server 192.168.1.101 : 55551`.
 
-Next, run the ROS node that we just created on the host computer. Watch the logs from the COM port. After a few seconds, you should see that the host greeted the HiveBoard.
+Next, run the ROS node that we just created on the host computer. Watch the logs from the COM port. After a few seconds, you should see that the host greeted the HiveBoard:
 
-![Greeting a HiveBoard](img/greet-succeded.png)
+```
+Greet succeeded in host_monitor
+```
 
-The RGB LED at the bottom of the board should turn blue when the greet succeeds.
+The RGB LED at the bottom of the board should turn from purple to blue when the greet succeeds.
 
 ![Greet LED blue](img/greet-led-blue.png)
 
@@ -299,18 +341,14 @@ This means that the HiveBoard and the host computer now form an **agent** of the
 
 > The Swarm IDs are determined by the HiveBoards themselves. Each HiveBoard has a UUID saved in its non-volatile memory that is provided to the host upon greeting. The instructions on how to flash an ID to the HiveBoard are written in [HiveMind's Readme](https://github.com/SwarmUS/HiveMind#readme).
 
-## Writing a Buzz Script to Control the Robot
+## Testing the `moveBy` command
 
+Now that the HiveBoard and the bridge running on the host computer are both communicating together, we'll make sure that the `moveBy` function called from the Buzz script is indeed forwarded to the ROS environment.
 
-<!-- 
-TODO
+Open a terminal on the host computer and run `rostopic echo /agent1/navigation/moveBy`. You should see some messages:
 
-Instructions pour brancher un HB dans un ordinateur via Ethernet. Config IP static etc.
-
-Exemple basique d'implémentation de bridge qui enregistre une fonction qui print Hello world.
-
-Code Buzz qui call la fonction qui va printer Hello world.
-
-checklist for each section of the required hardware and/or software set-up
-
- -->
+```
+---
+distance_x: 1.0
+distance_y: 1.0
+```
