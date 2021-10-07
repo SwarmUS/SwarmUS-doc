@@ -27,7 +27,7 @@ The HiveBoard has a static IP address set to `192.168.1.10`. From the embedded c
 
 > If ping fails, double check the previous steps and make sure that the power switch is indeed to the `CON` position, and not to `USB`.
 
-Next, open the COM port to see the HiveBoard's logs (usually `USBtty2`). You should see that the HiveBoard attempts to connect to a host:
+Next, open the COM port to see the HiveBoard's logs (usually `dev/ttyUSB2`). You should see that the HiveBoard attempts to connect to a host:
 
 ![Connecting and Powering a HiveBoard (Ethernet)](img/could-not-connect.png)
 
@@ -325,7 +325,7 @@ You may now flash the HiveBoard with this code.
 
 Now that we have a working bridge implementation, let's test that it can talk with HiveMind, the HiveBoard's firmware. First, make sure that everything is connected like in the [image shown earlier](#initial-setup).
 
-On you PC, open the COM port to view the logs from the HiveBoard (Usually `USBtty2`). You should see some messages indicating that the HiveBoard `Could not connect to server 192.168.1.101 : 55551`.
+On you PC, open the COM port to view the logs from the HiveBoard (Usually `dev/ttyUSB2`). You should see some messages indicating that the HiveBoard `Could not connect to server 192.168.1.101 : 55551`.
 
 Next, run the ROS node that we just created on the host computer. Watch the logs from the COM port. After a few seconds, you should see that the host greeted the HiveBoard:
 
