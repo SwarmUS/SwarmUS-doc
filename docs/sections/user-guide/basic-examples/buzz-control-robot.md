@@ -142,7 +142,7 @@ int main(int argc, char** argv) {
 
         // Build the return payload and return. 
         CallbackArgs returnArgs;
-        returnArgs[0] = FunctionCallArgumentDTO(isRobotOk);
+        returnArgs.push_back(FunctionCallArgumentDTO(isRobotOk));
         CallbackReturn cbReturn("getStatusReturn", returnArgs);
         return cbReturn;
     };
@@ -238,7 +238,7 @@ Since the function returns no payload, the user must simply return an empty stru
 
 **Registering `getStatus()`**
 
-The `getStatus()` function takes no input arguments, but will return some payload. The return payload is wrapped in  a CallbackReturn type that takes the return values in an array. This is because the return payload is wrapped in a function call request that will be placed on the remote caller. See [Defining Callbacks](../../reference/HiveMindBridge/defining-callbacks.md) for more details.
+The `getStatus()` function takes no input arguments, but will return some payload. The return payload is wrapped in  a CallbackReturn type that takes the return values in a vector. This is because the return payload is wrapped in a function call request that will be placed on the remote caller. See [Defining Callbacks](../../reference/HiveMindBridge/defining-callbacks.md) for more details.
 
 ```cpp
     CallbackFunction getStatus = [&](CallbackArgs args,
@@ -247,7 +247,7 @@ The `getStatus()` function takes no input arguments, but will return some payloa
 
         // Build the return payload and return. 
         CallbackArgs returnArgs;
-        returnArgs[0] = FunctionCallArgumentDTO(isRobotOk);
+        returnArgs.push_back(FunctionCallArgumentDTO(isRobotOk));
         CallbackReturn cbReturn("getStatusReturn", returnArgs);
         return cbReturn;
     };
