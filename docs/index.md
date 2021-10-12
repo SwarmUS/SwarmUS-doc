@@ -42,7 +42,7 @@ The HiveBoard is connected to a robot's embedded computer using an Ethernet cabl
 
 **HiveMindBridge** is a C++ library that provides an interface with the HiveBoard. It is meant to be used as a compatibility layer between the robot's existing program and the HiveBoard's services.
 
-<!-- TOTO add some links to the appropriate pages when they are created. -->
+<!-- TODO: add some links to the appropriate pages when they are created. -->
 
 ## Where to go from here
 This documentation provides some guides that will help setting up the different sub-systems that compose the SwarmUS platform. Users that simply want to try ou the platform will want to follow these [User Guides](sections/user-guide/index.md). More thorough information about the inner workings of the various software components can also be found in the [Reference](sections/reference/index.md) section.
