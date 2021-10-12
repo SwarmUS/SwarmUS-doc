@@ -75,4 +75,4 @@ ROS replicates the interface of the HiveBoard via ROS logging system. Everytime 
 
 `[HM: Id] [UI: rgb: V led: 000 hex: 01]`
 
-The `rgb` is expressed via the first letter of it's color. The `led` represents the MCU_0, 1 and 2 (handshake HC, handhsake Host, user led). The `hex` represents the 7 segment (Vm state and user 7 segment).
+The `rgb` is expressed via the first letter of it's color. The `led` represents the MCU 0, 1 and 2 (handshake HC, handhsake Host, user led). The `hex` represents the 7 segment (Vm state at the left and user 7 segment at the right).
