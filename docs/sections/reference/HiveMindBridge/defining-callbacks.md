@@ -3,15 +3,14 @@
 Defining a callback should always be done by using the provided typedefs. The signature of the callback is the following:
 
 ```cpp
-CallbackFunction myCallback = [&](CallbackArgs args,
-                                        int argsLength) -> std::optional<CallbackReturn> {
+CallbackFunction myCallback = [&](CallbackArgs args) -> std::optional<CallbackReturn> {
     
 }
 ```
 
 Notice how the function takes an argument of type `CallbackArgs`. This typedef is a vector of arguments. The arguments are wrapped in `FunctionCallArgumentDTO` objects, which can hold either `int`s or `float`s (this is implemented using `std::variant`).
 
-The `argsLength` indicate the number of arguments that were provided by the caller, and should be used for checks. The number of arguments is limited to 8.
+The number of arguments is limited to 8.
 
 > The maximum number of arguments in a function call is set upon compilation of the [propolis-pheromones library](https://github.com/SwarmUS/Propolis/blob/master/src/pheromones/DefaultPheromonesOptions.cmake).
 
@@ -26,8 +25,7 @@ When a function should return some payload, the data should be wrapped in a `Cal
 For example, let's say we have registered a function `getStatus()` on the robot that returns two values of type int. The two values indicate arbitrary states for elements in the robot (e.g. is the Roboclaw controller ok, is a particular sensor working properly, etc.).
 
 ```cpp
-CallbackFunction getStatus = [&](CallbackArgs args,
-                                     int argsLength) -> std::optional<CallbackReturn> {
+CallbackFunction getStatus = [&](CallbackArgs args) -> std::optional<CallbackReturn> {
         // Example values
         int64_t isRoboclawOk = 1;
         int64_t isSensorXOk = 0;
@@ -66,8 +64,7 @@ Remote caller                                               Robot
 Callbacks are _always_ run asynchronously (with the underlying use of `std::async`). This allows the user to make blocking calls in the callbacks, without any impact on the rest of the execution flow. Do not hesitate to implement complex logic that takes lots of time to be processed in your callbacks: they were designed for that.
 
 ```cpp
-CallbackFunction myCallback = [&](CallbackArgs args,
-                                        int argsLength) -> std::optional<CallbackReturn> {
+CallbackFunction myCallback = [&](CallbackArgs args) -> std::optional<CallbackReturn> {
     // some function logic...
 
     std::this_thread::sleep_for(std::chrono::milliseconds(2000)); // This is perfectly fine, even in a callback!
