@@ -98,8 +98,7 @@ int main(int argc, char** argv) {
 
     // Register the first custom action: moveBy(x, y). This function will simply forward the x and y values 
     // to the navigation stack using a ROS publisher.
-    CallbackFunction moveByCallback = [&](CallbackArgs args,
-                                          int argsLength) -> std::optional<CallbackReturn> {
+    CallbackFunction moveByCallback = [&](CallbackArgs args) -> std::optional<CallbackReturn> {
         if (argsLength != 2) {
             ROS_WARN("Received incorrect number of arguments in moveBy");
             return {};
@@ -135,8 +134,7 @@ int main(int argc, char** argv) {
 
     
     // Register the second custom action: getStatus()
-    CallbackFunction getStatus = [&](CallbackArgs args,
-                                     int argsLength) -> std::optional<CallbackReturn> {
+    CallbackFunction getStatus = [&](CallbackArgs args) -> std::optional<CallbackReturn> {
         int64_t isRobotOk = 1; // Let's assume there is some complex logic here 
         // to check the status of the robot's components...
 
@@ -199,8 +197,7 @@ Registering custom actions is always done by following three steps :
 The `moveBy(float x, float y)` function takes two arguments and returns no payload. This function simply forwards the two input arguments to the navigation stack by publishing on a ROS topic.
 
 ```cpp
-CallbackFunction moveByCallback = [&](CallbackArgs args,
-                                        int argsLength) -> std::optional<CallbackReturn> {
+CallbackFunction moveByCallback = [&](CallbackArgs args) -> std::optional<CallbackReturn> {
     if (argsLength != 2) {
         ROS_WARN("Received incorrect number of arguments in moveBy");
         return {};
@@ -241,8 +238,7 @@ Since the function returns no payload, the user must simply return an empty stru
 The `getStatus()` function takes no input arguments, but will return some payload. The return payload is wrapped in  a CallbackReturn type that takes the return values in a vector. This is because the return payload is wrapped in a function call request that will be placed on the remote caller. See [Defining Callbacks](../../reference/HiveMindBridge/defining-callbacks.md) for more details.
 
 ```cpp
-    CallbackFunction getStatus = [&](CallbackArgs args,
-                                     int argsLength) -> std::optional<CallbackReturn> {
+    CallbackFunction getStatus = [&](CallbackArgs args) -> std::optional<CallbackReturn> {
         int64_t isRobotOk = 1; 
 
         // Build the return payload and return. 
