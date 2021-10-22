@@ -1,6 +1,6 @@
 # Available UI
 
-The HiveBoard has multiple indicators to help the user debug its configuration or its application. 
+The HiveBoard has multiple indicators to help the user debug its configuration or its application.
 
 ## Hardware
 
@@ -21,36 +21,40 @@ These are the UI elements that are worth mentioning on a physical HiveBoard:
 ![HiveBoard UI](img/hiveboard-ui.png)
 
 ### Power Switch
-The HiveBoard can be powered either via a 5V supply plugged into the black barrel connector or via the micro-USB plug. The power switch allows you to decide from where to take the power. The *CON* position instructs the boad to draw power from the barrel connector, while the *USB* position has the power drawn from the USB connector.
 
->Even if the power switch is on *CON*, the USB port still works and can be used to communicate with the board
+The HiveBoard can be powered either via a 5V supply plugged into the black barrel connector or via the micro-USB plug. The power switch allows you to decide from where to take the power. The _CON_ position instructs the boad to draw power from the barrel connector, while the _USB_ position has the power drawn from the USB connector.
 
->When powering the board by USB, no enough power is available to power all sub-circuits. The [DIP Switches](#dip-switches) allow you to decide what to enable or disable.
+> Even if the power switch is on _CON_, the USB port still works and can be used to communicate with the board
+
+> When powering the board by USB, no enough power is available to power all sub-circuits. The [DIP Switches](#dip-switches) allow you to decide what to enable or disable.
 
 ### DIP Switches
-Because the board can draw up to 4 A and a USB connection is limited to 500 mA, DIP switches are available to disable sub-circuits that are not needed in order to fit in the power requirements. The switches only take effect when powered by USB. If powered from CON, all circuits are always enabled. 
+
+Because the board can draw up to 4 A and a USB connection is limited to 500 mA, DIP switches are available to disable sub-circuits that are not needed in order to fit in the power requirements. The switches only take effect when powered by USB. If powered from CON, all circuits are always enabled.
 
 > **Warning** The DIP switches are inverted in the first version of the HiveBoard. So when a switch is at the ON position, power is **disabled** to the given sub-circuit.
 
 Four different circuits are controlled from the switches:
 
-* DEBUG: Controls the chip responsible for flashing/debugging the microcontrollers as well as create serial ports needed for logging
-* WROOM: Controls the ESP32 responsible for Wi-Fi communication
-* CHANNEL: Controls the channel hardware (this is very power hungry and probably should never be turned on while on USB)
-* ETHERNET: Controls the Ethernet port and associated hardware
+- DEBUG: Controls the chip responsible for flashing/debugging the microcontrollers as well as create serial ports needed for logging
+- WROOM: Controls the ESP32 responsible for Wi-Fi communication
+- CHANNEL: Controls the channel hardware (this is very power hungry and probably should never be turned on while on USB)
+- ETHERNET: Controls the Ethernet port and associated hardware
 
 In a normal usage, when plugged into a phone, all DIP switches other than WROOM should be on the ON position. This way, only the STM32 and the ESP32 are powered.
 
 ### Reset Buttons
+
 Three reset buttons are provided on the left hand side of the board. Each one performs a hardware reset of the specified chip.
 
-* FTDI: Chip responsible for flashing/debugging the microcontrollers as well as create serial ports needed for logging
-* MCU: The main STM32 microcontroller
-* WROOM: The ESP32 responsible for Wi-Fi communication
+- FTDI: Chip responsible for flashing/debugging the microcontrollers as well as create serial ports needed for logging
+- MCU: The main STM32 microcontroller
+- WROOM: The ESP32 responsible for Wi-Fi communication
 
 > **Note** The WROOM reset button currently only works if the ESP32 logging serial port is opened (usually ttyUSB4).
 
 ### Channel EN / FLT LEDs
+
 Every BeeBoard channel has two LEDs associated with it. A red FLT and a green EN. Only one of the LEDs is on at any given time. A red LED means no power is currently being delivered to the channel, while the green LED means power is being delivered.
 
 Enablement of power to a given channel is done through the code depending on which channels have BeeBoards plugged in at bootup. If multiple BeeBoards are plugged in, when powering the board up, you should see each channel that has a BeeBoard plugged in turn from red to green. If one of the channels does not change, consider testing with a different BeeBoard or USB-C cable to find the culprit.
@@ -59,7 +63,7 @@ Enablement of power to a given channel is done through the code depending on whi
 
 ### LED `RGB` - HiveMind Comm Interface
 
-Displays the status of the comm interface. Note that this means the comm interface is opened, not that the two devices communicate. They need to do a handshake after opening the interface. Thus a connection is fully established when the RGB is of color teal or blue **and** LED MCU_1 is on. If you plug the Ethernet or USB cable and the LED is not changing, make sure you have the right TCP port for Ethernet or for USB that you open the port on the host.
+Displays the status of the comm interface. Note that this means the comm interface is opened, not that the two devices communicate. They need to do a handshake after opening the interface. Thus a connection is fully established when the RGB is of color teal or blue **and** LED MCU_1 is on. If you plug the Ethernet or USB cable and the LED is not changing, make sure the TCP ports for Ethernet or the COM ports for USB match the ones that are open on the host.
 
 The RGB LED can take the following colours:
 
@@ -89,8 +93,6 @@ Shows if the HiveMind and the host completed their handshake successfully. If th
 
 LED that can be set in the Buzz script via `ui.set_led(x)`. Use this to know the state of you application for easier debugging. You can get more information in the [led blink user guide](../user-guide/basic-examples/led-flash-buzz.md). The complete API documentation can be found [here](https://swarmus.github.io/HiveMind/namespaceBittyBuzzUIFunctions.html#details).
 
-> The `User` and `BBVM` 7 segments are inverted between the first version of the HiveBoard and the ROS build.
-
 ### LED `3.3V`
 
 Is on if the 3.3V power supply is working properly. Check the power requirements if it's not on.
@@ -117,8 +119,8 @@ When simulating the usage of a HiveBoard on a computer, HiveMind will simulate t
 
 `[HM: Id] [UI: rgb: V led: 000 hex: 01]`
 
-* The `rgb` is expressed via the first letter of its color. 
+- The `rgb` is expressed via the first letter of its color.
 
-* The `led` represents the MCU 0, 1 and 2 (handshake HiveConnect, handshake Host, user LED). 
+- The `led` represents the MCU 0, 1 and 2 (handshake HiveConnect, handshake Host, user LED).
 
-* The `hex` represents the 7 segments (VM state at the left and user 7 segment at the right).
+- The `hex` represents the 7 segments (VM state at the left and user 7 segment at the right).
