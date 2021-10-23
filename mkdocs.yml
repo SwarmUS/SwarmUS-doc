@@ -69,8 +69,8 @@ extra:
   disqus: swarmus
 
 markdown_extensions:
+  - tables
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.superfences
   - pymdownx.snippets
-
