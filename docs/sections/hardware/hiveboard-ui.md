@@ -9,6 +9,7 @@ These are the UI elements that are worth mentioning on a physical HiveBoard:
 | ID on board | Description                        |
 | ----------- | ---------------------------------- |
 | LED RGB     | HiveMind comm interface            |
+| WROOM RGB   | Networking Status LED (ESP-32)     |
 | LED HB      | HiveMind heartbeat                 |
 | LED MCU_0   | HiveMind and HiveConnect handshake |
 | LED MCU_1   | HiveMind and Host handshake        |
@@ -74,6 +75,19 @@ The RGB LED can take the following colours:
 | Blue   | Connected via Ethernet |
 | Teal   | Connected via USB      |
 | Red    | Error                  |
+
+### LED `WROOM RGB` - Networking Status LED (ESP-32)
+
+This RGB LED informs on the status of the Wi-Fi network. Refer to the [Wi-Fi Configuration instructions](../reference/Networking/configure-wifi.md) for the configuration procedure.
+
+This RGB LED can take the following colours:
+
+| Colour | State                                |
+| ------ | ----------------------               |
+| Green  | Connected to an existing network     |
+| Yellow | Connecting                           |
+| Teal   | Access point available (is router)   |
+| Red    | Not Connected                        |
 
 ### LED `HB` - HiveMind Heartbeat
 

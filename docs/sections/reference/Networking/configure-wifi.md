@@ -6,6 +6,8 @@ The easiest way to configure the Wi-Fi network on HiveBoards is by using the [Hi
 
 To connect the HiveAR app running on an Android device to a HiveBoard, **you must first disconnect the Ethernet cable from the HiveBoard**. Then, plug the micro-USB cable from the HiveBoard to the Android Device as shown in the image below.
 
+Also, make sure that the DIP switches for the WROOM ESP-32 module are at the correct position to enable Wi-Fi capabilities. Refer to the [HiveBoard UI page](../../hardware/hiveboard-ui.md#dip-switches) for more on this.
+
 > **Why must the Ethernet cable be disconnected?**
 
 > A HiveBoard can only be connected to one host at a time (be it a robot runnung [HiveMindBridge](https://github.com/SwarmUS/HiveMindBridge), usually connected vie Ethernet, or an Android device running HiveAR). If the HiveBoard and the robot's embedded computer already have a connection established, it will be impossible to establish a second connection to the Android device. Thus, we advise that you unplug the Ethernet cable prior to using HiveAR with a given HiveBoard.
@@ -16,7 +18,7 @@ To connect the HiveAR app running on an Android device to a HiveBoard, **you mus
 
 Launch the HiveAR application on the Android device. Accept the different permission requests.
 
-Navigate tot the Connection tab (first icon on the left at the base of the screen).
+Navigate to the Connection tab (first icon on the left at the base of the screen).
 
 ![Connection Page](img/hivear-connection-page.png){: style="height:700px" }
 
@@ -24,11 +26,15 @@ Click on the circular button containing two arrows pointing at each other in the
 
 ![Connection Page](img/hivear-connection-page-selection-bar.png){: style="height:700px;align:left" }
 
-Tap on the bar and select option `HiveBoard: HiveMind`. Then tap Connect. The logs should show that the greet messages have been exchanged and you should see a green dot appear near the Connection button at the lower left of the screen:
+Tap on the bar and select option `HiveBoard: HiveMind`. Then tap Connect. The logs (under `Incoming Data`) should show that the greet messages have been exchanged and you should see a green dot appear near the Connection button at the lower left of the screen. HiveAR and HiveMind are now connected.
 
 ![Connection Page](img/hivear-connection-page-connected.png){: style="height:700px;align:left" }
 
 ## Set up the Wi-Fi Network
+
+> **Before you set up the Wi-Fi**
+
+> Make sure that all the HiveBoards have their Wi-Fi antennas plugged in. This might save a few headaches.
 
 Navigate to the Settings view by tapping the wrench icon at the lower right of the screen. This contains a tab which allows for the configuration of the Wi-Fi network:
 
@@ -42,17 +48,19 @@ You can set up a Wi-Fi network using an external wireless router. This way, you'
 
 Enter the SSID and password of you external Wi-Fi network and tap `Configure HiveBoard`. This will load the configuration to the ESP-32 Wi-Fi module. Make sure the network respects the [limitations](#limitations).
 
+When the HiveBoard has successfully connected to the network, the networking status LED will turn green. Refer to the [HiveBoard UI](../../hardware/hiveboard-ui.md#led-wroom-rgb-networking-status-led-esp-32) page for a comprehensive list of the RGB LED states.
+
 ### Single HiveBoard as a Router
 
 You can choose to use one of the HiveBoards to act as the router for the Wi-Fi network. That way, there is no need to provide an external router, and the swarm is able to work on its own.
 
-On the HiveBoard that you want to use as the router, check the `Is Router` box. Set the SSID and the password for the network. Tap `Configure HiveBoard` to load the configuration. Make sure the network respects the [limitations](#limitations).
+On the HiveBoard that you want to use as the router, check the `Is Router` box. Set the SSID and the password for the network. Tap `Configure HiveBoard` to load the configuration. Make sure the network respects the [limitations](#limitations). Once the router configuration has been loaded, the RGB LED for the ESP-32 will turn teal. Refer to the [HiveBoard UI](../../hardware/hiveboard-ui.md#led-wroom-rgb-networking-status-led-esp-32) page for a comprehensive list of the RGB LED states.
 
 On the other HiveBoards, simply connect to the Wi-Fi network you just created. Make sure to leave the `Is Router` box **unchecked**.
 
 ### Mesh Networking
 
-The mesh networking is not implemented as of now.
+As of now, the mesh networking is not implemented.
 
 ### Limitations
 
