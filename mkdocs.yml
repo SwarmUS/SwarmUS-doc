@@ -33,6 +33,8 @@ nav:
           - Defining Callbacks: "sections/reference/HiveMindBridge/defining-callbacks.md"
           - Defining Manifests: "sections/reference/HiveMindBridge/defining-manifests.md"
           - Example Logger Implementation: "sections/reference/HiveMindBridge/logger.md"
+      - Networking:
+          - Configuring the Wi-Fi network: "sections/reference/Networking/configure-wifi.md"
   - Hardware:
       - Hardware Home: "sections/hardware/index.md"
       - Available UI: "sections/hardware/hiveboard-ui.md"
@@ -74,3 +76,5 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.superfences
   - pymdownx.snippets
+  - attr_list
+  - md_in_html

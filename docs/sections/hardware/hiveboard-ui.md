@@ -9,6 +9,7 @@ These are the UI elements that are worth mentioning on a physical HiveBoard:
 | ID on board | Description                        |
 | ----------- | ---------------------------------- |
 | LED RGB     | HiveMind comm interface            |
+| WROOM RGB   | Networking Status LED (ESP-32)     |
 | LED HB      | HiveMind heartbeat                 |
 | LED MCU_0   | HiveMind and HiveConnect handshake |
 | LED MCU_1   | HiveMind and Host handshake        |
@@ -75,6 +76,19 @@ The RGB LED can take the following colours:
 | Teal   | Connected via USB      |
 | Red    | Error                  |
 
+### LED `WROOM RGB` - Networking Status LED (ESP-32)
+
+This RGB LED informs on the status of the Wi-Fi network. Refer to the [Wi-Fi Configuration instructions](../reference/Networking/configure-wifi.md) for the configuration procedure.
+
+This RGB LED can take the following colours:
+
+| Colour | State                                |
+| ------ | ----------------------               |
+| Green  | Connected to an existing network     |
+| Yellow | Connecting                           |
+| Teal   | Access point available (is router)   |
+| Red    | Not Connected                        |
+
 ### LED `HB` - HiveMind Heartbeat
 
 The heartbeat of the HiveMind indicates that the firmware runs normally. In normal operation, this LED flashes at 1 Hz. If this LED is _not_ flashing, HiveMind is probably in a hard fault state. This should not happen in theory, but things can always go wrong. Make sure everything is up to date and then you can consider raising an issue in the [HiveMind repo](https://github.com/SwarmUS/HiveMind/issues) if the issue wasn't already raised.
@@ -104,6 +118,8 @@ Is on if the 5V power supply is working properly. Check the power requirements i
 ### 7 segment 1 - BBVM status
 
 The status of the BBVM, in which your Buzz code is run.
+
+If it's 0, the VM, is running fine. If it's a non zero value. The value represent the error code via an enumeration.
 
 If it's 0, the VM, is running fine. If it's a non zero value. The value represent the error code via an enumeration.
 
