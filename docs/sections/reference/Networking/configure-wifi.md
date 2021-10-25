@@ -18,6 +18,47 @@ Launch the HiveAR application on the Android device. Accept the different permis
 
 Navigate tot the Connection tab (first icon on the left at the base of the screen).
 
-<img src="./img/hivear-connection-page.png" alt="drawing" width="200"/>
+![Connection Page](img/hivear-connection-page.png){: style="height:700px" }
 
-![Connection Page](img/hivear-connection-page.png)
+Click on the circular button containing two arrows pointing at each other in the lower left side of the screen. A selection bar will appear at the top of the screen:
+
+![Connection Page](img/hivear-connection-page-selection-bar.png){: style="height:700px;align:left" }
+
+Tap on the bar and select option `HiveBoard: HiveMind`. Then tap Connect. The logs should show that the greet messages have been exchanged and you should see a green dot appear near the Connection button at the lower left of the screen:
+
+![Connection Page](img/hivear-connection-page-connected.png){: style="height:700px;align:left" }
+
+## Set up the Wi-Fi Network
+
+Navigate to the Settings view by tapping the wrench icon at the lower right of the screen. This contains a tab which allows for the configuration of the Wi-Fi network:
+
+![Connection Page](img/hivear-settings-wifi.png){: style="height:700px;align:left" }
+
+Enter the configuration for the Wi-Fi network. There are a few different topologies that you might want to consider. Before you set up the network, refer to the [limitations](#limitations).
+
+### External Router
+
+You can set up a Wi-Fi network using an external wireless router. This way, you'll want to connect all of the HiveBoards to that router. 
+
+Enter the SSID and password of you external Wi-Fi network and tap `Configure HiveBoard`. This will load the configuration to the ESP-32 Wi-Fi module. Make sure the network respects the [limitations](#limitations).
+
+### Single HiveBoard as a Router
+
+You can choose to use one of the HiveBoards to act as the router for the Wi-Fi network. That way, there is no need to provide an external router, and the swarm is able to work on its own.
+
+On the HiveBoard that you want to use as the router, check the `Is Router` box. Set the SSID and the password for the network. Tap `Configure HiveBoard` to load the configuration. Make sure the network respects the [limitations](#limitations).
+
+On the other HiveBoards, simply connect to the Wi-Fi network you just created. Make sure to leave the `Is Router` box **unchecked**.
+
+### Mesh Networking
+
+The mesh networking is not implemented as of now.
+
+### Limitations
+
+There are a few limitations to consider when setting up a new Wi-Fi network to use with your HiveBoards:
+
+* The ESP-32 chips only support 2.4 GHz Wi-Fi networks. 5 GHz band is **not** supported.
+* The **maximum** length of the SSID is 32 characters.
+* The **minimum** length of the password is 8 characters.
+* Only WPA2-PSK is supported.
