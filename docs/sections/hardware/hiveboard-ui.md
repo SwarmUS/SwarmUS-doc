@@ -25,15 +25,18 @@ These are the UI elements that are worth mentioning on a physical HiveBoard:
 
 The HiveBoard can be powered either via a 5V supply plugged into the black barrel connector or via the micro-USB plug. The power switch allows you to decide from where to take the power. The _CON_ position instructs the boad to draw power from the barrel connector, while the _USB_ position has the power drawn from the USB connector.
 
-> Even if the power switch is on _CON_, the USB port still works and can be used to communicate with the board
+!!! note 
+    Even if the power switch is on _CON_, the USB port still works and can be used to communicate with the board
 
-> When powering the board by USB, no enough power is available to power all sub-circuits. The [DIP Switches](#dip-switches) allow you to decide what to enable or disable.
+!!! important
+    When powering the board by USB, no enough power is available to power all sub-circuits. The [DIP Switches](#dip-switches) allow you to decide what to enable or disable.
 
 ### DIP Switches
 
 Because the board can draw up to 4 A and a USB connection is limited to 500 mA, DIP switches are available to disable sub-circuits that are not needed in order to fit in the power requirements. The switches only take effect when powered by USB. If powered from CON, all circuits are always enabled.
 
-> **Warning** The DIP switches are inverted in the first version of the HiveBoard. So when a switch is at the ON position, power is **disabled** to the given sub-circuit.
+!!! error 
+    The DIP switches are inverted in the first version of the HiveBoard. So when a switch is at the ON position, power is **disabled** to the given sub-circuit.
 
 Four different circuits are controlled from the switches:
 
@@ -52,7 +55,8 @@ Three reset buttons are provided on the left hand side of the board. Each one pe
 - MCU: The main STM32 microcontroller
 - WROOM: The ESP32 responsible for Wi-Fi communication
 
-> **Note** The WROOM reset button currently only works if the ESP32 logging serial port is opened (usually ttyUSB4).
+!!! error 
+    The WROOM reset button currently only works if the ESP32 logging serial port is opened (usually ttyUSB4).
 
 ### Channel EN / FLT LEDs
 
@@ -60,7 +64,8 @@ Every BeeBoard channel has two LEDs associated with it. A red FLT and a green EN
 
 Enablement of power to a given channel is done through the code depending on which channels have BeeBoards plugged in at bootup. If multiple BeeBoards are plugged in, when powering the board up, you should see each channel that has a BeeBoard plugged in turn from red to green. If one of the channels does not change, consider testing with a different BeeBoard or USB-C cable to find the culprit.
 
-> Before a proper HiveMind firmware is flashed to the STM32, you may notice that some channels boot up as enabled even without a BeeBoard. This is because the line controlling the enablement of the channels is floating and must therefore be pulled down by the STM32 code (HiveMind).
+!!! note 
+    Before a proper HiveMind firmware is flashed to the STM32, you may notice that some channels boot up as enabled even without a BeeBoard. This is because the line controlling the enablement of the channels is floating and must therefore be pulled down by the STM32 code (HiveMind).
 
 ### LED `RGB` - HiveMind Comm Interface
 
@@ -97,7 +102,8 @@ The heartbeat of the HiveMind indicates that the firmware runs normally. In norm
 
 Shows if the HiveMind and the HiveConnect completed their handshake successfully. If the LED is not turned on after bootup, make sure everything is up to date (check versions of HiveMind and HiveConnect) and that the ESP power DIP switch is enabled.
 
-> **Warning** The DIP switches are inverted in the first version of the HiveBoard. So ON actually disables it.
+!!! error 
+    The DIP switches are inverted in the first version of the HiveBoard. So ON actually disables it.
 
 ### LED `MCU_1` - HiveMind and Host Handshake
 

@@ -12,7 +12,8 @@ Notice how the function takes an argument of type `CallbackArgs`. This typedef i
 
 The number of arguments is limited to 8.
 
-> The maximum number of arguments in a function call is set upon compilation of the [propolis-pheromones library](https://github.com/SwarmUS/Propolis/blob/master/src/pheromones/DefaultPheromonesOptions.cmake).
+!!! tip 
+    The maximum number of arguments in a function call is set upon compilation of the [propolis-pheromones library](https://github.com/SwarmUS/Propolis/blob/master/src/pheromones/DefaultPheromonesOptions.cmake).
 
 The return value of the callbacks is always a type `std::optional<CallbackReturn>`. Why optional? Because some functions do not need to return any payload to the caller. In those cases, the user will simply `return {}` at the end of the function's body.
 
@@ -42,7 +43,8 @@ CallbackFunction getStatus = [&](CallbackArgs args) -> std::optional<CallbackRet
 
 When the data is returned, it is wrapped by HiveMindBridge in a function call request that will be sent to the original caller of the function. The user needs to provide the name of the function to call that will handle the return payload. In the example above, the returned data is sent to the caller by calling the `getStatusReturn` function. This function must be registered on the caller's side in order to process the reception of the return payload.
 
-> Notice how the return payload values are placed in a `CallbackArgs` object: this is because they will be passed to the `getStatusReturn` function as arguments. The arguments must be placed in a well-known order; that is, the order should match the one declared on the remote agent.
+!!! tip 
+    Notice how the return payload values are placed in a `CallbackArgs` object: this is because they will be passed to the `getStatusReturn` function as arguments. The arguments must be placed in a well-known order; that is, the order should match the one declared on the remote agent.
 
 Here is a summary of what happens :
 
@@ -57,7 +59,8 @@ Remote caller                                               Robot
 
 ```
 
-> When you implement you swarm solution, make sure to check that the return function calls are implemented on the remote caller, this will be a frequent cause of bugs. Remember: "returning" a value after the execution of a callback will really just make a function call request on the caller's side with the return values as arguments. Also, do make sure that the arguments match with the return values of the callback.
+!!! tip 
+    When you implement you swarm solution, make sure to check that the return function calls are implemented on the remote caller, this will be a frequent cause of bugs. Remember: "returning" a value after the execution of a callback will really just make a function call request on the caller's side with the return values as arguments. Also, do make sure that the arguments match with the return values of the callback.
 
 ## Asynchronicity
 

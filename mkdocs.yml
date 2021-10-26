@@ -78,3 +78,4 @@ markdown_extensions:
   - pymdownx.snippets
   - attr_list
   - md_in_html
+  - admonition

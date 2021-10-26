@@ -22,7 +22,8 @@ When you fire up the HiveBoard, you will see some lights flashing. Some of these
 
 Next, let's flash the HiveMind firmware to the HiveBoard. Follow the steps written in [HiveMind's README file](https://github.com/SwarmUS/HiveMind/blob/master/README.md) to build and flash your board. **Follow the steps for the H7/HiveBoard**.
 
-> Take a close attention to the requirements listed in the README and make sure you use the correct versions of CMake, GCC, arm-gcc, and OpenOCD. 
+!!! important 
+    Take a close attention to the requirements listed in the README and make sure you use the correct versions of CMake, GCC, arm-gcc, and OpenOCD. 
 
 In HiveMind's README, you will find some steps to build using ROS. You need not follow these steps for now; the ROS build is only used in simulation. This how-to guide only shows how to compile and flash for the HiveBoard.
 
@@ -55,11 +56,13 @@ In this example, we will create a file called `blinky.bzz`, which will do some b
 
 The main file is written in such way that the user will not need to edit anything but the include tag. It expects the included file to provide a function `create_exec()` as its entrypoint. This function creates an `executor` which will call a function at given intervals (more on that below). Here, we pass the value `10`, which means that the function will be called at every 10 steps of the BittyBuzz virtual machine. For more information on how to configure the step delay, refer to [this page](../../reference/HiveMind/bbzvm/index.md).
 
-> This pattern of using a minimal main is not an absolute rule; users could write everything directly in the `main.bzz` file, instead of using a separate file. This implementation just makes it easier to switch from one buzz script to the other by simply changing the included file in the main.
+!!! tip 
+    This pattern of using a minimal main is not an absolute rule; users could write everything directly in the `main.bzz` file, instead of using a separate file. This implementation just makes it easier to switch from one buzz script to the other by simply changing the included file in the main.
 
 On your PC, create a `main.bzz` file under `bittybuzz/buzz_scripts` and copy the snippet shown above.
 
-> Il you cloned the HiveMind repository from GitHub, this step might not be required, since the code hosted on GitHub already contains a main file.
+!!! note 
+    Il you cloned the HiveMind repository from GitHub, this step might not be required, since the code hosted on GitHub already contains a main file.
 
 ### The Script: `blinky.bzz`
 
@@ -95,9 +98,10 @@ The third argument is a context table that will be passed to the function `tick`
 
 The `ctx` object contains the value of the LED.
 
-> **Why should you use an `executor` object instead of sleep functions?**
+!!! tip 
+    **Why should you use an `executor` object instead of sleep functions?**
 
-> The `executor` object serves a similar purpose as a thread with a `while(true)` and a sleep. However, using sleeps will halt some other processing done on the BittyBuzz virtual machine. The `executor` allows for asynchronous, non-blocking delays. See the [Reference](../../reference/HiveMind/bbzvm/index.md) section for more details.
+    The `executor` object serves a similar purpose as a thread with a `while(true)` and a sleep. However, using sleeps will halt some other processing done on the BittyBuzz virtual machine. The `executor` allows for asynchronous, non-blocking delays. See the [Reference](../../reference/HiveMind/bbzvm/index.md) section for more details.
 
 #### Writing the `tick()` function
 
@@ -119,7 +123,8 @@ To turn the LED off, we write the opposite value:
 ui.set_led(nil)
 ```
 
-> You could also write ui.set_let(0). The underlying function would then evaluate the value 0 to false. All other integer values would be evaluated to true.
+!!! hint 
+    You could also write `ui.set_let(0)`. The underlying function would then evaluate the value 0 to false. All other integer values would be evaluated to true.
 
 To toggle on and off the LED, we write the following `tick` function:
 

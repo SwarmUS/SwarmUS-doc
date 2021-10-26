@@ -6,7 +6,8 @@ Now that the code that runs on your Hiveboard can flash an LED [of its own](led-
 
 ## Initial Setup
 
-> Before we start, make sure that the HiveBoard has a HiveMind firmware flashed. Follow the instructions from [this previous tutorial](led-flash-buzz.md) to flash a firmware on the device.
+!!! important 
+    Before we start, make sure that the HiveBoard has a HiveMind firmware flashed. Follow the instructions from [this previous tutorial](led-flash-buzz.md) to flash a firmware on the device.
 
 The HiveBoard connects to the robot's embedded computer using an Ethernet cable. Communication between the two is established via TCP. Connect the HiveBoard as shown in the image below. The micro-USB cable should be plugged into your computer since we will be flashing some Buzz code on the device. The Ethernet must be plugged into the robot's embedded computer. Power on the HiveBoard by setting the switch to the `CON` position.
 
@@ -19,13 +20,15 @@ The HiveMind firmware expects the robot's computer to have a precise IP address.
 * IPv4 address : `192.168.1.101`
 * Subnet mask: `255.255.255.0`
 
-> The network configuration can be changed by using CMake variables. See [HiveMind readme](https://github.com/SwarmUS/HiveMind#readme) for more on this. The robot's embedded computer is refered to as the _HOST_.
+!!! tip 
+    The network configuration can be changed by using CMake variables. See [HiveMind readme](https://github.com/SwarmUS/HiveMind#readme) for more on this. The robot's embedded computer is refered to as the _HOST_.
 
 ### Testing the connection
 
 The HiveBoard has a static IP address set to `192.168.1.10`. From the embedded computer (we will call this the _host_ from now on), try to ping the HiveBoard to see if the Ethernet connection works.
 
-> If ping fails, double check the previous steps and make sure that the power switch is indeed to the `CON` position, and not to `USB`.
+!!! attention 
+    If ping fails, double check the previous steps and make sure that the power switch is indeed to the `CON` position, and not to `USB`.
 
 Next, open the COM port to see the HiveBoard's logs (usually `dev/ttyUSB2`). You should see that the HiveBoard attempts to connect to a host:
 
@@ -180,7 +183,8 @@ HiveMindBridge bridge(port, logger);
 
 To create a `HiveMindBridge` instance, the user must provide a logger that implements the `ILogger` interface (see [here](../../reference/HiveMindBridge/logger.md) for a full example). The `port` input argument is needed in order to bind the TCP socket used by HiveMindBridge. 
 
-> HiveMindBridge acts as a TCP _server_ and will wait for clients to initiate a connection.
+!!! note 
+    HiveMindBridge acts as a TCP _server_ and will wait for clients to initiate a connection.
 
 #### Registering custom actions
 
@@ -231,7 +235,8 @@ bridge.registerCustomAction("moveBy", moveByCallback, moveByManifest);
 
 Since the function returns no payload, the user must simply return an empty struct.
 
-> Notice that the order of the arguments match between the manifest and the callback's body. This allows the other swarm element to send the arguments correctly. For more information on this, see [Defining Manifests](../../reference/HiveMindBridge/defining-manifests.md).
+!!! important 
+    Notice that the order of the arguments match between the manifest and the callback's body. This allows the other swarm element to send the arguments correctly. For more information on this, see [Defining Manifests](../../reference/HiveMindBridge/defining-manifests.md).
 
 **Registering `getStatus()`**
 
@@ -251,7 +256,8 @@ The `getStatus()` function takes no input arguments, but will return some payloa
     bridge.registerCustomAction("getStatus", getStatus);
 ```
 
-> This example does not have any real logic. In some cases, there could be a need to implement some complex logic, and even some blocking calls to check the state of some robot peripherals. Since all callbacks are run asynchronously, the user can use blocking calls in the body of the callback. See [Defining Callbacks](../../reference/HiveMindBridge/defining-callbacks.md) for more information on this.
+!!! note 
+    This example does not have any real logic. In some cases, there could be a need to implement some complex logic, and even some blocking calls to check the state of some robot peripherals. Since all callbacks are run asynchronously, the user can use blocking calls in the body of the callback. See [Defining Callbacks](../../reference/HiveMindBridge/defining-callbacks.md) for more information on this.
 
 #### Registering event hooks
 
@@ -285,7 +291,8 @@ Now that we have written a bridge for the host-side, let's write a Buzz script t
 
 Open the `HiveMind` codebase and navigate to the folder `src/bittybuzz/buzz_scripts`, where the user-defined Buzz scripts are located.
 
-> The basics on how create and flash a Buzz script to a HiveBoard are explained in a [previous User Guide](led-flash-buzz.md).
+!!! hint 
+    The basics on how create and flash a Buzz script to a HiveBoard are explained in a [previous User Guide](led-flash-buzz.md).
 
 Create a new file called `teleop.bzz` containing the following commands. In `main.bzz`, make sure to include `teleop.bzz` at the top of the file.
 
@@ -335,7 +342,8 @@ The RGB LED at the bottom of the board should turn from purple to blue when the 
 
 This means that the HiveBoard and the host computer now form an **agent** of the swarm. Both share the same _Swarm Agent ID_, a unique identifier that each agent must hold for as long as it is a part of the swarm. The greeting procedure ensures that the host picks up the ID from the HiveBoard.
 
-> The Swarm IDs are determined by the HiveBoards themselves. Each HiveBoard has a UUID saved in its non-volatile memory that is provided to the host upon greeting. The instructions on how to flash an ID to the HiveBoard are written in [HiveMind's Readme](https://github.com/SwarmUS/HiveMind#readme).
+!!! important 
+    The Swarm IDs are determined by the HiveBoards themselves. Each HiveBoard has a UUID saved in its non-volatile memory that is provided to the host upon greeting. The instructions on how to flash an ID to the HiveBoard are written in [HiveMind's Readme](https://github.com/SwarmUS/HiveMind#readme).
 
 ## Testing the `moveBy` command
 
