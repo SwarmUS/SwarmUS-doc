@@ -1,0 +1,3 @@
+The following figure shows a high-level view of the SwarmUS platform. In this case, a HiveBoard is plugged into a robot's embedded computer running ROS. Note however that HiveMind, the HiveBoard's firmware, can be interfaced with devices that do not run ROS. The HiveMindBridge library is a generic C++ library that will help interfacing any environment with a HiveBoard.
+
+![High-level architecture](img/architecture-hb-robot.png)
