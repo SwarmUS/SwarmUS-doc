@@ -76,7 +76,7 @@ LOREM IPSUM.
 
 <div class="card">
 <div class="img-avatar">
-<img src="../img/hd.png" class="face">
+<img src="../img/hd.png" class="face shift-less">
 </div>
 
 <div class="card-text">
@@ -113,7 +113,7 @@ LOREM IPSUM.
 
 <div class="card">
 <div class="img-avatar">
-<img src="../img/lg.jpg" class="face">
+<img src="../img/lg-resize.jpg" class="face">
 </div>
 
 <div class="card-text">
