@@ -45,16 +45,21 @@
   height: 80px;
   position: absolute;
   border-radius: 50%;
-  border: 6px solid white;
-  background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%);
+  border: 6px solid #ffa724;
+  overflow: hidden;
+  /* background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%); */
+  background-color: white;
   top: 15px;
   left: 85px;
 }
 
 .face {
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
+  position: relative;
+  height: 100% !important;
+}
+
+.shift {
+  margin-left: 15%;
 }
 
 .card-text {
