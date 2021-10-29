@@ -30,17 +30,24 @@ The SwarmUS platform is a decentralized system that comprises a number of differ
 
 At the center of the system lies the HiveBoard, a printed circuit board designed specifically for SwarmUS. It boasts an **STM-32** microcontroller (MCU) that manages the platform firmware, as well as a second MCU (**ESP-32**) that handles the WiFi communication stack. 
 
+![](img/hiveboard-solo.png)
+*A HiveBoard*
+
 The HiveBoard can host up to six auxiliary boards, called **BeeBoards**. These boards are simply antennas and Ultra-wideband (UWB) chips that are used to calculate the position of the other robots.
+
+![](img/BeeBoard-solo.png)
+*A BeeBoard*
 
 The HiveBoard is connected to a robot's embedded computer using an Ethernet cable. On the diagram shown above, the robot is assumed to run ROS, along with a few services. Note however that SwarmUS is completely ROS-agnostic and could be used on any software stack.
 
-<!-- TODO add some images of the assembled HB/BB -->
+[**HiveMind**](sections/reference/HiveMind/hivemind-preface.md) is the firmware that runs on the STM-32 MCU. This firmware manages three key features: the messaging service, the interlocalisation service, and the Buzz VM, which runs the user-code for the swarm's coordination.
 
-**HiveMind** is the firmware that runs on the STM-32 MCU. This firmware manages three key features: the messaging service, the interlocalisation service, and the Buzz VM, which runs the user-code for the swarm's coordination.
+[**HiveConnect**](sections/reference/Networking/hiveconnect.md) is the firmware that runs on the ESP-32 MCU. It provides the WiFi communication stack to the messaging service, and allows the configuration of various network topologies, including mesh.
 
-**HiveConnect** is the firmware that runs on the ESP-32 MCU. It provides the WiFi communication stack to the messaging service, and allows the configuration of various network topologies, including mesh.
+[**HiveMindBridge**](sections/reference/HiveMindBridge/about-hivemindbridge.md) is a C++ library that provides an interface with the HiveBoard. It is meant to be used as a compatibility layer between the robot's existing program and the HiveBoard's services.
 
-**HiveMindBridge** is a C++ library that provides an interface with the HiveBoard. It is meant to be used as a compatibility layer between the robot's existing program and the HiveBoard's services.
+![](img/pioneer-tb.png)
+*A heterogenous swarm of three robots (two Pioneer 2DX and one Turtlebot 3 Burger)*
 
 <!-- TODO: add some links to the appropriate pages when they are created. -->
 

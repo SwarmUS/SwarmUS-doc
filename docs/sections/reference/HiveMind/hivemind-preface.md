@@ -1,6 +1,8 @@
-# HiveMind preface
+# About HiveMind
 
 The HiveMind (HM) is the firmware that runs on the HiveBoard STM32 MCU or on Linux with ROS. The HiveMind is connected to a host robot and the rest of the swarm. It then orchestrates the logic of the swarm and sends messages to the host or other members in the swarm accordingly.
+
+The codebase for HiveMind is hosted on [GitHub](https://github.com/SwarmUS/HiveMind).
 
 The HiveMind has multiple roles in the swarm:
 

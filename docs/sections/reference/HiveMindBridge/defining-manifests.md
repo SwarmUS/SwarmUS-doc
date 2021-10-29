@@ -15,4 +15,5 @@ moveByManifest.push_back(
     UserCallbackArgumentDescription("y", FunctionDescriptionArgumentTypeDTO::Float));
 ```
 
-> The user must pay close attention to make sure that the order in which the arguments are registered in the manifest match the order of the arguments used in the corresponding callback function. Here, the callback expects that `x` is at position [0] and that `y` is at position [1] in the input arguments. Make sure to validate the order of the arguments across all the elements of the swarm when you debug.
+!!! attention 
+    The user must pay close attention to make sure that the order in which the arguments are registered in the manifest match the order of the arguments used in the corresponding callback function. Here, the callback expects that `x` is at position [0] and that `y` is at position [1] in the input arguments. Make sure to validate the order of the arguments across all the elements of the swarm when you debug.

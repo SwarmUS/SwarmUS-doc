@@ -20,21 +20,24 @@ nav:
           - "Adding Buzz scripts to the mix": "sections/user-guide/follow-the-leader/buzz-scripts-getting-started.md"
   - Reference:
       - Reference Home: "sections/reference/index.md"
+      - Architecture of the System: "sections/reference/architecture.md"
       - Buzz:
           - Available APIs: "sections/reference/Buzz/available-apis.md"
       - HiveMind:
-          - HiveMind preface: "sections/reference/HiveMind/hivemind-preface.md"
+          - About HiveMind: "sections/reference/HiveMind/hivemind-preface.md"
           - HiveMind and the Host: "sections/reference/HiveMind/hivemind-host.md"
           - HiveMind and the Swarm: "sections/reference/HiveMind/hivemind-swarm.md"
           - HiveMind API: "sections/reference/HiveMind/hivemind-api.md"
           - BittyBuzz Virtual Machine: "sections/reference/HiveMind/bbzvm/index.md"
       - HiveMindBridge:
+          - About HiveMindBridge: "sections/reference/HiveMindBridge/about-hivemindbridge.md"
           - Registering Custom Actions: "sections/reference/HiveMindBridge/registering-custom-actions.md"
           - Defining Callbacks: "sections/reference/HiveMindBridge/defining-callbacks.md"
           - Defining Manifests: "sections/reference/HiveMindBridge/defining-manifests.md"
           - Example Logger Implementation: "sections/reference/HiveMindBridge/logger.md"
       - Networking:
           - Configuring the Wi-Fi network: "sections/reference/Networking/configure-wifi.md"
+          - HiveConnect: "sections/reference/Networking/hiveconnect.md"
   - Hardware:
       - Hardware Home: "sections/hardware/index.md"
       - Available UI: "sections/hardware/hiveboard-ui.md"
@@ -70,6 +73,9 @@ extra:
       link: https://github.com/SwarmUS
   disqus: swarmus
 
+extra_css:
+    - css/extra.css
+
 markdown_extensions:
   - tables
   - pymdownx.highlight
@@ -78,3 +84,4 @@ markdown_extensions:
   - pymdownx.snippets
   - attr_list
   - md_in_html
+  - admonition
