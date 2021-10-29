@@ -56,7 +56,7 @@ Three reset buttons are provided on the left hand side of the board. Each one pe
 - WROOM: The ESP32 responsible for Wi-Fi communication
 
 !!! error 
-    The WROOM reset button currently only works if the ESP32 logging serial port is opened (usually ttyUSB4).
+    The WROOM reset button currently only works if the ESP32 logging serial port is opened (usually ttyUSB3).
 
 ### Channel EN / FLT LEDs
 
