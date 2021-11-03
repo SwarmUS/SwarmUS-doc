@@ -1,4 +1,4 @@
-# Available UI
+# Available UI HiveBoard
 
 The HiveBoard has multiple indicators to help the user debug its configuration or its application.
 
@@ -83,7 +83,7 @@ The RGB LED can take the following colours:
 
 ### LED `WROOM RGB` - Networking Status LED (ESP-32)
 
-This RGB LED informs on the status of the Wi-Fi network. Refer to the [Wi-Fi Configuration instructions](../reference/Networking/configure-wifi.md) for the configuration procedure.
+This RGB LED informs on the status of the Wi-Fi network. Refer to the [Wi-Fi Configuration instructions](../../reference/Networking/configure-wifi.md) for the configuration procedure.
 
 This RGB LED can take the following colours:
 
@@ -111,7 +111,7 @@ Shows if the HiveMind and the host completed their handshake successfully. If th
 
 ### LED `MCU_2` - User LED
 
-LED that can be set in the Buzz script via `ui.set_led(x)`. Use this to know the state of you application for easier debugging. You can get more information in the [led blink user guide](../user-guide/basic-examples/led-flash-buzz.md). The complete API documentation can be found [here](https://swarmus.github.io/HiveMind/namespaceBittyBuzzUIFunctions.html#details).
+LED that can be set in the Buzz script via `ui.set_led(x)`. Use this to know the state of you application for easier debugging. You can get more information in the [led blink user guide](../../user-guide/basic-examples/led-flash-buzz.md). The complete API documentation can be found [here](https://swarmus.github.io/HiveMind/namespaceBittyBuzzUIFunctions.html#details).
 
 ### LED `3.3V`
 
