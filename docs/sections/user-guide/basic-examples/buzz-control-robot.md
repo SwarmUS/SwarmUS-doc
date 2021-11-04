@@ -1,8 +1,17 @@
-# Controlling a robot using Buzz
+# Controlling a robot using Buzz and HiveMindBridge
 
 Now that the code that runs on your Hiveboard can flash an LED [of its own](led-flash-buzz.md) or one from a [remote board](led-flash-remote-hiveboard.md), let's establish a connection between a Hiveboard and a robot's embedded computer. The goal here is to use a Buzz script to tele-operate a robot.
 
 ![Controlling a robot using a Buzz script running on a HiveBoard](img/buzz-control-robot-case.png)
+
+!!! Note
+    **To follow this user guide, you will need:**
+
+    * A computer running Linux
+    * A robot running ROS. You really just need a computer running ROS to go through this tutorial, but you might want to have a full robot to test the integration.
+    * One HiveBoard and its power supply (wall adapter)
+    * A micro-USB to USB type A cable
+    * An Ethernet cable
 
 ## Initial Setup
 
@@ -21,7 +30,7 @@ The HiveMind firmware expects the robot's computer to have a precise IP address.
 * Subnet mask: `255.255.255.0`
 
 !!! tip 
-    The network configuration can be changed by using CMake variables. See [HiveMind readme](https://github.com/SwarmUS/HiveMind#readme) for more on this. The robot's embedded computer is refered to as the _HOST_.
+    The network configuration expected by HiveMind can be changed by using CMake variables. See [HiveMind readme](https://github.com/SwarmUS/HiveMind#readme) for more on this. The robot's embedded computer is refered to as the _HOST_.
 
 ### Testing the connection
 
@@ -183,7 +192,7 @@ HiveMindBridge bridge(port, logger);
 
 To create a `HiveMindBridge` instance, the user must provide a logger that implements the `ILogger` interface (see [here](../../reference/HiveMindBridge/logger.md) for a full example). The `port` input argument is needed in order to bind the TCP socket used by HiveMindBridge. 
 
-!!! note 
+!!! hint 
     HiveMindBridge acts as a TCP _server_ and will wait for clients to initiate a connection.
 
 #### Registering custom actions
