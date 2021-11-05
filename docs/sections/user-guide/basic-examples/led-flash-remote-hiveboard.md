@@ -22,6 +22,9 @@ This User Guide will make use of the Wi-Fi networking capabilities of the SwarmU
 
 Let's say that the two HiveBoards we use have IDs 2 and 5. We will write a single Buzz script which will set a "leader" using the virtual stigmergy (a most important feature from the [Buzz language](https://github.com/buzz-lang/Buzz/blob/1f6eda7bb1d4ad83d9d8e6ff46e130078e2c3a52/doc/api.md#vstig)) to set HiveBoard #2 as the leader. The leader will increment its own 7-segment display and then "ask" the HiveBoard #5 to do the same using a function call.
 
+!!! note
+    You might want to double check that the two HiveBoards have their IDs set to 2 and 5. The `UUID_OVERRIDE` CMake flag in HiveMind is used to set the ID of a board. See [HiveMind's README](https://github.com/SwarmUS/HiveMind#readme) for more on this.
+
 !!! hint
     The virtual stigmergy is an array of information which is propagated across the swarm agents. It can be used to synchronize the behaviour of each angent. In this example, it is simply used to decide which HiveBoard is the leader. 
     
@@ -128,19 +131,16 @@ The reference documentation for the calling of closures, as well as everything i
 
 ### Flash and Test
 
-You can now flash the code to the two HiveBoards. Make sure that the Wi-Fi network is correctly set up and that both HiveBoards are connected to the same SSID (refer to the instructions [here](../../reference/Networking/configure-wifi.md).
+You can now flash the code to the two HiveBoards. Make sure that the Wi-Fi network is correctly set up and that both HiveBoards are connected to the same SSID (refer to the instructions [here](../../reference/Networking/configure-wifi.md)).
 
 When both HiveBoards are flashed with the code, you should see the 7-segment display incrementing on both HiveBoards.
 
-<!-- 
-TODO
+## More examples
 
-Instructions pour configurer le réseau wifi entre les 2 boards.
+### Controlling Multiple Slaves
 
-Présenter les différentes méthodes pour que 2 HB puissent s'échanger de l'information et requêtes. Stigmergie, functioncallrequest, RPC natif à Buzz(?)
+An alternate version of the script presented earlier can be found [here](https://github.com/SwarmUS/HiveMind/blob/master/src/bittybuzz/buzz_scripts/behaviors/hex_leader.bzz) in the HiveMind repository. This script uses some other features from Buzz, namely the `broadcast` and `listen` functions, which allow to communicate in a pub/sub manner using topics (see [Buzz documentation](https://the.swarming.buzz/wiki/doku.php?id=buzz_syntax_cheatsheet) for more on the matter). This allows for multiple agents to be controlled by the Leader, without the need to make a function call for each agent.
 
-Idea to introduce the concept of stigmergy and message propagation: stigmergy containing ID of board + LED on/off
+### Synchronizing LEDs Without a Leader
 
-checklist for each section of the required hardware and/or software set-up
- 
- -->
+One of the most interesting advantage of swarm robotics is the ability of a swarm to self-govern, without the need for a centralized manager. As such, the HiveMind repository provides an [example script](https://github.com/SwarmUS/HiveMind/blob/master/src/bittybuzz/buzz_scripts/behaviors/led_sync.bzz) where each agent will synchronize its LEDs with the rest of the swarm, just like fireflies do.

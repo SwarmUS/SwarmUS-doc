@@ -56,7 +56,7 @@ The HiveBoard is connected to a robot's embedded computer using an Ethernet cabl
 <!-- TODO: add some links to the appropriate pages when they are created. -->
 
 ## Where to go from here
-This documentation provides some guides that will help setting up the different sub-systems that compose the SwarmUS platform. Users that simply want to try ou the platform will want to follow these [User Guides](sections/user-guide/index.md). The user guides provide step-by-step instructions to help users implement a swarm solution using SwarmUS. Complete newcomers will want to start with the [basic examples](basic-examples/led-flash-buzz.md), which show how to use the core features of the SwarmUS platform.
+This documentation provides some guides that will help setting up the different sub-systems that compose the SwarmUS platform. Users that simply want to try ou the platform will want to follow these [User Guides](sections/user-guide/index.md). The user guides provide step-by-step instructions to help users implement a swarm solution using SwarmUS. Complete newcomers will want to start with the [basic examples](sections/user-guide/basic-examples/led-flash-buzz.md), which show how to use the core features of the SwarmUS platform.
 
 More thorough information about the inner workings of the various software components can also be found in the [Reference](sections/reference/index.md) section.
 
