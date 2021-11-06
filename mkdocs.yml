@@ -33,7 +33,9 @@ nav:
           - Defining Manifests: "sections/reference/HiveMindBridge/defining-manifests.md"
           - Example Logger Implementation: "sections/reference/HiveMindBridge/logger.md"
       - Interlocalisation:
-          - Calibration: "sections/reference/Interlocalisation/how-to-calibrate-interloc.md"
+          - Calibrating a Hiveboard: "sections/reference/Interloc/calibrating_a_hiveboard.md"
+          - How it Works: 
+            - Calibrating a Hiveboard: "sections/reference/Interloc/how_it_works.md"
       - Networking:
           - Configuring the Wi-Fi network: "sections/reference/Networking/configure-wifi.md"
           - HiveConnect: "sections/reference/Networking/hiveconnect.md"
