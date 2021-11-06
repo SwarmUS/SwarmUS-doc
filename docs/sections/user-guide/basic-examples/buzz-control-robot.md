@@ -92,7 +92,7 @@ int main(int argc, char** argv) {
     ros::Publisher moveByPublisher =
         nodeHandle.advertise<swarmus_ros_navigation::MoveByMessage>(moveByTopic, 1000);
     
-    int port = 55551;
+    int port = 7001;
     Logger logger; // See above for more info on loggers. For this example, 
     // let's just assume the class is accessible within the scope of this file.
 
@@ -175,7 +175,7 @@ int main(int argc, char** argv) {
 #### Creating a `HiveMindBridge` object
 
 ```cpp
-int port = 55551;
+int port = 7001;
 Logger logger; 
 
 HiveMindBridge bridge(port, logger);
@@ -328,7 +328,7 @@ You may now flash the HiveBoard with this code.
 
 Now that we have a working bridge implementation, let's test that it can talk with HiveMind, the HiveBoard's firmware. First, make sure that everything is connected like in the [image shown earlier](#initial-setup).
 
-On you PC, open the COM port to view the logs from the HiveBoard (Usually `dev/ttyUSB2`). You should see some messages indicating that the HiveBoard `Could not connect to server 192.168.1.101 : 55551`.
+On you PC, open the COM port to view the logs from the HiveBoard (Usually `dev/ttyUSB2`). You should see some messages indicating that the HiveBoard `Could not connect to server 192.168.1.101 : 7001`.
 
 Next, run the ROS node that we just created on the host computer. Watch the logs from the COM port. After a few seconds, you should see that the host greeted the HiveBoard:
 
