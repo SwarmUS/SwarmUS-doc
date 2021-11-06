@@ -45,7 +45,6 @@ nav:
         - Available UI: "sections/hardware/HiveBoard/hiveboard-ui.md"
       - BeeBoard:
         - V1.000: "sections/hardware/BeeBoard/BeeBoard_V1.000.md"
-        - Available UI: "sections/hardware/BeeBoard/BeeBoard_UI.md"
   - About: "sections/about/about.md"
 
 theme:

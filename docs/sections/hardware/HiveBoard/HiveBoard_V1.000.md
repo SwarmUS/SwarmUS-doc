@@ -53,6 +53,8 @@ with his/her own expansion card.
 The Hiveboard has an external debugger. For proper system operation and debugging via the on board debugger, the 100 mils header shall remain in place.
 Otherwise, an external debugger can be plugged on the right side of the headers to access the STM32H7 directly.
 
+# V2.000
+The HiveBoard has a 2.000 version adressing the mistakes and bugs from V1.000, but with the new DW3220 IC on the market. The entire HiveBoard-BeeBoard design should be revised.
 
 
 

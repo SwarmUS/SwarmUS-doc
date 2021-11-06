@@ -1,5 +1,5 @@
 #BeeBoard 
-![Figure HiveBoard](img/BB_plain_V1.PNG)
+![Figure BeeBoard](img/BB_plain_V1.PNG)
 The Beeboard is an active Ultra Wideband (UWB) antenna designed to be used with the HiveBoard. It harbors a DW1000 IC under a faraday cage
 to receive the UWB signal. 
 
@@ -18,7 +18,7 @@ the signal switching in the USB-C cable. A small board was designed to fix these
     If using the HiveBoard V1.000 and BeeBoard V1.000, do not forget to have a Wings board for each BeeBoard for correct functionning.
 
 # BeeBoard UI
-![Figure HiveBoard](img/BB_UI.PNG)
+![BB_anoted](img/BB_UI.png)
 The BeeBoard has multiple user interface element useful for the user and debugging purpose.
 In purple are the single-ended test point, in red the 100 mils pins for SPI and the button and in orange triangles, the LEDs.
 
@@ -51,3 +51,6 @@ D11 is connected to the EXTON output of the DW1000. The EXTON output is high whe
 The LEDs D8 to D6 indicates the presence of the voltage 1.8V, 3.3V and 5V and should be on at all times.
 
 The top connector is a female SMA connector. It can be connected to any UWB antenna. The antennas used in the project are the [Ciholas](https://www.ciholas.com/) antennas.
+
+# V2.000
+The BeeBoard has a 2.000 version adressing the mistakes and bugs from V1.000, but with the new DW3220 IC on the market. The entire HiveBoard-BeeBoard design should be revised.
