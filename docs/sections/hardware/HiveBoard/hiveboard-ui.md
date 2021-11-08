@@ -1,4 +1,4 @@
-# Available UI HiveBoard
+# Available UI - HiveBoard
 
 The HiveBoard has multiple indicators to help the user debug its configuration or its application.
 

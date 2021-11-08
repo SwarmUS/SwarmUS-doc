@@ -1,10 +1,9 @@
 # Hardware Home
-The Hardware section will present the developed and used hardware by the SwarmUS team. 
-The SwarmUS team has developed two PCB with their own name. To help with the nomenclature, 
-here is the list of all the boards developed by the SwarmUS team :
 
-1. The [HiveBoard](HiveBoard/HiveBoard_V1.000.md)
-2. The [BeeBoard](BeeBoard/BeeBoard_V1.000.md)
+The Hardware section presents the hardware that composes the SwarmUs platform:
+
+1. The [HiveBoard](HiveBoard/HiveBoard_V1.000.md). This is the main embedded computer that, when plugged into a robot, enables it with swarm capacities.
+2. The [BeeBoard](BeeBoard/BeeBoard_V1.000.md). These boards are Ultra-wideband (UWB) chip and antennas modules that allow the interlocalization to occur. There are meant to be plugged into a HiveBoard.
 
 Follow the link to learn more about each board specifically.
 
