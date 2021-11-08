@@ -50,11 +50,11 @@ LOREM IPSUM.
 
 </div>
 <div class="title-total">   
-    <div class="title">Electrical Engineering Student</div>
+    <div class="title">Computer Engineering Student</div>
     <h2>Thierry Constantin</h2>
 
 <div class="desc"> 
-LOREM IPSUM.
+Thierry has worked on the HiveAR Android application, both on the augmented reality and control interface aspects.
 
 <href >
 </div>
