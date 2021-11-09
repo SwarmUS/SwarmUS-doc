@@ -4,15 +4,16 @@ The Beeboard is an active Ultra Wideband (UWB) antenna designed to be used with 
 to receive the UWB signal. 
 
 ## USB-C orientation detection
-The Beeboard has an automatic USB-C orentation detection system. Once the USB-C is plugged, it takes 500ms for the
+The Beeboard has an automatic USB-C orientation detection system. Once the USB-C is plugged, it takes 500ms for the
 board to detect and arrange the switches to correctly route the signals. 
-!!! note 
+!!! error
     The V1.000 Beeboard is missing three pull-up resistors rendering the USB-C orientation detection unusable.
-    Even if you are unsuccessful on the repair, the Beeboard is still functionnal but the user will have to find the correct orientation
+    Even if you are unsuccessful on the repair, the BeeBoard is still functionnal but the user will have to find the correct orientation.
 
 ## Connection with the HiveBoard V1.000
-The designers made some mistakes in the routing of the signals between the HiveBoard V1.000 and the BeeBoard V1.000 and did not account
-the signal switching in the USB-C cable. A small board was designed to fix these issues called the Wings. It is available at the [GitHub repo](https://www.github.com/swarmus/electrical)
+!!! error
+    The designers made some mistakes in the routing of the signals between the HiveBoard V1.000 and the BeeBoard V1.000 and did not account
+    the signal switching in the USB-C cable. A small board was designed to fix these issues called the Wings. It is available at the [GitHub repo](https://www.github.com/swarmus/electrical)
 
 !!! important
     If using the HiveBoard V1.000 and BeeBoard V1.000, do not forget to have a Wings board for each BeeBoard for correct functionning.
@@ -35,9 +36,9 @@ In purple :
 
 5. SEL#, always the inverse of SEL test point.
 
-6. CC2, indicates the voltage on the CC2 pin at the connector
+6. CC2, indicates the voltage on the CC2 pin at the connector.
 
-7. CC1, indicates the voltage on the CC1 pin at the connector. CC1 and CC2 voltage are used to decide the USB-C orientation
+7. CC1, indicates the voltage on the CC1 pin at the connector. CC1 and CC2 voltage are used to decide the USB-C orientation.
 
 8. Pulse, the pulse test point should have a pulse 500ms after the Beeboard is powered. The pulse is used to set the gates and switches selection.
 
@@ -71,4 +72,4 @@ The top connector is a female SMA connector. It can be connected to any UWB ante
     The antennas used in the project are the [Ciholas](https://www.ciholas.com/) antennas.
 
 # V2.000
-The BeeBoard has a 2.000 version adressing the mistakes and bugs from V1.000, but with the new DW3220 IC on the market. The entire HiveBoard-BeeBoard design should be revised.
+The BeeBoard has a 2.000 version (in the WORKING COPY folder) addressing the mistakes and bugs from V1.000. With the new DW3220 IC on the market, the entire HiveBoard-BeeBoard design should be revised.

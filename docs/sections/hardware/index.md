@@ -7,7 +7,7 @@ The Hardware section presents the hardware that composes the SwarmUs platform:
 
 Follow the link to learn more about each board specifically.
 
-The designs for both these boards are hosted on [GitHub](https://github.com/SwarmUS/Electrical).
+The designs for both boards are hosted on [GitHub](https://github.com/SwarmUS/Electrical).
 
 
 
