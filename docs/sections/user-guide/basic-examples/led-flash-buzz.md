@@ -1,18 +1,17 @@
 # Flahshing an LED using Buzz
 
-<!-- TODO
-
-Imaginons que l'utilisateur vient d'acheter un HB et qu'il veut commencer à l'utiliser. Fournir un exemple de base de code buzz qui fera flasher une led, expliquer comment flasher ça sur son board.
-
-checklist for each section of the required hardware and/or software set-up
-
- -->
-
 This page presents the steps to write a first basic Buzz script and load it on a HiveBoard. The script will make an LED flash on the board.
+
+!!! Note
+    **To follow this user guide, you will need:**
+
+    * A computer running Linux
+    * One HiveBoard and its power supply (wall adapter)
+    * A micro-USB to USB type A cable
 
 ## Set up your environment
 
-Buzz scripts are built and flashed alongside the rest of the [HiveMind](https://github.com/SwarmUS/HiveMind) firmware. You will therefore need to set up your environment to flash the firmware to the board before writing your first Buzz script. 
+Buzz scripts are built and flashed alongside the rest of the [HiveMind](https://github.com/SwarmUS/HiveMind) firmware. You will therefore need to set up your environment to flash the firmware to the board before writing your first Buzz script. Follow the instructions in [HiveMind's README](https://github.com/SwarmUS/HiveMind#readme) file to set up the toolchain.
 
 Start by connecting the HiveBoard to your computer using a micro-USB cable. Next, plug in the power supply using the wall adapter. Turn on the power by setting the power swith to `CON`. You should see the HiveBoard light up. If the HiveBoard already has a firmware, it should output its logs via a COM port (usually `ttyUSB2`). You might want to check the output using your favorite tool.
 
@@ -23,7 +22,7 @@ When you fire up the HiveBoard, you will see some lights flashing. Some of these
 Next, let's flash the HiveMind firmware to the HiveBoard. Follow the steps written in [HiveMind's README file](https://github.com/SwarmUS/HiveMind/blob/master/README.md) to build and flash your board. **Follow the steps for the H7/HiveBoard**.
 
 !!! important 
-    Take a close attention to the requirements listed in the README and make sure you use the correct versions of CMake, GCC, arm-gcc, and OpenOCD. 
+    Take a close look to the requirements listed in the README and make sure you use the correct versions of CMake, GCC, arm-gcc, and OpenOCD. 
 
 In HiveMind's README, you will find some steps to build using ROS. You need not follow these steps for now; the ROS build is only used in simulation. This how-to guide only shows how to compile and flash for the HiveBoard.
 
@@ -31,7 +30,7 @@ Once you have successfully flashed the firmware to the board, you may go to the 
 
 ## Writing a Buzz Script
 
- User-defined Buzz scripts are located within the [HiveMind](https://github.com/SwarmUS/HiveMind) codebase, in folder [`bittybuzz/buzz_scripts`](https://github.com/SwarmUS/HiveMind/tree/master/src/bittybuzz/buzz_scripts). The Buzz language will not be documented in these guides. User can refer to the [official documentation](https://github.com/buzz-lang/Buzz/blob/master/doc/api.md).
+ User-defined Buzz scripts are located within the [HiveMind](https://github.com/SwarmUS/HiveMind) codebase, in folder [`bittybuzz/buzz_scripts`](https://github.com/SwarmUS/HiveMind/tree/master/src/bittybuzz/buzz_scripts). The Buzz language will not be documented in these guides. Users can refer to the [official documentation](https://github.com/buzz-lang/Buzz/blob/master/doc/api.md).
 
 ### The Entrypoint: `main.bzz`
 

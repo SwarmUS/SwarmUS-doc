@@ -4,11 +4,20 @@ A comprehensive, generic and easy-to-use swarm robotics platform.
 
 ---
 
+![](img/pioneer-tb.png)
+*A heterogenous swarm of three robots (two Pioneer 2DX and one Turtlebot 3 Burger) using the SwarmUS platform*
+
+---
+
  SwarmUS is a project that helps creating swarms using existing robots. It is a generic development platform that empowers researchers and robotics enthousiasts with the ability to deploy some code easily to their robots. SwarmUS provides the basic infrastructure needed for robots to form a swarm : a decentralized communication stack and a localisation module that help robots locate one another without the need for a common reference.
 
 ## How SwarmUS works
 
-The SwarmUS platform is built around a printed circuit board (PCB) called the **HiveBoard**. This board can be attached to any robot using an Ethernet or Micro-USB cable. The HiveBoard provides the three necessary features to form a robot swarm :
+![](img/hiveboard-solo.png){: style="height:600px" }
+
+*A HiveBoard*
+
+The SwarmUS platform is built around a custom embedded computer called the **HiveBoard**. This board can be attached to any robot using an Ethernet or Micro-USB cable. The HiveBoard provides the three necessary features to form a robot swarm :
 
 1. A **decentralized communication stack** that allows the robots to exchange information and remote procedure calls.
 2. An **interlocalisation module** that allows robots to determine their relative position between one another. Each robot can therefore determine the **distance** and **angle** of another robot with respect to its own position.
@@ -28,14 +37,12 @@ The SwarmUS platform is a decentralized system that comprises a number of differ
 ![High-level architecture](img/architecture-hb-robot.png)
 *A high-level view of the architecture of the SwarmUS platform*
 
-At the center of the system lies the HiveBoard, a printed circuit board designed specifically for SwarmUS. It boasts an **STM-32** microcontroller (MCU) that manages the platform firmware, as well as a second MCU (**ESP-32**) that handles the WiFi communication stack. 
-
-![](img/hiveboard-solo.png)
-*A HiveBoard*
+At the center of the system lies the HiveBoard, an embedded computer designed specifically for SwarmUS. It boasts an **STM-32** microcontroller (MCU) that manages the platform firmware, as well as a second MCU (**ESP-32**) that handles the WiFi communication stack. 
 
 The HiveBoard can host up to six auxiliary boards, called **BeeBoards**. These boards are simply antennas and Ultra-wideband (UWB) chips that are used to calculate the position of the other robots.
 
-![](img/BeeBoard-solo.png)
+![](img/BeeBoard-solo.png){: style="height:400px" }
+
 *A BeeBoard*
 
 The HiveBoard is connected to a robot's embedded computer using an Ethernet cable. On the diagram shown above, the robot is assumed to run ROS, along with a few services. Note however that SwarmUS is completely ROS-agnostic and could be used on any software stack.
@@ -46,12 +53,11 @@ The HiveBoard is connected to a robot's embedded computer using an Ethernet cabl
 
 [**HiveMindBridge**](sections/reference/HiveMindBridge/about-hivemindbridge.md) is a C++ library that provides an interface with the HiveBoard. It is meant to be used as a compatibility layer between the robot's existing program and the HiveBoard's services.
 
-![](img/pioneer-tb.png)
-*A heterogenous swarm of three robots (two Pioneer 2DX and one Turtlebot 3 Burger)*
-
 <!-- TODO: add some links to the appropriate pages when they are created. -->
 
 ## Where to go from here
-This documentation provides some guides that will help setting up the different sub-systems that compose the SwarmUS platform. Users that simply want to try ou the platform will want to follow these [User Guides](sections/user-guide/index.md). More thorough information about the inner workings of the various software components can also be found in the [Reference](sections/reference/index.md) section.
+This documentation provides some guides that will help setting up the different sub-systems that compose the SwarmUS platform. Users that simply want to try ou the platform will want to follow these [User Guides](sections/user-guide/index.md). The user guides provide step-by-step instructions to help users implement a swarm solution using SwarmUS. Complete newcomers will want to start with the [basic examples](sections/user-guide/basic-examples/led-flash-buzz.md), which show how to use the core features of the SwarmUS platform.
+
+More thorough information about the inner workings of the various software components can also be found in the [Reference](sections/reference/index.md) section.
 
 For more information about the hardware developed for the SwarmUS project, visit the [Hardware](sections/hardware/index.md) sections.

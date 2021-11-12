@@ -20,7 +20,7 @@ The SwarmUS team was formed by 9 undergraduate students:
     <h2>Philippe Arsenault</h2>
 
 <div class="desc"> 
-LOREM IPSUM.
+Philippe has worked on the electrical platform and more specifically on the BeeBoard, an active Ultra Wideband antenna.
 
 <href >
 </div>
