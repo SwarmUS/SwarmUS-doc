@@ -311,13 +311,15 @@ Create a new file called `teleop.bzz` containing the following commands. In `mai
 ```python
 include "utils/executor.bzz"
 
+ctx = {};
+
 function tick(){
     log("Calling host function...");
     call_host_function(id, "moveBy", {.0 = 1.0, .1 = 1.0});
 }
 
 function create_exec(){
-    exec = executor.new(10, tick);
+    exec = executor.new(10, tick, ctx);
     return exec;
 }
 ```
