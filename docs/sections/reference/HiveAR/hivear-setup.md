@@ -3,8 +3,8 @@ In order to use HiveAR, first download the application from the [GitHub](https:/
 <!-- TODO ask if hiveboard<->android connection should be documented here instead of inside "configuring the Wi-Fi network" from networking section.-->
 
 
-## TCP/IP Connection
-In the case of connecting HiveAR to a simulated HiveBoard, the user has to specify on which port the Android device will be listening. This can be setup here:
+## Swarm Connection
+In the case of connecting HiveAR to a HiveBoard, whether a real or a simulated one, the user has access to connection settings in the Connection tab on the lower-left corner.
 <!-- insert picture(s)-->
 
 ## Connection Status

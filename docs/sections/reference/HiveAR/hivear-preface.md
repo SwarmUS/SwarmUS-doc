@@ -4,6 +4,8 @@ HiveAR is the Android application that makes the user interact with the swarm di
 
 The codebase for HiveAR is hosted on [GitHub](https://github.com/SwarmUS/HiveAR).
 
+More information can be found on how to setup an Android device with a hiveboard [here](hivear-setup.md).
+
 Its primary roles are defined as follows:
 
 - [Send commands to the agents in the swarm](hivear-commands.md)
