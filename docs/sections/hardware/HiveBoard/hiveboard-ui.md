@@ -2,6 +2,75 @@
 
 The HiveBoard has multiple indicators to help the user debug its configuration or its application.
 
+![HiveBoard General UI](img/HB_annoted.png)
+Purple dots/Test points
+1. Load switch Output
+2. Ground test point
+3. 3.3V debugger
+4. 3.3V channel
+5. Synchronisation signal. This test point has a ground pad right beside it for convenience
+6. 3.3V clock
+7. USB line towards the debugger from the hub. This is a differential test point.
+8. USB line towards the STM32H7 from the HUB. This is a differential test point.
+9. USB line towards the hub from the connector. This is a differential test point.
+
+A. 3.3V ESP32-WROOM
+
+B. 3.3V ethernet
+
+C. 5V entry
+
+D. 3.3V 
+
+E. USB detection circuit
+
+F. 5V connector (Jack and terminal)
+
+G. 5V USB
+
+Green stars:
+
+1. [RBG LED for ESP-32-WROOM](#led-wroom-rgb-networking-status-led-esp-32)
+2. [RBG LED for STM32H7](#led-rgb-hivemind-comm-interface)
+
+Orange triangles, from top to bottom of the image:
+
+- [Channel](#channel-en-flt-leds) enable (green LED) x6
+- [Channel](#channel-en-flt-leds) fault (red LED) x6
+- [HeartBeat](##led-hb-hivemind-heartbeat) LED (green)
+- [MCU0 LED](#led-mcu_0-hivemind-and-hiveconnect-handshake) (green), user LED
+- [MCU1 LED](#led-mcu_1-hivemind-and-host-handshake) (green), user LED
+- [MCU2 LED](#led-mcu_2-user-led) (green), user LED
+- [3.3V LED](#led-33v) (green)
+- [5V LED](#led-5v) (green)
+
+Red rectangles, from left to right:
+
+- [Buttons](#reset-buttons) for FTDI, MCU and WROOM reset
+- JTAG jumper, theses jumper shall stay in place if you want to use the on board debugger.
+- Input/Output expander button
+- Mezzanine connector, 100 mils
+1. 3.3V
+2. 5V
+3. GND
+4. GND
+5. SPI_CLK
+6. UART_Rx
+7. SPI_MISO
+8. UART_Tx
+9. SPI_MOSI
+10. GND
+11. GND
+12. ADC1_P
+13. I2C_SCL
+14. ADC1_N
+15. I2C_SDA
+16. GND
+
+Dark blue rectangles are DIP switches and are explained [here](#dip-switches)
+
+
+
 ## Hardware
 
 These are the UI elements that are worth mentioning on a physical HiveBoard:
