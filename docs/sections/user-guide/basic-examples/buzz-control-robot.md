@@ -49,6 +49,9 @@ This is expected at this point since there is no HiveMindBridge running on the h
 
 Now that there is an Ethernet link between the HiveBoard and the host, we need to write some software that will act as a bridge between HiveMind (the HiveBoard's firmware) and the rest of the robot's software stack. From now on, we will assume that the robot runs ROS1 and has a fully working navigation stack, so we will show the setup accordignly.
 
+!!! note
+    This User Guide aims to show how to interface the SwarmUS platform with robots that use ROS. However the platform is ROS-agnostic and the HiveMindBridge library could be used in any C++ code. See [this example](https://github.com/SwarmUS/HiveMindBridge/blob/master/examples/hello-world.cpp) for a basic "hello world" example.
+
 The SwarmUS project comprises a C++ library named [HiveMindBridge](https://github.com/SwarmUS/HiveMindBridge) that helps interfacing the HiveBoard with the outside world. Using HiveMindBridge, you can define and expose an API from the robot to the swarm.
 
 Let's create a minimal ROS node that uses HiveMindBridge to show some basic capabilities. The robot will expose two simple functions to the swarm. Both functions are callable by other swarm agents or by the robot's HiveBoard:
@@ -308,13 +311,15 @@ Create a new file called `teleop.bzz` containing the following commands. In `mai
 ```python
 include "utils/executor.bzz"
 
+ctx = {};
+
 function tick(){
     log("Calling host function...");
     call_host_function(id, "moveBy", {.0 = 1.0, .1 = 1.0});
 }
 
 function create_exec(){
-    exec = executor.new(10, tick);
+    exec = executor.new(10, tick, ctx);
     return exec;
 }
 ```
