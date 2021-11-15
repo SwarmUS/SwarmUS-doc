@@ -13,7 +13,7 @@ A small round icon as been add to the connection tab icon and can be observed as
 The round icon can represent four possible states:
 <!-- Add picture with connection state dot with every color possible-->
 
-!!! Important
+!!! Attention
     Always make sure connection with the swarm is established and working correctly (green round icon) before trying to use any swarm features. 
     
     In the case where there is a problem with the connection, one can always return to the connection page to try to establish the connection again.
