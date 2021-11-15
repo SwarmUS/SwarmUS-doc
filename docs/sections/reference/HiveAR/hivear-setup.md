@@ -9,7 +9,8 @@ In the case of connecting HiveAR to a HiveBoard, whether a real or a simulated o
 
 ## Connection Status
 As the Android device must be connected either by USB or TCP to communicate to the swarm, it is possible to keep track of the state of the connection with the swarm.
-A small round icon as been add to the connection tab icon and can be observed as followed:
+
+A small round icon has been add to the connection tab icon and can be observed as followed:
 The round icon can represent four possible states:
 <!-- Add picture with connection state dot with every color possible-->
 
