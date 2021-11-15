@@ -10,6 +10,12 @@ Information contained in that view are:
 - Status of the agent (User most define the comportement as it can differs from one agent to another)
 - Last command sent from the Android device to the agent.
 
+It is possible to have an AR marker in the space without being on top of an agent if this agent has moved and the android device hasn't detect it.
+It will still monitor the agent even if it is not on top of it, but if one desire to remove the marker, simply long click it and agree to remove it.
+
+!!! Tip
+    If multiple agents are detected, it is possible to focus on one by clicking its corresponding AR marker. (arrow)
+
 ## Messages Logging: <a name="logs"></a>
 
 Logs are a great way to know what information came from or to the Android device.

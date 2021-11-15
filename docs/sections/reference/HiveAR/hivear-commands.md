@@ -1,13 +1,13 @@
 ## Swarm agents commands: <a name="hivear-commands-swarm"></a>
 Agents in the same swarm than the android device are listed in this tab. (picture)
-If selected, commands specific to this agents are then listed and can be used to directly send command to this agent.
+If selected, commands specific to this agent are then listed and can be used to directly send command to this agent.
 
 !!! Tip
     If an agent doesn't have its comands listed, it is possible to force to refresh its commands with the refresh button.
 
 ## Swarm broadcast commands: <a name="hivear-commands-broadcast"></a>
 It is possible to send commands to all agents in the swarm. 
-In order to register commands to broadcast, the user has to long click any commands from the agents commands view or device commands view.
+In order to register commands to broadcast, the user has to long click any commands from the agents commands view or device commands view and then accept.
 Registered commands would then be separated between host and buzz command types and can both be send to any agents.
 
 !!! Attention
