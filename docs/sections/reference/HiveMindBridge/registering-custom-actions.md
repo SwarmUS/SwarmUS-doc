@@ -6,7 +6,10 @@ Registering custom actions is always done by following three steps:
 2. Define the manifest that describes the input arguments of the callback (see [Defining Manifests](defining-manifests.md). This is optional, as some callbacks will not require any input arguments)
 3. Register the custom action in the `HiveMindBridge` object.
 
-This page explains the registration of the custom action in the `HiveMindBridge` object.
+This page explains the registration of the custom action in the `HiveMindBridge` object. 
+
+!!! note
+    The full API documentation for HiveMindBridge is hosted [here](https://swarmus.github.io/HiveMindBridge/classIHiveMindBridge.html).
 
 ## Custom Actions Are Discoverable
 

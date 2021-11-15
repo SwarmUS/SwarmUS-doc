@@ -125,7 +125,7 @@ LOREM IPSUM.
     <h2>Louis-Daniel Gaulin</h2>
 
 <div class="desc"> 
-LOREM IPSUM.
+Louis-Daniel oversees the electrical division of the SwarmUS team. He worked on the HiveBoard, a low cost, high precision clock distribution board, also able to control up to six BeeBoards.
 
 <href >
 </div>

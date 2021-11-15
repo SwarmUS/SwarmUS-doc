@@ -67,6 +67,9 @@ HiveMindBridge is a C++ library that must be installed on a system, and then inc
 
 ### `HiveMindBridge`: the unique entrypoint to the library
 
+!!! note
+    The full API documentation for HiveMindBridge is hosted [here](https://swarmus.github.io/HiveMindBridge/classIHiveMindBridge.html).
+
 HiveMindBridge is a simple library that supports registering asynchronous callbacks to serve as a bridge between the communication services encapsulated in the swarm services and the local ROS environment. The user will mainly use the `HiveMindBridge` class to register custom actions, send some data over the messaging service and control the execution flow.
 
 Instantiating a `HiveMindBridge` object is done using the class' only constructor : 
