@@ -41,13 +41,40 @@ The following section contains most definitions used within the code and documen
 **Frame Leader**: ID of the agent that is the initiator (sends the poll, final and angle messages) in the current TWR Frame
 
 ### Timings
+!!!error
+    TODO
 
 ## State Machine Implementation
 
+The previous time-slotting mechanism is implemented in the microcontroller using a finite state machine (FSM). The FSM takes care of setting the DW1000 in the correct operating mode (RX, TX, etc.) at the appropriate time.
+
+<figure markdown>
+  ![Timeslots](img/fsm.png){width="600"}
+  <figcaption>Time Slotting FSM</figcaption>
+</figure>
+
+In normal operating mode, the black arrows show the possible state transitions. Some alternate modes (shown here with colors) can be enabled with the [Calibration Python Tool](../calibrating_a_hiveboard.md) to extract only some information in a timely manner. Every state is responsible for sending or receiving a specific UWB message. All operations are done at a specific time using the [timings](#timings) as coded in the `InterlocTimeManager`.
+
+!!!tip
+    To facilitate debugging of the state transitions, an `m_stateTracer` circular queue was added in the `InterlocStateHandler` as a way to record state transitions and view the events leading up to the current state. From a debugger, simply watch `InterlocBSPContainer::getStateHandler()` to access the queue.
 
 ### Idle
+The [Idle](#idle) state is the entry point of the FSM. 
+
+On first entry, or when a *SuperFrame* has finished (the next *Frame Leader* would be the *SuperFrame Initiator*), the FSM goes to the [Sync](#sync) state.
+
+Otherwise, the FSM will go to [Send Poll](#send-poll) if it is the next *Frame Leader* or [Wait Poll](#wait-poll) if it is not. This starts the [TWR exchange](distance.md).
+
 ### Sync
+The [Sync](#sync) state is used to elect a new *SuperFrame Leader* and at the same time, allow new agents (or any agents that are desynchronized) to resynchronize back with the others.
+
+In this state, all agents start listening for a message with a random timeout (longer than the time of a *TWR Frame*). When a timeout is reached without having received a message, a Poll message is immediatly sent ([Send Poll](#send-poll)). That message is received by all other agents who still haven't timed out therefore making the first to timeout the *SuperFrame Leader*. 
+
+Because this state is reached at the end of each *SuperFrame* and the timeout is random, the *SuperFrame Leader* is also chosen at random and changes for every *SuperFrame*.
+
 ### Send Poll
+The [Send Poll](#send-poll) state does exactly what it name says. It sends a Poll message (the first in a TWR exchange). The message contains the ID of the *SuperFrame Leader* so any newcommer to the swarm can now exactly where in the timeslots the swarm is curently located. Once sent, the FSM moves on to the [Wait Response](#wait-response) state.
+
 ### Wait Response
 ### Send Final
 ### Send Angle
