@@ -34,10 +34,10 @@ This scheme is based around two devices (the Initiator and the Responder) as wel
   
     The responder then has all six timestamps (RX and TX for three messages) in hand allowing it to calculate the average time of flight (ToF) of messages using the following figure and equations.
 
-
-!!! error
-    Change figure to show Initiator, Responder and Poll, Resp, FInal
-    ![Asymmetric Double-Sided Two-Way Ranging](img/ds-twr.png)
+<figure markdown>
+  ![Asymmetric Double-Sided Two-Way Ranging](img/ds-twr.png)
+  <figcaption>Asymmetric Double-Sided Two-Way Ranging</figcaption>
+</figure>
 
 $$
 ToF = \frac{T_{round1} \cdot T_{round2} - T_{reply1} \cdot T_{reply2}}{T_{round1} + T_{round2} + T_{reply1} + T_{reply2}}
@@ -77,9 +77,12 @@ Instead of having every agent perform a 1:1 TWR with every other agent, the sche
    
 Each Responder then has the six timestamps needed to compute their distance from the Initiator. After $2 + N$ messages, all the agents, other than the Initiator, have updated their distance from the Initiator. Each agent then takes turns becoming the Initiator every time allowing all other agents to update their position from the Initiator. The sequence is summarized in the following figure.
 
-![1:N TWR](img/multi-robot-twr.png)
+<figure markdown>
+  ![1:N TWR](img/multi-robot-twr.png)
+  <figcaption>Multi-agent Two Way Ranging implementation</figcaption>
+</figure>
 
-More details on this time-slotting can be found in the [synchronisation page](sync.md). 
+More details on this time-slotting mechanism can be found in the [synchronisation page](sync.md). 
 
 ## Further Reading
 
