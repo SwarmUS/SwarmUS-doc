@@ -1,6 +1,6 @@
 # Using Interlocalisation Between Swarm Agents
 
-One of the key features of the SwarmUS platform is the ability for a given Hiveboard to determine the position of a second Hiveboard with respect to its own position. This page shows how to use this *interlocalisation* feature. SwarmUS' interlocalisation feature provides the necessary data to the [neighbor feature of the Buzz language](https://the.swarming.buzz/wiki/doku.php?id=buzz_syntax_cheatsheet&s[]=neighbors). This means that the HiveMind firmware merely updates the position of the other agents and makes it available to Buzz.
+One of the key features of the SwarmUS platform is the ability for a given Hiveboard to determine the position of other Hiveboards with respect to its own position. This page shows how to use this *interlocalisation* feature. SwarmUS' interlocalisation feature provides the necessary data to the [neighbor feature of the Buzz language](https://the.swarming.buzz/wiki/doku.php?id=buzz_syntax_cheatsheet&s[]=neighbors). This means that the HiveMind firmware merely updates the position of the other agents and makes it available to Buzz.
 
 <!-- TODO 
 !!! Note
@@ -13,11 +13,13 @@ One of the key features of the SwarmUS platform is the ability for a given Hiveb
 
 ## Using the Visualisation Tool
 
-TODO
+When the interlocalisation is adequately calibrated, you can test that the HiveBoard/Beeboard assemblies can acquire their respective positions using the [graphical visualisation tool](https://github.com/SwarmUS/TestBench-Python). Refer to the README file for instructions on how to use the tool.
+
+![](img/visualisation_tool.png)
 
 ## Accessing Neighbors' Position in a Buzz Script
 
-Like said earlier, Buzz has a neighbor management feature, which allows to access the position of the other agents' position, among other things.
+Like said earlier, Buzz has a neighbor management feature, which allows to access the position of the other agents, among other things.
 
 !!! note
     Since neighbor management is a feature of Buzz, it will not be extensively documented here. Refer to the [official documentation](https://the.swarming.buzz/wiki/doku.php?id=buzz_syntax_cheatsheet&s[]=neighbors).
