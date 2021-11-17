@@ -4,14 +4,23 @@ The HiveBoard has multiple indicators to help the user debug its configuration o
 
 ![HiveBoard General UI](img/HB_annoted.png)
 Purple dots/Test points
+
 1. Load switch Output
+
 2. Ground test point
+
 3. 3.3V debugger
+
 4. 3.3V channel
+
 5. Synchronisation signal. This test point has a ground pad right beside it for convenience
+
 6. 3.3V clock
+
 7. USB line towards the debugger from the hub. This is a differential test point.
+
 8. USB line towards the STM32H7 from the HUB. This is a differential test point.
+
 9. USB line towards the hub from the connector. This is a differential test point.
 
 A. 3.3V ESP32-WROOM
@@ -47,7 +56,7 @@ Orange triangles, from top to bottom of the image:
 Red rectangles, from left to right:
 
 - [Buttons](#reset-buttons) for FTDI, MCU and WROOM reset
-- JTAG jumper, theses jumper shall stay in place if you want to use the on board debugger.
+- JTAG jumper, these jumpers shall stay in place if you want to use the on board debugger.
 - Input/Output expander button
 - Mezzanine connector, 100 mils
 1. 3.3V
