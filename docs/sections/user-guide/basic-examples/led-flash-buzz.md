@@ -15,7 +15,7 @@ Buzz scripts are built and flashed alongside the rest of the [HiveMind](https://
 
 Start by connecting the HiveBoard to your computer using a micro-USB cable. Next, plug in the power supply using the wall adapter. Turn on the power by setting the power swith to `CON`. You should see the HiveBoard light up. If the HiveBoard already has a firmware, it should output its logs via a COM port (usually `ttyUSB2`). You might want to check the output using your favorite tool.
 
-When you fire up the HiveBoard, you will see some lights flashing. Some of these lights are user-controllable, and some other present the status of the board. Refer to the [UI description](../../hardware/hiveboard-ui.md) for a complete list of the available lights and buttons.
+When you fire up the HiveBoard, you will see some lights flashing. Some of these lights are user-controllable, and some other present the status of the board. Refer to the [UI description](../../hardware/HiveBoard/hiveboard-ui.md) for a complete list of the available lights and buttons.
 
 ![Connecting and Powering a HiveBoard](img/connect-hiveboard.png)
 
