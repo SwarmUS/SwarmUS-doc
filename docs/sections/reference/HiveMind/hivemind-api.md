@@ -3,7 +3,7 @@
 The HiveMind provides an API via protobuf for the host which allows it to get information on the swarm (neighbors, swarmlist, distance of a neighbor, etc), act on it or more. Most of the swarm decisions should be made via the Buzz script to separate the logic of the swarm and its action on the world. However, sometimes more computing power can be requried, which can be done on the host if needed. Thus the host has acces to an API.
 
 !!! note
-    The HiveMind API is implemented as a set of [Protocol Buffer](https://developers.google.com/protocol-buffers) messages. This means that any program could interact with the HiveMind API, as long as it uses the same message definition. For instance, in the SwarmUS platform, [HiveMindBridge](https://github.com/SwarmUS/HiveMindBridge), [HiveConnect](https://github.com/SwarmUS/HiveConnect), [HiveAR](https://github.com/SwarmUS/HiveAR), and the [Python Tool](https://github.com/SwarmUS/PythonTool) use the HiveMind API.
+    The HiveMind API is implemented as a set of [Protocol Buffer](https://developers.google.com/protocol-buffers) messages. This means that any program could interact with the HiveMind API, as long as it uses the same message definition. For instance, in the SwarmUS platform, [HiveMindBridge](https://github.com/SwarmUS/HiveMindBridge), [HiveConnect](https://github.com/SwarmUS/HiveConnect), [HiveAR](https://github.com/SwarmUS/HiveAR), and the [Python testbench](https://github.com/SwarmUS/TestBench-Python) use the HiveMind API.
     
     The messages for HiveMind API are defined in the [Pheromones repository](https://github.com/SwarmUS/Pheromones).
 
