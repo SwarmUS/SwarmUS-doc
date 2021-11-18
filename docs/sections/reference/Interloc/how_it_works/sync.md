@@ -61,7 +61,7 @@ In normal operating mode, the black arrows show the possible state transitions. 
 ### Idle
 The [Idle](#idle) state is the entry point of the FSM. 
 
-On first entry, or when a *SuperFrame* has finished (the next *Frame Leader* would be the *SuperFrame Initiator*), the FSM goes to the [Sync](#sync) state.
+On first entry, or when a *SuperFrame* has finished (when the next *Frame Leader* would be the *SuperFrame Initiator*), the FSM goes to the [Sync](#sync) state.
 
 Otherwise, the FSM will go to [Send Poll](#send-poll) if it is the next *Frame Leader* or [Wait Poll](#wait-poll) if it is not. This starts the [TWR exchange](distance.md).
 
@@ -73,14 +73,38 @@ In this state, all agents start listening for a message with a random timeout (l
 Because this state is reached at the end of each *SuperFrame* and the timeout is random, the *SuperFrame Leader* is also chosen at random and changes for every *SuperFrame*.
 
 ### Send Poll
-The [Send Poll](#send-poll) state does exactly what it name says. It sends a Poll message (the first in a TWR exchange). The message contains the ID of the *SuperFrame Leader* so any newcommer to the swarm can now exactly where in the timeslots the swarm is curently located. Once sent, the FSM moves on to the [Wait Response](#wait-response) state.
+The [Send Poll](#send-poll) state does exactly what it name says. It sends a Poll message (the first in a TWR exchange). The message contains the ID of the *SuperFrame Leader* so any newcommer to the swarm can know exactly where in the timeslots the swarm is curently located. Once sent, the FSM moves on to the [Wait Response](#wait-response) state.
 
 ### Wait Response
-### Send Final
-### Send Angle
-### Wait Poll
-### Send Response
-### Wait Final
-### Receive Angle
-### Update Distance + Angle
+The [Wait Response](#wait-response) state is used to receive all Response messages from the TWR exchange. In this state, the DW1000 is placed in RX mode (at the appropriate time) for the exact duration of a Response message. The message will then be received or the DW1000 will timeout. In any case, the FSM loops back to this state for the same number of iterations as the maximum number of agents in the swarm. Once all messages have been received (or timed out), the FSM goes to the [Send Final](#send-final) state.
 
+### Send Final
+In the [Send Final](#send-final) state, the Final message of the TWR exchange is sent. The message contains the *poll_tx_ts*, *final_tx_ts* as well as the *response_rx_rs* for every response that was received in the [Wait Response](#wait-response) state. Once sent, the FSM goes to the [Send Angle](#send-angle) state.
+
+### Send Angle
+The [Send Angle](#send-angle) state is responsible for sending multiple messages at a given interval. Each message will be received by the other agents that are in the [Receive Angle](#receive-angle) state and used to [calculate an angle](angle.md). All messages contain a unique ID used to distiguish one message from the other on the receiver side. This state leads back to the [Idle](#idle) state as it is the last in the *Frame Leader* path of the FSM.
+
+This state can also entered permenantly to [calibrate a HiveBoard](../calibrating_a_hiveboard.md).
+
+### Wait Poll
+In [Wait Poll](#wait-poll) the DW1000 is enabled in RX mode to listen for a Poll message. If one is received, the FSM goes to the [Send Response](#send-response) state. Otherwise, it goes back to [Idle](#idle) as no distance could be calculated without first receiving a Poll message.
+
+### Send Response
+[Send Response](#send-response) is responsible for sending the Response message of the TWR exchange. The message is sent at an exact time offset from the reception of the Poll message based on the agent's ID. This way, each agent responds in its timeslot without interfering with the responses from the other agents. From there, the FSM moves on to the [Wait Final](#wait-final) state.
+
+### Wait Final
+The [Wait Final](#wait-final) state listens for a Final message containing all the information needed to calculate a distance. Whether it is received or not, the FSM goes to the [Receive Angle](#receive-angle) state.
+
+### Receive Angle
+In this state, each of the three DW1000s are placed in RX mode with a timeout equal to a little less than the remaining time before the next Poll message is to be sent. 
+
+Every time a message is received on the three DW1000s, the ID of the messages are compared to be sure the same message was received on each antenna. Phase and time information for the messages are extracted for [angle calculation](angle.md). 
+
+After each message, the receivers are reactivated with a timeout. This allows them to receive the maximum number of messages without staying stuck in this state forever; the FSM exits the state with enough time left to calculate a distance and angle ([Update Distance + Angle](#update-distance--angle)) and go back to [Idle](#idle) before the start of the next *TWR Frame*.
+
+### Update Distance + Angle
+This state is responsible for taking all the information collected through the TWR exchange and [Receive Angle](#receive-angle) state and produce a new value of distance and angle for the agent that was *Frame Leader*.
+
+In the case some information is missing (e.g. we have not received the Final message, or if less than three BeeBoards are plugged, we don't have the angle information), only the measurements for which we have all the information are calulated. The produced values are fed back up to the higher layers of the HiveMind (see [Introduction](intro.md) for more information) to be used in Buzz. 
+
+From here, the FSM goes back to [Idle](#idle) and the cycle starts again.
