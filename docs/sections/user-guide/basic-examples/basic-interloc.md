@@ -37,7 +37,7 @@ function tick(context){
         log("Trying to get leader: ", leader)
         var neighbor = neighbors.get(leader);
 
-        if(is_table(neighbor)){
+        if(istable(neighbor)){
             # Set a new goal based on the interlocalisation data found in 
             # the neighbor object
             var goal = math.vec2.newp(neighbor.distance - 0.5, neighbor.azimuth);
@@ -62,7 +62,7 @@ function create_exec(step_count) {
 
 This script uses Buzz' `math.vec2` library (documentation [here](https://github.com/buzz-lang/Buzz/blob/master/doc/api.md#mathvec2lib)). This library helps to handle 2D vectors. Neighbor management is performed with the `neighbors` structure. Each member of this structure has the attributes `distance` and `azimuth`. This is how the interlocalisation data is accessed.
 
-Verification of the neighbor is done using the `is_table` function, documented [here](https://swarmus.github.io/HiveMind/namespaceBittyBuzzUserFunctions.html#a47f43221b7fd135259c540016ae55544).
+Verification of the neighbor is done using the `istable` function, documented [here](https://swarmus.github.io/HiveMind/namespaceBittyBuzzUserFunctions.html#a47f43221b7fd135259c540016ae55544).
 
 !!! hint
     The Buzz documentation has [some other examples](https://the.swarming.buzz/wiki/doku.php?id=buzz_examples) of scripts that make use of the `neighbors` structure. The HiveMind repository also has a number of [examples](https://github.com/SwarmUS/HiveMind/tree/master/src/bittybuzz/buzz_scripts/behaviors).
