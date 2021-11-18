@@ -67,6 +67,14 @@ Verification of the neighbor is done using the `istable` function, documented [h
 !!! hint
     The Buzz documentation has some other examples ([here](https://the.swarming.buzz/wiki/doku.php?id=buzz_examples) and [here](https://github.com/buzz-lang/Buzz/tree/master/doc/examples)) of scripts that make use of the `neighbors` structure. The HiveMind repository also has a number of [examples](https://github.com/SwarmUS/HiveMind/tree/master/src/bittybuzz/buzz_scripts/behaviors).
 
+## Testing in Simulation Using Gazebo
+
+The SwarmUS project relied heavily on the Gazebo simulator for the development. [This repository](https://github.com/SwarmUS/SwarmUS-ROS) contains the `swarmus_ros_simulation` package, which has some ready-made launchfiles that integrate all the software stack of the SwarmUS platform. Launching `simple_swarm.launch` will start 4 robots, each running a HiveMind instance.
+
+To change the Buzz script that will be used by all the robots in the simulation, edit the HiveMind codebase found under `contrib/` folder. For instance, if you want to run a *follow the leader* simulation, add the code shown in the previous section to `contrib/src/bittybuzz/buzz-scripts...`.
+
+![](img/gazebo-simulation.png)
+
 ## Accessing Neighbors Outside of Buzz
 
 The interlocalisation data can also be accessed outside of Buzz. The [HiveMind API](../../reference/HiveMind/hivemind-api.md) exposes neighbor requests (`GetNeighborsListRequest`, `GetNeighborRequest`) that can be called by any host.
