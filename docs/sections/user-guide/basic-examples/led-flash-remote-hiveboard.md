@@ -139,7 +139,7 @@ When both HiveBoards are flashed with the code, you should see the 7-segment dis
 
 ### Controlling Multiple Slaves
 
-An alternate version of the script presented earlier can be found [here](https://github.com/SwarmUS/HiveMind/blob/master/src/bittybuzz/buzz_scripts/behaviors/hex_leader.bzz) in the HiveMind repository. This script uses some other features from Buzz, namely the `broadcast` and `listen` functions, which allow to communicate in a pub/sub manner using topics (see [Buzz documentation](https://the.swarming.buzz/wiki/doku.php?id=buzz_syntax_cheatsheet) for more on the matter). This allows for multiple agents to be controlled by the Leader, without the need to make a function call for each agent.
+An alternate version of the script presented earlier can be found [here](https://github.com/SwarmUS/HiveMind/blob/master/src/bittybuzz/buzz_scripts/behaviors/hex_leader.bzz) in the HiveMind repository. This script uses some other features from Buzz, namely the `broadcast` and `listen` functions, which allow to communicate in a pub/sub manner using topics (see [Buzz documentation](https://github.com/buzz-lang/Buzz/blob/master/doc/api.md#neighbors) for more on the matter). This allows for multiple agents to be controlled by the Leader, without the need to make a function call for each agent.
 
 ### Synchronizing LEDs Without a Leader
 

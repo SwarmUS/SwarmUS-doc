@@ -1,6 +1,6 @@
 # Using Interlocalisation Between Swarm Agents
 
-One of the key features of the SwarmUS platform is the ability for a given Hiveboard to determine the position of other Hiveboards with respect to its own position. This page shows how to use this *interlocalisation* feature. SwarmUS' interlocalisation feature provides the necessary data to the [neighbor feature of the Buzz language](https://the.swarming.buzz/wiki/doku.php?id=buzz_syntax_cheatsheet&s[]=neighbors). This means that the HiveMind firmware merely updates the position of the other agents and makes it available to Buzz.
+One of the key features of the SwarmUS platform is the ability for a given Hiveboard to determine the position of other Hiveboards with respect to its own position. This page shows how to use this *interlocalisation* feature. SwarmUS' interlocalisation feature provides the necessary data to the [neighbor feature of the Buzz language](https://github.com/buzz-lang/Buzz/blob/master/doc/api.md#neighbors). This means that the HiveMind firmware merely updates the position of the other agents and makes it available to Buzz.
 
 <!-- TODO 
 !!! Note
@@ -65,7 +65,7 @@ This script uses Buzz' `math.vec2` library (documentation [here](https://github.
 Verification of the neighbor is done using the `istable` function, documented [here](https://swarmus.github.io/HiveMind/namespaceBittyBuzzUserFunctions.html#a47f43221b7fd135259c540016ae55544).
 
 !!! hint
-    The Buzz documentation has [some other examples](https://the.swarming.buzz/wiki/doku.php?id=buzz_examples) of scripts that make use of the `neighbors` structure. The HiveMind repository also has a number of [examples](https://github.com/SwarmUS/HiveMind/tree/master/src/bittybuzz/buzz_scripts/behaviors).
+    The Buzz documentation has some other examples ([here](https://the.swarming.buzz/wiki/doku.php?id=buzz_examples) and [here](https://github.com/buzz-lang/Buzz/tree/master/doc/examples)) of scripts that make use of the `neighbors` structure. The HiveMind repository also has a number of [examples](https://github.com/SwarmUS/HiveMind/tree/master/src/bittybuzz/buzz_scripts/behaviors).
 
 ## Accessing Neighbors Outside of Buzz
 
