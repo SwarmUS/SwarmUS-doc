@@ -13,9 +13,13 @@ A comprehensive, generic and easy-to-use swarm robotics platform.
 
 ## How SwarmUS works
 
-![](img/hiveboard-solo.png){: style="height:600px" }
+<figure markdown>
 
-*A HiveBoard*
+  ![Architecture](img/hiveboard-solo.png){: style="height:600px" }
+
+  <figcaption>A HiveBoard</figcaption>
+
+</figure>
 
 The SwarmUS platform is built around a custom embedded computer called the **HiveBoard**. This board can be attached to any robot using an Ethernet or Micro-USB cable. The HiveBoard provides the three necessary features to form a robot swarm :
 
@@ -41,9 +45,13 @@ At the center of the system lies the HiveBoard, an embedded computer designed sp
 
 The HiveBoard can host up to six auxiliary boards, called **BeeBoards**. These boards are simply antennas and Ultra-wideband (UWB) chips that are used to calculate the position of the other robots.
 
-![](img/BeeBoard-solo.png){: style="height:400px" }
+<figure markdown>
 
-*A BeeBoard*
+  ![](img/BeeBoard-solo.png){: style="height:400px" }
+
+  <figcaption>A BeeBoard</figcaption>
+
+</figure>
 
 The HiveBoard is connected to a robot's embedded computer using an Ethernet cable. On the diagram shown above, the robot is assumed to run ROS, along with a few services. Note however that SwarmUS is completely ROS-agnostic and could be used on any software stack.
 

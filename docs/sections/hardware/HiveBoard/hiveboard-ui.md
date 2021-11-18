@@ -84,6 +84,8 @@ Dark blue rectangles are DIP switches and are explained [here](#dip-switches)
 
 These are the UI elements that are worth mentioning on a physical HiveBoard:
 
+<figure markdown>
+
 | ID on board | Description                        |
 | ----------- | ---------------------------------- |
 | LED RGB     | HiveMind comm interface            |
@@ -96,6 +98,8 @@ These are the UI elements that are worth mentioning on a physical HiveBoard:
 | LED 5V      | 5V is properly powered             |
 | 7 segment 1 | BBVM status                        |
 | 7 segment 2 | User 7 segment                     |
+
+</figure>
 
 ![HiveBoard UI](img/hiveboard-ui.png)
 
@@ -151,6 +155,8 @@ Displays the status of the comm interface. Note that this means the comm interfa
 
 The RGB LED can take the following colours:
 
+<figure markdown>
+
 | Colour | State                  |
 | ------ | ---------------------- |
 | White  | Booting                |
@@ -159,11 +165,15 @@ The RGB LED can take the following colours:
 | Teal   | Connected via USB      |
 | Red    | Error                  |
 
+</figure>
+
 ### LED `WROOM RGB` - Networking Status LED (ESP-32)
 
 This RGB LED informs on the status of the Wi-Fi network. Refer to the [Wi-Fi Configuration instructions](../../reference/Networking/configure-wifi.md) for the configuration procedure.
 
 This RGB LED can take the following colours:
+
+<figure markdown>
 
 | Colour | State                                |
 | ------ | ----------------------               |
@@ -171,6 +181,8 @@ This RGB LED can take the following colours:
 | Yellow | Connecting                           |
 | Teal   | Access point available (is router)   |
 | Red    | Not Connected                        |
+
+</figure>
 
 ### LED `HB` - HiveMind Heartbeat
 

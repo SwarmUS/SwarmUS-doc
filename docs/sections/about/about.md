@@ -4,6 +4,8 @@ The SwarmUS project was created by Engineering students from Université de Sher
 
 The SwarmUS team was formed by 9 undergraduate students:
 
+<figure markdown>
+
 <!-- Philippe Arsenault -->
 
 <div class="card">
@@ -317,3 +319,5 @@ LOREM IPSUM.
 </div>
 </div>
 <br>
+
+</figure>

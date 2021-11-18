@@ -2,7 +2,11 @@
 
 Now that the code that runs on your Hiveboard can flash an LED [of its own](led-flash-buzz.md) or one from a [remote board](led-flash-remote-hiveboard.md), let's establish a connection between a Hiveboard and a robot's embedded computer. The goal here is to use a Buzz script to tele-operate a robot.
 
+<figure markdown>
+
 ![Controlling a robot using a Buzz script running on a HiveBoard](img/buzz-control-robot-case.png)
+
+</figure>
 
 !!! Note
     **To follow this user guide, you will need:**
