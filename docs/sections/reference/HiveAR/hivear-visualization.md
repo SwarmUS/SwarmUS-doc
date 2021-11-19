@@ -12,6 +12,8 @@ Information contained in that view are:
 - Last commands sent from the Android device to the agent
 - Commands associated to the selected agent that can be sent
 
+![AR View](img/ar_tab_robot_command.jpg){: style="height:700px"}"
+
 It is possible to have an AR marker in the space without being on top of an agent if this agent has moved and the android device hasn't detect it.
 It will still monitor the agent even if it is not on top of it, but if one desire to remove the marker, simply long click it and agree to remove it.
 
@@ -23,6 +25,8 @@ It will still monitor the agent even if it is not on top of it, but if one desir
 Logs are a great way to know what information came from or to the Android device.
 They can be found in the Connection tab.
 They can help to see if a command came through, or what were the arguments of the incoming function call.
+
+![Logs](img/connection_tab_connected_logs.jpg){: style="height:700px"}"
 
 !!! Tip
     Logs can be shortened or detailed whenever needed with the "Detailed logs" checkbox.

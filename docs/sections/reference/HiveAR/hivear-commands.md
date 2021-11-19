@@ -1,6 +1,11 @@
 ## Swarm agents commands: <a name="hivear-commands-swarm"></a>
-Agents in the same swarm than the android device are listed in this tab. (picture)
+Agents in the same swarm than the android device are listed in this tab.
+
+![Swarm agents listed](img/commands_tab_agent_list.jpg){: style="height:700px"}
+
 If selected, commands specific to this agent are then listed and can be used to directly send command to this agent.
+
+![Agents details](img/commands_tab_agent_details.jpg){: style="height:700px"}"
 
 !!! Tip
     If an agent doesn't have its comands listed, it is possible to force to refresh its commands with the refresh button.
@@ -19,4 +24,4 @@ Registered commands would then be separated between host and buzz command types 
 
 ## Device buzz commands: <a name="hivear-commands-device-buzz"></a>
 As any other agent in the swarm, it is possible that the hiveboard connected to the android device has its own buzz commands registered.
-It is from this view that the user can use those commands.
+It is from the tab named **Local Buzz** that the user can use those commands.
