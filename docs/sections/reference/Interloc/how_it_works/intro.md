@@ -14,7 +14,7 @@ All measurements done by the interlocalisation engine are made available through
 The following page gives a brief overview of how the system is organized from a hardware and software point of view. Other pages explain how [distances are calculated](distance.md), how [angles are calculated](angle.md) and how all messages are [synchronized between all HiveBoards](sync.md).
 
 ## Hardware
-The interlocalisation feature is based around [Decawave's DW1000 UWB chip](https://www.decawave.com/sites/default/files/resources/dw1000-datasheet-v2.09.pdf). Each [BeeBoard](../../hardware/BeeBoard/BeeBoard_V1.000.md) contains a single DW1000. To be able to calculate distances between two systems, a single BeeBoard is needed. On the other hand, in order to calculate angles, three BeeBoards must be plugged into a HiveBoard. One BeeBoard should be plugged into each of the HiveBoard's channels (A, B and C). Whether the BeeBoard is plugged into port 0 or 1 has no impact.
+The interlocalisation feature is based around [Decawave's DW1000 UWB chip](https://www.decawave.com/sites/default/files/resources/dw1000-datasheet-v2.09.pdf). Each [BeeBoard](../../../hardware/BeeBoard/BeeBoard_V1.000.md) contains a single DW1000. To be able to calculate distances between two systems, a single BeeBoard is needed. On the other hand, in order to calculate angles, three BeeBoards must be plugged into a HiveBoard. One BeeBoard should be plugged into each of the HiveBoard's channels (A, B and C). Whether the BeeBoard is plugged into port 0 or 1 has no impact.
 
 <figure markdown>
   ![HiveBoard Ports](img/hiveboard_plugging.png)
