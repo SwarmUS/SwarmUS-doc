@@ -4,6 +4,8 @@ The SwarmUS project was created by Engineering students from Université de Sher
 
 The SwarmUS team was formed by 9 undergraduate students:
 
+<figure markdown>
+
 <!-- Philippe Arsenault -->
 
 <div class="card">
@@ -125,7 +127,7 @@ LOREM IPSUM.
     <h2>Louis-Daniel Gaulin</h2>
 
 <div class="desc"> 
-LOREM IPSUM.
+Louis-Daniel oversees the electrical division of the SwarmUS team. He worked on the HiveBoard, a low cost, high precision clock distribution board, also able to control up to six BeeBoards.
 
 <href >
 </div>
@@ -317,3 +319,5 @@ LOREM IPSUM.
 </div>
 </div>
 <br>
+
+</figure>

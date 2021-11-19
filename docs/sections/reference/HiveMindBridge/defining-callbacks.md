@@ -19,6 +19,9 @@ The return value of the callbacks is always a type `std::optional<CallbackReturn
 
 When a function should return some payload, the data should be wrapped in a `CallbackReturn` object.
 
+!!! note
+    The full API documentation for HiveMindBridge is hosted [here](https://swarmus.github.io/HiveMindBridge/classIHiveMindBridge.html).
+
 ## `CallbackReturn` objects
 
 `CallbackReturn` objects should be used to return some payload to the caller of a callback. When the payload is returned, _it is wrapped in a function call request_ (aka a remote procedure call), and the payload is passed as arguments. This allows the callback to return the data in an asynchronous manner, so that the caller does not need to block its execution flow while waiting for the response. This further helps managing a swarm of robots where the agents might disconnect and reconnect randomly.

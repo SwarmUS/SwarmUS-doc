@@ -2,7 +2,11 @@
 
 Now that the code that runs on your Hiveboard can flash an LED [of its own](led-flash-buzz.md) or one from a [remote board](led-flash-remote-hiveboard.md), let's establish a connection between a Hiveboard and a robot's embedded computer. The goal here is to use a Buzz script to tele-operate a robot.
 
+<figure markdown>
+
 ![Controlling a robot using a Buzz script running on a HiveBoard](img/buzz-control-robot-case.png)
+
+</figure>
 
 !!! Note
     **To follow this user guide, you will need:**
@@ -66,6 +70,9 @@ This (minimal) configuration will yield a simple robot that can be remote-contro
 HiveMindBridge is a C++ library that must be installed on a system, and then included to a software project using CMake. Before implementing the ROS node that uses HiveMindBridge, follow [these instructions](https://github.com/SwarmUS/HiveMindBridge#readme) to build and install HiveMindBridge on the host computer. Make sure to use the provided commands from the CMake example within your ROS package's `CMakeLists.txt`. You might want to check [this example](https://github.com/SwarmUS/SwarmUS-ROS/tree/master/src/swarmus_turtlebot) implementation of a Bridge with a TurtleBot 3.
 
 ### `HiveMindBridge`: the unique entrypoint to the library
+
+!!! note
+    The full API documentation for HiveMindBridge is hosted [here](https://swarmus.github.io/HiveMindBridge/classIHiveMindBridge.html).
 
 HiveMindBridge is a simple library that supports registering asynchronous callbacks to serve as a bridge between the communication services encapsulated in the swarm services and the local ROS environment. The user will mainly use the `HiveMindBridge` class to register custom actions, send some data over the messaging service and control the execution flow.
 

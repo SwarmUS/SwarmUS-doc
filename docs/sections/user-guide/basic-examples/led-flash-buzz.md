@@ -91,6 +91,9 @@ function create_exec(step_count) {
 
 Creating an `executor` requires three arguments. The first argument is the interval at which the function will be called. In the example above, we use the `step_count` argument, which corresponds to the value `10` passed from `main.bzz`.
 
+!!! hint
+    You could also use the `.new_ms` constructor for the executor. In this case, the executor would take an interval in miliseconds, instead of a number of steps (see [here](https://github.com/SwarmUS/HiveMind/blob/master/src/bittybuzz/buzz_scripts/utils/executor.bzz)).
+
 The second argument is the function to be run by the `executor`. Here, we provided the function `tick`, which we also defined above. This function should contain the logic you want to implement.
 
 The third argument is a context table that will be passed to the function `tick` everytime it is run. We use a table instead of plain variables because Buzz always passes tables by reference (and _not_ by value). Therefore, the context can be modified by the `tick` function and it will be persisted between the executions of `tick`.

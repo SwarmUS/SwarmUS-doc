@@ -4,6 +4,9 @@ The manifest is a set of information that describes the different input argument
 
 The manifest is simply an vector of arguments and their name that is typedefed as `CallbackArgsManifest`.
 
+!!! note
+    The full API documentation for HiveMindBridge is hosted [here](https://swarmus.github.io/HiveMindBridge/classIHiveMindBridge.html).
+
 Let's say we have a function `moveBy` that takes two aguments: `float x` and `float y`. Resigtering arguments in a manifest is done thusly:
 
 ```cpp

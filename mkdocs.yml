@@ -14,10 +14,7 @@ nav:
           - Flashing an LED on a remote Hiveboard: "sections/user-guide/basic-examples/led-flash-remote-hiveboard.md"
           - Controlling a Robot Using Buzz and HiveMindBridge: "sections/user-guide/basic-examples/buzz-control-robot.md"
           - Calling functions from HiveAR: "sections/user-guide/basic-examples/hivear-call-functions.md"
-          - Acquiring a remote Hiveboard's position: "sections/user-guide/basic-examples/basic-interloc.md"
-      - Follow the leader example:
-          - Introduction to the use-case: "sections/user-guide/follow-the-leader/index.md"
-          - "Adding Buzz scripts to the mix": "sections/user-guide/follow-the-leader/buzz-scripts-getting-started.md"
+          - Using Interlocalisation Between Swarm Agents: "sections/user-guide/basic-examples/basic-interloc.md"
   - Reference:
       - Reference Home: "sections/reference/index.md"
       - Architecture of the System: "sections/reference/architecture.md"
@@ -35,6 +32,8 @@ nav:
           - Defining Callbacks: "sections/reference/HiveMindBridge/defining-callbacks.md"
           - Defining Manifests: "sections/reference/HiveMindBridge/defining-manifests.md"
           - Example Logger Implementation: "sections/reference/HiveMindBridge/logger.md"
+      - Interlocalisation:
+          - Calibration: "sections/reference/Interlocalisation/how-to-calibrate-interloc.md"
       - Networking:
           - Configuring the Wi-Fi network: "sections/reference/Networking/configure-wifi.md"
           - HiveConnect: "sections/reference/Networking/hiveconnect.md"

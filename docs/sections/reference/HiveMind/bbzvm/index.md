@@ -3,7 +3,7 @@
 [Buzz](https://github.com/MISTLab/Buzz) is a programming language made by [MISTLAB](https://mistlab.ca/) for a swarm made of heterogeneous robots.
 Buzz code is compiled to byte code, which then runs on the Buzz Virtual Machine (BVM) which executes the bytecode. 
 All robots in the swarm will then run the **same** byte code. Buzz provides multiple ways to manage the swarm of robots.
-You can learn more about Buzz [here](https://the.swarming.buzz/wiki/doku.php?id=start).
+You can learn more about Buzz [here](https://the.swarming.buzz/wiki/doku.php?id=start). The language reference is hosted [here](https://github.com/buzz-lang/Buzz/blob/master/doc/api.md).
 
   
 Since the BVM was designed to run on Linux, another implementation was necessary to run on an MCU. A smaller and lighter virtual machine.

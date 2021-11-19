@@ -22,15 +22,21 @@ Launch the HiveAR application on the Android device. Accept the different permis
 
 Navigate to the Connection tab (first icon on the left at the base of the screen).
 
+<figure markdown>
 ![Connection Page](img/hivear-connection-page.png){: style="height:700px" }
+</figure>
 
 Click on the circular button containing two arrows pointing at each other in the lower left side of the screen. A selection bar will appear at the top of the screen:
 
+<figure markdown>
 ![Connection Page](img/hivear-connection-page-selection-bar.png){: style="height:700px;align:left" }
+</figure>
 
 Tap on the bar and select option `HiveBoard: HiveMind`. Then tap Connect. The logs (under `Incoming Data`) should show that the greet messages have been exchanged and you should see a green dot appear near the Connection button at the lower left of the screen. HiveAR and HiveMind are now connected.
 
+<figure markdown>
 ![Connection Page](img/hivear-connection-page-connected.png){: style="height:700px;align:left" }
+</figure>
 
 ## Set up the Wi-Fi Network
 
@@ -41,7 +47,9 @@ Tap on the bar and select option `HiveBoard: HiveMind`. Then tap Connect. The lo
 
 Navigate to the Settings view by tapping the wrench icon at the lower right of the screen. This contains a tab which allows for the configuration of the Wi-Fi network:
 
+<figure markdown>
 ![Connection Page](img/hivear-settings-wifi.png){: style="height:700px;align:left" }
+</figure>
 
 Enter the configuration for the Wi-Fi network. There are a few different topologies that you might want to consider. Before you set up the network, refer to the [limitations](#limitations).
 
