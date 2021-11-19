@@ -5,6 +5,9 @@ If selected, commands specific to this agent are then listed and can be used to 
 !!! Tip
     If an agent doesn't have its comands listed, it is possible to force to refresh its commands with the refresh button.
 
+### Commands in augmented reality
+It is also possible to fetch and send commands directly from the augmented reality tab when targetting a specific agent.
+
 ## Swarm broadcast commands: <a name="hivear-commands-broadcast"></a>
 It is possible to send commands to all agents in the swarm. 
 In order to register commands to broadcast, the user has to long click any commands from the agents commands view or device commands view and then accept.
