@@ -47,7 +47,7 @@ To be able to measure the angle of arrival on the whole unit circle, three anten
   <figcaption>Angle measurement with multiple antenna pairs</figcaption>
 </figure>
 
-The problem of knowing which mapping (the downwards or upwards slople) to use for each pair is still present. However, by using information from the two other pairs, it is possible to know which slope to choose. By placing imaginary lines at +/- 30°, we can use the AoA value of another antenna pair to know which slope to use for the current pair.
+The problem of knowing which mapping (the downwards or upwards slope) to use for each pair is still present. However, by using information from the two other pairs, it is possible to know which slope to choose. By placing imaginary lines at +/- 30°, we can use the AoA value of another antenna pair to know which slope to use for the current pair.
 
 !!!note
     Don't forget the x-axis is the **real** angle. So what we are measuring is a point on the y-axis to which we are trying to map a point on the x-axis.
@@ -73,7 +73,7 @@ This gives way to the following simple algorithm to calculate an angle:
 
 ## Implementation & Certainty
 ### Real World Data
-Of course, when taking into acount the real world and noise, the data is not as clean as presented earlier, making it a little harder to calculate an angle. The first thing we notice is that all the curves are offset from their theoretical by a certain amount.
+Of course, when taking into acount the real world and noise, the data is not as clean as presented earlier, making it a little harder to calculate an angle. The first thing we notice is that all the curves are offset from their theoretical value by a certain amount.
 
 <figure markdown>
   ![Offset in PDoA data](img/real_data_no_offset.png)
@@ -90,14 +90,14 @@ After applying a correction for the offset, the data does start to look like the
 </figure>
 
 !!!note
-    You may notice that some of the data points tend to wrap around (the effect is pretty obvious at 0° and 100°). This is the main cause of errors in the system as having data on the wrong side of the +/- 30° line makes us choose the wrong slope to modelise the data.
+    You may notice that some of the data points tend to wrap around (the effect is pretty obvious at 0° and 100°). This is the main cause of errors in the system as having data on the wrong side of the +/- 30° line makes us choose the wrong slope to fit the data.
 
 The equation to calculate the phase difference ($\alpha$) must be changed to take this offset ($z$) into account:
 $$
 \alpha_{corrected} = \left(\left( \phi_A - \beta_A - \phi_B + \beta_B - \frac{\pi}{2} + z \right) mod 2\pi \right) - \pi
 $$
 
-Each antenna pair is then modelised with two linear equations of the form $y = ax + b$ with one positive and one negative slope. Even for curves where three slopes are visible (for example the purple curve), only two slopes are needed as the third one is the prolongation of the first one modulo 360°.
+Each antenna pair is then modeled with two linear equations of the form $y = ax + b$ with one positive and one negative slope. Even for curves where three slopes are visible (for example the purple curve), only two slopes are needed as the third one is the prolongation of the first one modulo 360°.
 
 ### Calculating a Single Angle
 In the [previous section](#expanding-beyond-180), we mentioned that the algorithm would return the same angle for any of the three antenna pairs. Although the real world data is close to theory, it is not perfect and each antenna pair will yield a different angle. Actually, it might even yield an angle pretty far from reality if the wrong slope is chosen because of the +/- 30° decision line.

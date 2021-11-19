@@ -32,7 +32,7 @@ Once all agents have become an intiator, a dead time (SYNC) is used to elect the
 ### Definitions
 The following section contains most definitions used within the code and documention relating to the timeslotting mechanism and the state machine implementing it.
 
-**SuperFrame**: Highest level of the timeslots, allows every agent to have it's own **TWR Frame**
+**SuperFrame**: Highest level of the timeslots, allows every agent to have its own **TWR Frame**
 
 **TWR Frame**: Slot in which an agent is the initiator in a TWR sequence
 
@@ -68,7 +68,7 @@ Otherwise, the FSM will go to [Send Poll](#send-poll) if it is the next *Frame L
 ### Sync
 The [Sync](#sync) state is used to elect a new *SuperFrame Leader* and at the same time, allow new agents (or any agents that are desynchronized) to resynchronize back with the others.
 
-In this state, all agents start listening for a message with a random timeout (longer than the time of a *TWR Frame*). When a timeout is reached without having received a message, a Poll message is immediatly sent ([Send Poll](#send-poll)). That message is received by all other agents who still haven't timed out therefore making the first to timeout the *SuperFrame Leader*. 
+In this state, all agents start listening for a message with a random timeout (longer than the time of a *TWR Frame*). When a timeout is reached without having received a message, a Poll message is immediatly sent ([Send Poll](#send-poll)). That message is received by all other agents that still haven't timed out therefore making the first to timeout the *SuperFrame Leader*. 
 
 Because this state is reached at the end of each *SuperFrame* and the timeout is random, the *SuperFrame Leader* is also chosen at random and changes for every *SuperFrame*.
 

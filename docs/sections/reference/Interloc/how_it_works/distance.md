@@ -13,7 +13,7 @@ In order to understand how TWR works, one must know the following features of UW
 * Messages are always timestamped at the same place, called the RMARKER at the beginning of a transmission. This way, the length of a message has no impact on the ability to timestamp it.
 
 !!! note 
-    Timestamps on the DW1000 can be quite tricky to understand as RX and TX timestamps are not done exactly at the same moment and the antenna delay must be taken into account. Before tweaking anything in the algorithm, the user should read sections 3.2, 3.3 and 4.1.6 of the [DW1000 User Manual](https://www.decawave.com/sites/default/files/resources/dw1000_user_manual_2.11.pdf).
+    Timestamps on the DW1000 can be quite tricky to understand as RX and TX timestamps are not created exactly at the same moment and the antenna delay must be taken into account. Before tweaking anything in the algorithm, the user should read sections 3.2, 3.3 and 4.1.6 of the [DW1000 User Manual](https://www.decawave.com/sites/default/files/resources/dw1000_user_manual_2.11.pdf).
 
 ### One-to-One
 
@@ -64,15 +64,17 @@ After performing the calculation, the Responder then knows the distance seperati
 
 ### One-to-Many
 
-The drawback of the one-to-one algorithm is that, in a multi-agent scenario, three messages must be sent for each agent to know their distance to a single other robot. The number of messages for every agent to know it's distance from every other agent grows factorially thus decreasing the refresh rate of the whole system:
+The drawback of the one-to-one algorithm is that, in a multi-agent scenario, three messages must be sent for each agent to know their distance to a single other robot. The number of messages for every agent to know its distance from every other agent grows factorially thus decreasing the refresh rate of the whole system:
 $$
 N_{messages} = 3 \cdot \frac{N_{agents}!}{2\cdot(N_{agents}-2)!}
 $$
 
 Instead of having every agent perform a 1:1 TWR with every other agent, the scheme presented previously is extended to allow multiple Responders. Instead of having one Initiator and one Responder, we have one Initiator and $N-1$ Responders (every agent except for the Initiator). The message exchange is then very similar to the 1:1 scenario:
 
-1. The initiator send the Init message which is received by all Responders simultaneously.
+1. The initiator sends the Init message which is received by all Responders simultaneously.
+
 2. Each Responder, in turns, sends the Response message. The Initiator receives all the messages and timestamps them all.
+
 3. The Initiator sends the final message now containing $N$ response_rx_ts, one for each Responder.
    
 Each Responder then has the six timestamps needed to compute their distance from the Initiator. After $2 + N$ messages, all the agents, other than the Initiator, have updated their distance from the Initiator. Each agent then takes turns becoming the Initiator every time allowing all other agents to update their position from the Initiator. The sequence is summarized in the following figure.
@@ -86,7 +88,7 @@ More details on this time-slotting mechanism can be found in the [synchronisatio
 
 ## Further Reading
 
-The following application notes produced by Decawave can be read in order to understand the used algorithm, but also as a way to learn about different algorithms that could be implemented as well as corrections for non line-of-sight operation and calibrations in order to achieve maximum accuracy.
+The following application notes produced by Decawave can help understanding the algorithm used in the SwarmUS platform. They also contain some knowledge about different algorithms that could be implemented as well as corrections for non line-of-sight operation and calibrations in order to achieve maximum accuracy.
 
 * [Application Note APS006 - Part 1 Channel Effects on Range Accuracy](https://www.decawave.com/wp-content/uploads/2018/10/APS006_Part-1-Channel-Effects-on-Range-Accuracy_v1.03.pdf)
 * [Application Note APS006 - Part 2 NLOS Operation and Optimizations](https://www.decawave.com/wp-content/uploads/2018/10/APS006_Part-2-NLOS-Operation-and-Optimizations_v1.5.pdf)
