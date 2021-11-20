@@ -32,7 +32,7 @@ This scheme is based around two devices (the Initiator and the Responder) as wel
       * **resp_rx_ts**
       * **final_tx_ts**
   
-    The responder then has all six timestamps (RX and TX for three messages) in hand allowing it to calculate the average time of flight (ToF) of messages using the following figure and equations.
+    Upon reception of the Final message, the responder then has all six timestamps (RX and TX for three messages) in hand allowing it to calculate the average time of flight (ToF) of messages using the following figure and equations.
 
 <figure markdown>
   ![Asymmetric Double-Sided Two-Way Ranging](img/ds-twr.png)
@@ -64,10 +64,7 @@ After performing the calculation, the Responder then knows the distance seperati
 
 ### One-to-Many
 
-The drawback of the one-to-one algorithm is that, in a multi-agent scenario, three messages must be sent for each agent to know their distance to a single other robot. The number of messages for every agent to know its distance from every other agent grows factorially thus decreasing the refresh rate of the whole system:
-$$
-N_{messages} = 3 \cdot \frac{N_{agents}!}{2\cdot(N_{agents}-2)!}
-$$
+The drawback of the one-to-one algorithm is that, in a multi-agent scenario, three messages must be sent for each agent to know their distance to a single other robot. The number of messages for every agent to know its distance from every other agent grows factorially thus decreasing the refresh rate of the whole system.
 
 Instead of having every agent perform a 1:1 TWR with every other agent, the scheme presented previously is extended to allow multiple Responders. Instead of having one Initiator and one Responder, we have one Initiator and $N-1$ Responders (every agent except for the Initiator). The message exchange is then very similar to the 1:1 scenario:
 

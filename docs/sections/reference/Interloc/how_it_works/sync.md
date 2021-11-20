@@ -36,7 +36,7 @@ The following section contains most definitions used within the code and documen
 
 **TWR Frame**: Slot in which an agent is the initiator in a TWR sequence
 
-**SuperFrame Initiator**: ID of the agent selected to use TWR Frame 1 during the SYNC state
+**SuperFrame Leader**: ID of the agent selected to use TWR Frame 1 during the SYNC state
 
 **Frame Leader**: ID of the agent that is the initiator (sends the poll, final and angle messages) in the current TWR Frame
 
@@ -61,7 +61,7 @@ In normal operating mode, the black arrows show the possible state transitions. 
 ### Idle
 The [Idle](#idle) state is the entry point of the FSM. 
 
-On first entry, or when a *SuperFrame* has finished (when the next *Frame Leader* would be the *SuperFrame Initiator*), the FSM goes to the [Sync](#sync) state.
+On first entry, or when a *SuperFrame* has finished (when the next *Frame Leader* would be the *SuperFrame Leader*), the FSM goes to the [Sync](#sync) state.
 
 Otherwise, the FSM will go to [Send Poll](#send-poll) if it is the next *Frame Leader* or [Wait Poll](#wait-poll) if it is not. This starts the [TWR exchange](distance.md).
 
@@ -84,7 +84,7 @@ In the [Send Final](#send-final) state, the Final message of the TWR exchange is
 ### Send Angle
 The [Send Angle](#send-angle) state is responsible for sending multiple messages at a given interval. Each message will be received by the other agents that are in the [Receive Angle](#receive-angle) state and used to [calculate an angle](angle.md). All messages contain a unique ID used to distiguish one message from the other on the receiver side. This state leads back to the [Idle](#idle) state as it is the last in the *Frame Leader* path of the FSM.
 
-This state can also entered permenantly to [calibrate a HiveBoard](../calibrating_a_hiveboard.md).
+This state can also be entered permenantly to [calibrate a HiveBoard](../calibrating_a_hiveboard.md).
 
 ### Wait Poll
 In [Wait Poll](#wait-poll) the DW1000 is enabled in RX mode to listen for a Poll message. If one is received, the FSM goes to the [Send Response](#send-response) state. Otherwise, it goes back to [Idle](#idle) as no distance could be calculated without first receiving a Poll message.
