@@ -18,15 +18,20 @@ The round icon can represent four possible states:
 - Green: Android device is connected to HiveMind **And** HiveAR registered as part of the swarm
 
 ![Connection not connected](img/connection_tab_not_connected.jpg){: style="height:700px"}"
+
 *Not connected status indicator*
 
 ![Connection connecting](img/connection_tab_connecting.jpg){: style="height:700px"}"
+
 *Connecting to HiveMind status indicator*
 
-<!-- missing yellow state-->
+![Connection connected no swarm](img/connection_tab_connected_no_swarm.jpg){: style="height:700px"}"
+
+*Connected to HiveMind, but HiveAR not registered in swarm*
 
 ![Connection connected](img/connection_tab_connected_logs.jpg){: style="height:700px"}"
-*Connected indicator with logs*
+
+*Connected to swarm, with logs*
 
 !!! Attention
     Always make sure connection with the swarm is established and working correctly (green round icon) before trying to use any swarm features. 

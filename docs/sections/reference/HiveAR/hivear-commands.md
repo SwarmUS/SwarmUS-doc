@@ -10,8 +10,20 @@ If selected, commands specific to this agent are then listed and can be used to 
 !!! Tip
     If an agent doesn't have its comands listed, it is possible to force to refresh its commands with the refresh button.
 
+    Same goes for listing swarm agents.
+
 ### Commands in augmented reality
 It is also possible to fetch and send commands directly from the augmented reality tab when targetting a specific agent.
+
+Refer to [visualisation section](hivear-visualization.md) for more information on this view for any other questions other than commands.
+
+![AR Commands](img/ar_tab_robot_command.jpg){: style="height:700px"}"
+
+!!! Attention
+    Application only supports integer or float arguments modification for commands inside this view. 
+
+    If any argument has another type, it is still possible to send from AR view, but with the already defined value. 
+    If one wants to change that value, it can be edited inside the [agent commands view](hivear-commands.md#hivear-commands-swarm).
 
 ## Swarm broadcast commands: <a name="hivear-commands-broadcast"></a>
 It is possible to send commands to all agents in the swarm. 
@@ -25,3 +37,8 @@ Registered commands would then be separated between host and buzz command types 
 ## Device buzz commands: <a name="hivear-commands-device-buzz"></a>
 As any other agent in the swarm, it is possible that the hiveboard connected to the android device has its own buzz commands registered.
 It is from the tab named **Local Buzz** that the user can use those commands.
+
+!!! Tip 
+    Buzz commands can easily be recognized accross all the application with the following icon beside the command's name:
+
+    ![Buzz command icon](img/ic_buzz.png)
