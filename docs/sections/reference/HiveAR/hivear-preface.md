@@ -4,7 +4,7 @@ HiveAR is the Android application that makes the user interact with the swarm di
 
 The codebase for HiveAR is hosted on [GitHub](https://github.com/SwarmUS/HiveAR).
 
-More information can be found on how to setup an Android device with a hiveboard [here](hivear-setup.md).
+More information can be found on how to setup an Android device with a HiveBoard [here](hivear-setup.md).
 
 Its primary roles are defined as follows:
 
@@ -13,5 +13,5 @@ Its primary roles are defined as follows:
     - [Through augmented reality (AR)](hivear-visualization.md#ar)
     - [With runtime logs](hivear-visualization.md#logs)
 - [Configure the swarm and its agents](hivear-configuration.md)
-    - [HiveBoard network configuration](..\Networking\configure-wifi.md) (From Networking reference section) 
-    - [Agents' associated april tags definition](hivear-configuration.md#robot-april-tags)
+    - [HiveBoard network configuration](../Networking/configure-wifi.md) (From Networking reference section) 
+    - [Agents' associated AprilTags definition](hivear-configuration.md#robot-april-tags)
