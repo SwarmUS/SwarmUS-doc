@@ -39,7 +39,28 @@ Tap on the bar and select option `HiveBoard: HiveMind`. Then tap Connect. The lo
 
 ## Connect the Android Device to a Simulated HiveBoard
 
-TODO
+HiveBoard can be simulated by TCP/IP for testing purposes mostly and can be connected to HiveAR from the same transport layer protocol.
+
+As the HiveMind running on a HiveBoard is considered client, the android device running HiveAR would be server. Different implementation can be done to achieve this. 
+An example can be found in the [SwarmUS-ROS project](https://github.com/SwarmUS/SwarmUS-ROS), where an android device can be associated to a simulated HiveBoard running in a ROS node. 
+The launch file associated to this implementation can be found [here](https://github.com/SwarmUS/SwarmUS-ROS/blob/bab1924ca7b4c97093df48d5c54c7470b45b5155/src/swarmus_ros_simulation/launch/teleop_from_phone_multi_robot.launch#L54).
+
+Having the android device being the server, the client must know what IP address and port to connect to: this is found in the connection tab when switching to remote mode.
+There, the current network IP adress of the android device is show and it is possible to choose which port to listen for incoming connection.
+
+To have the remote connection view, click on the round button beside button "Disconnect". In remote view, a signal bar icon is displayed on that round button.
+
+<figure markdown>
+  ![Connection not connected](img/connection_tab_not_connected.jpg){: style="height:700px"}
+
+  <figcaption>Remote connection view</figcaption>
+
+</figure>
+
+After port is set, press connect to start listening on that port for incoming connection whenever the client is trying to connect. 
+
+!!! Attention
+    When listening for an incoming connection in remote mode, HiveAR is listening for an incoming connection for 10 secondes. Just click on connect button again if desired.
 
 ## Connection Status
 As the Android device must be connected either by USB or TCP to communicate to the swarm, it is possible to keep track of the state of the connection with the swarm.
