@@ -1,10 +1,8 @@
 In order to use HiveAR, first download the application from the [GitHub](https://github.com/SwarmUS/HiveAR) page and install accordingly to the instructions in the same page.
 
-<!-- TODO ask if hiveboard<->android connection should be documented here instead of inside "configuring the Wi-Fi network" from networking section.-->
-
-
 ## Swarm Connection
 In the case of connecting HiveAR to a HiveBoard, whether a real or a simulated one, the user has access to connection settings in the Connection tab on the lower-left corner.
+For more information on how to correctly connect a Hiveboard to the android device running HiveAR, please refer [this section](../Networking/configure-wifi.md#connect-hiveboard-hivear).
 
 ### Connection Status
 As the Android device must be connected either by USB or TCP to communicate to the swarm, it is possible to keep track of the state of the connection with the swarm.
@@ -17,21 +15,30 @@ The round icon can represent four possible states:
 - Yellow: Android device connected to HiveMind, but HiveAR is not registered as part of the swarm
 - Green: Android device is connected to HiveMind **And** HiveAR registered as part of the swarm
 
-![Connection not connected](img/connection_tab_not_connected.jpg){: style="height:700px"}"
+<figure markdown>
+  ![Connection not connected](img/connection_tab_not_connected.jpg){: style="height:700px"}
 
-*Not connected status indicator*
+  <figcaption>Not connected status indicator</figcaption>
 
-![Connection connecting](img/connection_tab_connecting.jpg){: style="height:700px"}"
+</figure>
+<figure markdown>
+  ![Connection not connected](img/connection_tab_connecting.jpg){: style="height:700px"}
 
-*Connecting to HiveMind status indicator*
+  <figcaption>Connecting to HiveMind status indicator</figcaption>
 
-![Connection connected no swarm](img/connection_tab_connected_no_swarm.jpg){: style="height:700px"}"
+</figure>
+<figure markdown>
+  ![Connection not connected](img/connection_tab_connected_no_swarm.jpg){: style="height:700px"}
 
-*Connected to HiveMind, but HiveAR not registered in swarm*
+  <figcaption>Connected, HiveAR not registered in swarm</figcaption>
 
-![Connection connected](img/connection_tab_connected_logs.jpg){: style="height:700px"}"
+</figure>
+<figure markdown>
+  ![Connection not connected](img/connection_tab_connected_logs.jpg){: style="height:700px"}
 
-*Connected to swarm, with logs*
+  <figcaption>Connected to swarm, with logs</figcaption>
+
+</figure>
 
 !!! Attention
     Always make sure connection with the swarm is established and working correctly (green round icon) before trying to use any swarm features. 
