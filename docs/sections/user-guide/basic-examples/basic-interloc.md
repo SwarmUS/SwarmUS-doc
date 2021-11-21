@@ -2,14 +2,11 @@
 
 One of the key features of the SwarmUS platform is the ability for a given Hiveboard to determine the position of other Hiveboards with respect to its own position. This page shows how to use this *interlocalisation* feature. SwarmUS' interlocalisation feature provides the necessary data to the [neighbor feature of the Buzz language](https://github.com/buzz-lang/Buzz/blob/master/doc/api.md#neighbors). This means that the HiveMind firmware merely updates the position of the other agents and makes it available to Buzz.
 
-<!-- TODO 
 !!! Note
-    The interlocalisation module is a rather complex feature of the SwarmUS platform. For extensive documentation about the design and implementation of the feature, refer to TODO.
-
--->
+    The interlocalisation module is a rather complex feature of the SwarmUS platform. For extensive documentation about the design and implementation of the feature, refer to [the How it Works section](../../reference/Interloc/how_it_works/intro.md).
 
 !!! attention
-    Before you start using the interlocalisation feature, refer to the instructions on [how to calibrate](../../reference/Interlocalisation/how-to-calibrate-interloc.md) the BeeBoards with a HiveBoard. Since the interlocalisation feature relies on very sensitive hardware, it is crucial that the HiveBoard/BeeBoard assembly be adequately calibrated, otherwise the readings will be rubbish.
+    Before you start using the interlocalisation feature, refer to the instructions on [how to calibrate](../../reference/Interloc/calibrating_a_hiveboard.md) the BeeBoards with a HiveBoard. Since the interlocalisation feature relies on very sensitive hardware, it is crucial that the HiveBoard/BeeBoard assembly be adequately calibrated, otherwise the readings will be rubbish.
 
 ## Using the Visualisation Tool
 
