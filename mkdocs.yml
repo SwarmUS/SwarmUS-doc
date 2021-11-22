@@ -33,12 +33,12 @@ nav:
           - Defining Manifests: "sections/reference/HiveMindBridge/defining-manifests.md"
           - Example Logger Implementation: "sections/reference/HiveMindBridge/logger.md"
       - Interlocalisation:
+          - How it Works:
+              - Introduction: "sections/reference/Interloc/how_it_works/intro.md"
+              - Distance Measurement: "sections/reference/Interloc/how_it_works/distance.md"
+              - Angle Measurement: "sections/reference/Interloc/how_it_works/angle.md"
+              - Synchronization: "sections/reference/Interloc/how_it_works/sync.md"
           - Calibrating a Hiveboard: "sections/reference/Interloc/calibrating_a_hiveboard.md"
-          - How it Works: 
-            - Introduction: "sections/reference/Interloc/how_it_works/intro.md"
-            - Distance Measurement: "sections/reference/Interloc/how_it_works/distance.md"
-            - Angle Measurement: "sections/reference/Interloc/how_it_works/angle.md"
-            - Synchronization: "sections/reference/Interloc/how_it_works/sync.md"
       - Networking:
           - Configuring the Wi-Fi network: "sections/reference/Networking/configure-wifi.md"
           - HiveConnect: "sections/reference/Networking/hiveconnect.md"
