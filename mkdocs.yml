@@ -18,8 +18,6 @@ nav:
   - Reference:
       - Reference Home: "sections/reference/index.md"
       - Architecture of the System: "sections/reference/architecture.md"
-      - Buzz:
-          - Available APIs: "sections/reference/Buzz/available-apis.md"
       - HiveMind:
           - About HiveMind: "sections/reference/HiveMind/hivemind-preface.md"
           - HiveMind and the Host: "sections/reference/HiveMind/hivemind-host.md"

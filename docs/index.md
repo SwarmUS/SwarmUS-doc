@@ -25,7 +25,7 @@ The SwarmUS platform is built around a custom embedded computer called the **Hiv
 
 1. A **decentralized communication stack** that allows the robots to exchange information and remote procedure calls.
 2. An **interlocalisation module** that allows robots to determine their relative position between one another. Each robot can therefore determine the **distance** and **angle** of another robot with respect to its own position.
-3. A **coordination language** that allows the user to program some behavioral logic for the swarm. The language used in the SwarmUS platform is [Buzz](https://github.com/MISTLab/Buzz).
+3. A **coordination language** that allows the user to program some behavioral logic for the swarm. The language used in the SwarmUS platform is [Buzz](https://github.com/buzz-lang/Buzz).
 
 Forming a swarm using existing robots is as simple as plugging a HiveBoard in every robot, writing some coordination code, and interfacing this with each robot's program. The coordination code running on the HiveBoards will then control each individual robot in a coherent manner, in order to achieve some collective goals.
 
