@@ -60,22 +60,10 @@ Here is a description of the Messages:
       Used to discover new IP addresses in the network.
 
 - InterlocAPI: <a name="interloc-api"></a>
-  Messages internal to the interlocalisation. You can calibrate your setup using the [CalibrationMessage](#CalibrationMessage) You can use [PythonTool](https://github.com/SwarmUS/PythonTool/tree/master) which is a small wrapper in python, allowing the calibration for the interlocalisation.
-
-    - CalibrationMessage: <a name="calibration"></a>
-      Used for calibration of the physical setup for the interlocalisation.
-
-    - SetCalibrationDistance: <a name="calib-distance"></a>
-      Set the calibration distance.
-
-    - StartCalibration: <a name="start-calib"></a>
-      Starts the calibration.
-
-    - StopCalibration: <a name="stop-calib"></a>
-      Stops the calibration
-
-    - CalibrationEnded: <a name="calib-ended"></a>
-      ACK on the ending of the calibration
+  Internal messages used to [calibrate](../Interloc/calibrating_a_hiveboard.md) and extract data from the interlocalisation engine. These messages are mostly used in the [TestBench-Python repository](https://github.com/SwarmUS/TestBench-Python). The most notable messages are:
+      - ConfigureAngleParameters: Used to send a calibration back to the HiveBoard so it can be saved in its non-volatile memory.
+      - InterlocRawAngleData: Used to send raw DW1000 register data back to the PC in order to calculate calibration parameters.
+      - InterlocDump: Periodic dump of calculated localization data. Used to verify validity of the data after the calculation algorithms have been applied.
 
 - BuzzMessage: <a name="buzz-msg"></a>
   Internal message to Buzz to share data between the virtual machines in the swarm.
