@@ -119,7 +119,7 @@ Then, in the `create_exec()` function, we register the closure:
 register_closure("blinky_set_hex", blinky_set_hex, args_description, nil)
 ```
 
-The reference documentation for the registration of closures, as well as everything involving user callbacks is linked [here](../../reference/Buzz/available-apis.md#bittybuzzuserfunctions-managing-user-functions).
+The reference documentation for the registration of closures, as well as everything involving user callbacks is linked [here](../../reference/Buzz/index.md#bittybuzzuserfunctions-managing-user-functions).
 
 ### Calling a Remote Closure
 
@@ -127,7 +127,7 @@ In the function `tick()`, notice how the execution of the incrementation code is
 
 When this code is run by the leader, it increments the 7-segment value and calls the function `blinky_set_hex` on the agent #5 with the hex value passed as argument.
 
-The reference documentation for the calling of closures, as well as everything involving user callbacks is linked [here](../../reference/Buzz/available-apis.md#bittybuzzuserfunctions-managing-user-functions).
+The reference documentation for the calling of closures, as well as everything involving user callbacks is linked [here](../../reference/Buzz/index.md#bittybuzzuserfunctions-managing-user-functions).
 
 ### Flash and Test
 

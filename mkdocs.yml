@@ -18,12 +18,12 @@ nav:
   - Reference:
       - Reference Home: "sections/reference/index.md"
       - Architecture of the System: "sections/reference/architecture.md"
+      - Buzz: "sections/reference/Buzz/index.md"
       - HiveMind:
           - About HiveMind: "sections/reference/HiveMind/hivemind-preface.md"
           - HiveMind and the Host: "sections/reference/HiveMind/hivemind-host.md"
           - HiveMind and the Swarm: "sections/reference/HiveMind/hivemind-swarm.md"
           - HiveMind API: "sections/reference/HiveMind/hivemind-api.md"
-          - BittyBuzz Virtual Machine: "sections/reference/HiveMind/bbzvm/index.md"
       - HiveMindBridge:
           - About HiveMindBridge: "sections/reference/HiveMindBridge/about-hivemindbridge.md"
           - Registering Custom Actions: "sections/reference/HiveMindBridge/registering-custom-actions.md"

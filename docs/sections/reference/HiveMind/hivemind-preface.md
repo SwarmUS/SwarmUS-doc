@@ -6,7 +6,7 @@ The codebase for HiveMind is hosted on [GitHub](https://github.com/SwarmUS/HiveM
 
 The HiveMind has multiple roles in the swarm:
 
-- It runs the [BBVM (BittyBuzz Virtual Machine)](bbzvm/index.md), which executes the user code that defines the behavior of the swarm.
+- It runs the [BBVM (BittyBuzz Virtual Machine)](../Buzz/index.md), which executes the user code that defines the behavior of the swarm.
 - Routes the messages from one component to the other which includes
     - The host
     - The BBVM

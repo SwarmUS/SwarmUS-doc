@@ -1,4 +1,4 @@
-# Bitty Buzz virtual machine
+# BittyBuzz virtual machine
 
 [Buzz](https://github.com/buzz-lang/Buzz) is a programming language made by [MISTLAB](https://mistlab.ca/) for a swarm made of heterogeneous robots.
 Buzz code is compiled to byte code, which then runs on the Buzz Virtual Machine (BVM) which executes the bytecode. 
@@ -22,7 +22,9 @@ In this implementation, if you use [HiveConnect](../../Networking/hiveconnect/) 
 ## Strings
 On compilation, the strings in the script are stored in the program data. This allows to log with actual strings and call remote functions by name instead of only having the ID and registering function by its name. **Dynamic string manipulation is impossible**. Note that strings in the BBVM are more than just characters between "". All global variable names (namespace, constant, etc) are also stored with their associated strings.
 
-Since strings use memory on the MCU, you can disable the storing of the string. To do so, you can provide a BST file with the name of the strings to disable. You can get an example of a BST file for the provided functions [here](https://github.com/SwarmUS/HiveMind/blob/master/src/bittybuzz/bittybuzz.bst). Also note that symbols reserved by the VM don't have a string representation, you can see them [here](https://github.com/buzz-lang/BittyBuzz/blob/master/src/bittybuzz/util/BittyBuzzStrings.bst).
+Since strings use memory on the MCU, you can disable the storing of the string. To do so, you can provide a BST file with the name of the strings to disable. You can add your BST files to the `USER_BUZZ_INCLUDE_DIRS` in [this file](https://github.com/SwarmUS/HiveMind/blob/master/src/bittybuzz/buzz_scripts/user_bst_files.cmake).
+
+You can get an example of a BST file for the provided functions [here](https://github.com/SwarmUS/HiveMind/blob/master/src/bittybuzz/bittybuzz.bst). Also note that symbols reserved by the VM don't have a string representation, you can see them [here](https://github.com/buzz-lang/BittyBuzz/blob/master/src/bittybuzz/util/BittyBuzzStrings.bst). If you see `UNKNOWN STRID: XX` in the logs, where `XX` is a string ID, those strings are declared in a BST file (internal or user defined). You can see their values in the HiveMind build directory in `src/bittybuzz/main_bytecode.h`, in this file you can see the internal id of every strings.
 
 ## Available APIs in Buzz Scripts
 User-defined Buzz scripts can use some APIs to interact with some parts of the SwarmUS platform. This page regroups all these APIs and provides some links to their respective documentation.
