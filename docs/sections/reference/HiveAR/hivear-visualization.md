@@ -3,7 +3,10 @@ One of the main goal of the HiveAR app is to visualize the state of the Swarm di
 ## Augmented Reality (AR): <a name="ar"></a>
 
 Augmented Reality is a quick diagnostic tool that is used mostly to get the immediate state of visible agents, but also to send commands to specific agents.
-At a close range, if the device is pointed towards the [AprilTag](https://april.eecs.umich.edu/software/apriltag) on top of a specific agent, details of this agent will appear on top of it.<!--add reference or detail what this is--> 
+At a close range, if the device is pointed towards the [AprilTag](https://april.eecs.umich.edu/software/apriltag) on top of a specific agent, details of this agent will appear on top of it.
+
+!!! Attention
+  April tags are not detected from afar, which is why to scan it, it should be better to direct the android device directly at the tag from a distance about 0.8 to 1.2 meters. (Results might vary from the device's camera resolution)
 
 Information contained in that view are:
 
