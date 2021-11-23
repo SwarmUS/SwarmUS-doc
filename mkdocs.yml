@@ -13,7 +13,6 @@ nav:
           - Flashing an LED Using Buzz: "sections/user-guide/basic-examples/led-flash-buzz.md"
           - Flashing an LED on a remote Hiveboard: "sections/user-guide/basic-examples/led-flash-remote-hiveboard.md"
           - Controlling a Robot Using Buzz and HiveMindBridge: "sections/user-guide/basic-examples/buzz-control-robot.md"
-          - Calling functions from HiveAR: "sections/user-guide/basic-examples/hivear-call-functions.md"
           - Using Interlocalisation Between Swarm Agents: "sections/user-guide/basic-examples/basic-interloc.md"
   - Reference:
       - Reference Home: "sections/reference/index.md"
