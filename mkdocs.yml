@@ -70,10 +70,11 @@ theme:
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
-
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.top
+    
   logo: assets/SVG_S_Swarm_Abeille.svg
   favicon: assets/SVG_S_Swarm_Abeille.svg
   icon:
