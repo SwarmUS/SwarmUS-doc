@@ -9,7 +9,7 @@ As introduced in [Distance Measurement](distance.md), each agent must, in turns,
 !!!note ""
     The following figure is not to scale in regards to timings. See [Timings](#timings) for more information.
 <figure markdown>
-  ![Timeslots](img/time_slots.png)
+  ![!Time Slotting Overview](img/time_slots.png)
   <figcaption>Time Slotting Overview</figcaption>
 </figure>
 
@@ -40,16 +40,12 @@ The following section contains most definitions used within the code and documen
 
 **Frame Leader**: ID of the agent that is the initiator (sends the poll, final and angle messages) in the current TWR Frame
 
-### Timings
-!!!error
-    TODO
-
 ## State Machine Implementation
 
 The previous time-slotting mechanism is implemented in the microcontroller using a finite state machine (FSM). The FSM takes care of setting the DW1000 in the correct operating mode (RX, TX, etc.) at the appropriate time.
 
 <figure markdown>
-  ![Timeslots](img/fsm.png){width="600"}
+  ![!Time Slotting FSM](img/fsm.png){width="600"}
   <figcaption>Time Slotting FSM</figcaption>
 </figure>
 
@@ -108,3 +104,26 @@ This state is responsible for taking all the information collected through the T
 In the case some information is missing (e.g. we have not received the Final message, or if less than three BeeBoards are plugged, we don't have the angle information), only the measurements for which we have all the information are calulated. The produced values are fed back up to the higher layers of the HiveMind (see [Introduction](intro.md) for more information) to be used in Buzz. 
 
 From here, the FSM goes back to [Idle](#idle) and the cycle starts again.
+
+## Timings
+
+As the system is time slotted, a time manager (`src/bsp/src/stm32/src/interloc/include/interloc/InterlocTimeManager.h`) has been established to ensure a coherence between all actions, synchronisation and state transition. This time manager computes all the timings for the start and stop times of all UWB operations. There are two tools to better visualise and understand the different timing restrictions and the definitions of all timing elements.
+
+An [Excel file](files/Interloc_Timings.xlsx) that emulates the calculations made on the HiveMind, allows the
+user to see the effects of all timing factors on the refresh rate of the relative position and angle from all agents in
+the swarm. Refer to this document if factors like the SPI speed, the number of frame angles per TWR frame or the number
+of robots changes. As the total time of a TWR Frame will be affected, the state machine speed will also change.
+
+From a visual aspect, the following figure presents all the major timing definitions used in the time slotting system (click to enlarge).
+
+![!Timings](img/timings.png)
+
+Please refer to the source code for a complete comprehension of these and to see how they are used. The *guards* have be
+established from development experiments and from timing many operations on the actual MCU used. Other variables,
+such as the *read and write SPI* and the *preamble air time* are based on firmware configurations. The MCU and DW1000
+configuration's can change these, **make sure you know what you are doing before modifying any parameters**. If for
+exemple the number of computations is changed in one of the states, it might be necessary to time the whole state's
+processing to ensure that the guards around these operations are still sufficient. Refer to this figure if new messages or
+states are added.
+
+All timings definitions are made as a delay after the Start of Frame (SoF). This SoF is reset every time a Poll message is received, ensuring a complete synchronisation of the FSM even in the case of clock drift or robot crash/reboot/deconnection.
