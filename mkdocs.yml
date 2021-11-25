@@ -74,8 +74,6 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.top
-    - navigation.tracking
-    - navigation.sections
     
   logo: assets/SVG_S_Swarm_Abeille.svg
   favicon: assets/SVG_S_Swarm_Abeille.svg
