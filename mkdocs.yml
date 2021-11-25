@@ -94,7 +94,11 @@ markdown_extensions:
   - tables
   - pymdownx.highlight
   - pymdownx.inlinehilite
-  - pymdownx.superfences
+  - pymdownx.superfences:
+        custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
   - pymdownx.snippets
   - attr_list
   - md_in_html
@@ -106,6 +110,16 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - lightgallery
 
+plugins:
+  - search
+  - mermaid2:
+      arguments:
+          # test if its __palette_1 (dark) or __palette_2 (light)
+          theme: |
+            ^(JSON.parse(window.localStorage.getItem(__prefix('__palette'))).index == 1) ? 'light' : 'dark'
+
 extra_javascript:
 - https://polyfill.io/v3/polyfill.min.js?features=es6
 - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+- https://unpkg.com/mermaid/dist/mermaid.min.js
+- extra/refresh_on_toggle_dark_light.js
