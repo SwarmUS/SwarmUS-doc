@@ -51,15 +51,10 @@ When the data is returned, it is wrapped by HiveMindBridge in a function call re
 
 Here is a summary of what happens :
 
-```
-Remote caller                                               Robot
-|                      getStatus()                          |
-|---------------------------------------------------------->|
-|                                                           |
-|                                                           |
-|     getStatusReturn(isRoboclawOk, isSensorXOk)            |
-|<----------------------------------------------------------|
-
+```mermaid
+sequenceDiagram
+    Remote Caller->>Robot: getStatus()
+    Robot-)Remote Caller: getStatusReturn(isRoboclawOk, isSensorXOk)
 ```
 
 !!! tip 
