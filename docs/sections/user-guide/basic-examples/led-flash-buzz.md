@@ -53,7 +53,7 @@ The main file is used to select the Buzz script to be run, by including the righ
 
 In this example, we will create a file called `blinky.bzz`, which will do some basic interaction with the HiveBoard's I/O, namely flashing some LEDs. As you can see in the code snippet above, the `main.bzz` file already includes the name of the file we want to create. 
 
-The main file is written in such way that the user will not need to edit anything but the include tag. It expects the included file to provide a function `create_exec()` as its entrypoint. This function creates an `executor` which will call a function at given intervals (more on that below). Here, we pass the value `10`, which means that the function will be called at every 10 steps of the BittyBuzz virtual machine. For more information on how to configure the step delay, refer to [this page](../../reference/HiveMind/bbzvm/index.md).
+The main file is written in such way that the user will not need to edit anything but the include tag. It expects the included file to provide a function `create_exec()` as its entrypoint. This function creates an `executor` which will call a function at given intervals (more on that below). Here, we pass the value `10`, which means that the function will be called at every 10 steps of the BittyBuzz virtual machine. For more information on how to configure the step delay, refer to [this page](../../reference/Buzz/index.md).
 
 !!! tip 
     This pattern of using a minimal main is not an absolute rule; users could write everything directly in the `main.bzz` file, instead of using a separate file. This implementation just makes it easier to switch from one buzz script to the other by simply changing the included file in the main.
@@ -103,7 +103,7 @@ The `ctx` object contains the value of the LED.
 !!! tip 
     **Why should you use an `executor` object instead of sleep functions?**
 
-    The `executor` object serves a similar purpose as a thread with a `while(true)` and a sleep. However, using sleeps will halt some other processing done on the BittyBuzz virtual machine. The `executor` allows for asynchronous, non-blocking delays. See the [Reference](../../reference/HiveMind/bbzvm/index.md) section for more details.
+    The `executor` object serves a similar purpose as a thread with a `while(true)` and a sleep. However, using sleeps will halt some other processing done on the BittyBuzz virtual machine. The `executor` allows for asynchronous, non-blocking delays. See the [Reference](../../reference/Buzz/index.md) section for more details.
 
 #### Writing the `tick()` function
 
