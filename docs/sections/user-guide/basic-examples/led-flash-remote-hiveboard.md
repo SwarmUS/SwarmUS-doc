@@ -48,8 +48,8 @@ function tick(context){
     if(leader == id){
         call_buzz_function(5, "blinky_set_hex", {.0 = context.hex});
         ui.set_hex(context.hex);
-        
-        if(context.hex > 15){
+
+        if(context.hex >= 15){
             context.hex = 0;
         } else {
             context.hex = context.hex + 1;
@@ -65,13 +65,13 @@ var args_description = {
     .0 = {.arg_int=0}
 }
 
-function create_exec() {
+function create_exec(delay) {
   stig = stigmergy.create(1);
   stig.put("leader", 2);
 
   register_closure("blinky_set_hex", blinky_set_hex, args_description, nil)
 
-  exec = executor.new(200, tick, ctx);
+  exec = executor.new_ms(delay, tick, ctx);
   return exec;
 }
 
@@ -119,7 +119,8 @@ Then, in the `create_exec()` function, we register the closure:
 register_closure("blinky_set_hex", blinky_set_hex, args_description, nil)
 ```
 
-The reference documentation for the registration of closures, as well as everything involving user callbacks is linked [here](../../reference/Buzz/index.md#bittybuzzuserfunctions-managing-user-functions).
+!!! hint
+    The reference documentation for the registration of closures, as well as everything involving user callbacks is linked [here](../../reference/Buzz/index.md#bittybuzzuserfunctions-managing-user-functions).
 
 ### Calling a Remote Closure
 
