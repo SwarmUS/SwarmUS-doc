@@ -76,7 +76,7 @@ Let's write the `create_exec()` function:
 include "utils/executor.bzz"
 
 ctx = {
-    .led = 0,
+    .led = 0
 }
 
 function tick(context){
