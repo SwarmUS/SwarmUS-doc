@@ -90,7 +90,7 @@ Thierry has worked on the HiveAR Android application, both on the augmented real
     <h2>Hubert Dubé</h2>
 
 <div class="desc"> 
-LOREM IPSUM.
+Hubert has worked on the electrical platform and the system localization scheme.
 
 <href >
 </div>
