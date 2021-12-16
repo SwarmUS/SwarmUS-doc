@@ -302,7 +302,7 @@ Charles has worked on the interlocalisation engine powered by the DW1000 UWB IC.
     <h2>Étienne Villemure</h2>
 
 <div class="desc"> 
-LOREM IPSUM.
+Étienne led the design of the robots, has worked on the navigation system and the integration of the platform on the robots.
 
 <href >
 </div>
