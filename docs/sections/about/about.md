@@ -162,7 +162,7 @@ Louis-Daniel oversees the electrical division of the SwarmUS team. He worked on 
     <h2>Xavier Groleau</h2>
 
 <div class="desc"> 
-LOREM IPSUM.
+Xavier has worked on the BittyBuzz VM and the messaging system.
 
 <href >
 </div>
