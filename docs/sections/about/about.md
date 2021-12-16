@@ -232,7 +232,7 @@ Samuel has worked on the HiveMindBridge library, as well as on this documentatio
     <h2>Gabriel Lessard</h2>
 
 <div class="desc"> 
-LOREM IPSUM.
+Gabriel has worked on the network communications and other firmware-related development.
 
 <href >
 </div>
