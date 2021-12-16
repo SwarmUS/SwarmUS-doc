@@ -90,7 +90,7 @@ Thierry has worked on the HiveAR Android application, both on the augmented real
     <h2>Hubert Dubé</h2>
 
 <div class="desc"> 
-LOREM IPSUM.
+Hubert has worked on the electrical platform and the system localization scheme.
 
 <href >
 </div>
@@ -162,7 +162,7 @@ Louis-Daniel oversees the electrical division of the SwarmUS team. He worked on 
     <h2>Xavier Groleau</h2>
 
 <div class="desc"> 
-LOREM IPSUM.
+Xavier has worked on the BittyBuzz VM and the messaging system.
 
 <href >
 </div>
@@ -232,7 +232,7 @@ Samuel has worked on the HiveMindBridge library, as well as on this documentatio
     <h2>Gabriel Lessard</h2>
 
 <div class="desc"> 
-LOREM IPSUM.
+Gabriel has worked on the network communications and other firmware-related development.
 
 <href >
 </div>
@@ -267,7 +267,7 @@ LOREM IPSUM.
     <h2>Charles Quesnel</h2>
 
 <div class="desc"> 
-LOREM IPSUM.
+Charles has worked on the interlocalisation engine powered by the DW1000 UWB IC.
 
 <href >
 </div>
@@ -302,7 +302,7 @@ LOREM IPSUM.
     <h2>Étienne Villemure</h2>
 
 <div class="desc"> 
-LOREM IPSUM.
+Étienne led the design of the robots, has worked on the navigation system and the integration of the platform on the robots.
 
 <href >
 </div>
