@@ -267,7 +267,7 @@ Gabriel has worked on the network communications and other firmware-related deve
     <h2>Charles Quesnel</h2>
 
 <div class="desc"> 
-LOREM IPSUM.
+Charles has worked on the interlocalisation engine powered by the DW1000 UWB IC.
 
 <href >
 </div>
