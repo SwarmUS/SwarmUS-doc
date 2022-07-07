@@ -217,8 +217,6 @@ The status of the BBVM, in which your Buzz code is run.
 
 If it's 0, the VM, is running fine. If it's a non zero value. The value represent the error code via an enumeration.
 
-If it's 0, the VM, is running fine. If it's a non zero value. The value represent the error code via an enumeration.
-
 The values of the enumeration can be found [here](https://swarmus.github.io/HiveMind/SystemStates_8h.html#a0c10345a5a61ea917f59a0437ad481a0). If you want more information about the error code meaning, you can check the [BittyBuzz repo](https://github.com/buzz-lang/BittyBuzz/blob/c7b6294230819b58a2420cfd6f9847c4a927bba9/src/bittybuzz/bbzenums.h#L25).
 
 ### 7 segment 2 - User segment
