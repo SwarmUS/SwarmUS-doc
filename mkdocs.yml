@@ -45,6 +45,12 @@ nav:
           - Sending Commands: "sections/reference/HiveAR/hivear-commands.md"
           - Swarm Visualization: "sections/reference/HiveAR/hivear-visualization.md"
           - Configuration: "sections/reference/HiveAR/hivear-configuration.md"
+      - Development:
+          - Embedded development with CLion: 
+              - Getting Started: "sections/reference/Development/clion-setup/getting_started.md"
+              - HiveMind CLion setup: "sections/reference/Development/clion-setup/hive_mind_setup.md"
+              - HiveConnect CLion setup: "sections/reference/Development/clion-setup/hive_connect_setup.md"
+              - Logging in CLion: "sections/reference/Development/clion-setup/logging.md"
   - Hardware:
       - Hardware Home: "sections/hardware/index.md"
       - HiveBoard:
