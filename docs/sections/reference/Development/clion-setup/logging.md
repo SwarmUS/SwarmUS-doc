@@ -7,26 +7,20 @@ The HiveMind and the HiveConnect log different types of information through diff
 3. Connect to the serial port of the logging MCU. With step 1 completed, a new tab named "Serial Port" should be found in the consoles area. Click on the "Wrench" to configure the ports.![](../img/serial_configure.png)
    Set the "Baudrate" to `115200`
    For the "Port name", it depends if you want to log information from the HivemMind or HiveConnect. 
-
+   
    |  Port name   | Description                                                  |
    | :----------: | ------------------------------------------------------------ |
    | /dev/ttyUSB0 | JTAG of the STM32. Used to program the STM32. (Don't connect to this one) |
    | /dev/ttyUSB1 | JTAG of the ESP32. Used to program the ESP32. (Don't connect to this one) |
    | /dev/ttyUSB2 | Logging output of the HiveMind (STM32)                       |
    | /dev/ttyUSB3 | Logging output of the HiveConnect (ESP32)                    |
-
-
 !!! Info
-	The JTAG port of the STM32 and ESP32 might not be visible in the drop-down list if you just flashed the firmware on one either of them. 
+	The JTAG port of the STM32 and ESP32 might not be visible in the drop-down list if you just flashed the firmware on one either of them. Also, the port might not be mapped from USB0 to USB3 if there are other USB devices connected.
+4.Once the Baudrate and the Port Name are set, connect to the port by clicking on the Connect Icon. 
 
-Also, the port might not be mapped from USB0 to USB3 if there are other USB devices connected.
-
-4. Once the Baudrate and the Port Name are set, connect to the port by clicking on the Connect Icon. 
-
-<img style="display:block; margin:auto" src="/home/etienne/git/SwarmUS-doc/docs/sections/reference/img/serial_connect.png">
+<img style="display:block; margin:auto" src="../../img/serial_connect.png">
 
 After this, you should see the console filling with a message from the selected board.
-
 
 
 !!! Info
