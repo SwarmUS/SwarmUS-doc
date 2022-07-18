@@ -15,11 +15,17 @@ The HiveMind and the HiveConnect log different types of information through diff
    | /dev/ttyUSB2 | Logging output of the HiveMind (STM32)                       |
    | /dev/ttyUSB3 | Logging output of the HiveConnect (ESP32)                    |
 
+
+!!! Info
+	The JTAG port of the STM32 and ESP32 might not be visible in the drop-down list if you just flashed the firmware on one either of them. 
+
+Also, the port might not be mapped from USB0 to USB3 if there are other USB devices connected.
+
 4. Once the Baudrate and the Port Name are set, connect to the port by clicking on the Connect Icon. 
 
-   <img style="display:block; margin:auto" src="/home/etienne/git/SwarmUS-doc/docs/sections/reference/img/serial_connect.png">
+<img style="display:block; margin:auto" src="/home/etienne/git/SwarmUS-doc/docs/sections/reference/img/serial_connect.png">
 
-   After this, you should see the console filling with a message from the selected board.
+After this, you should see the console filling with a message from the selected board.
 
 
 
