@@ -1,0 +1,1168 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://swarmus.github.io/SwarmUS-doc/sections/user-guide/basic-examples/buzz-control-robot/" rel="canonical"/>
+<link href="../../../../assets/SVG_S_Swarm_Abeille.svg" rel="icon"/>
+<meta content="mkdocs-1.2.3, mkdocs-material-7.3.0" name="generator"/>
+<title>Controlling a Robot Using Buzz and HiveMindBridge - The SwarmUS Project</title>
+<link href="../../../../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
+<link href="../../../../css/lightgallery.min.css" rel="stylesheet"/>
+<script src="../../../../js/lightgallery.min.js"></script>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../../css/extra.css" rel="stylesheet"/>
+</head>
+<body data-md-color-accent="" data-md-color-primary="orange" data-md-color-scheme="slate" dir="ltr">
+<script>function __prefix(e){return new URL("../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#controlling-a-robot-using-buzz-and-hivemindbridge">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="The SwarmUS Project" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="The SwarmUS Project">
+<img alt="logo" src="../../../../assets/SVG_S_Swarm_Abeille.svg"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            The SwarmUS Project
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Controlling a Robot Using Buzz and HiveMindBridge
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="" data-md-color-media="" data-md-color-primary="orange" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="" data-md-color-media="" data-md-color-primary="orange" data-md-color-scheme="default" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/SwarmUS/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    SwarmUS
+  </div>
+</a>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
+        User Guides
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../reference/">
+        Reference
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../hardware/">
+        Hardware
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../about/about/">
+      About
+    </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="The SwarmUS Project" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="The SwarmUS Project">
+<img alt="logo" src="../../../../assets/SVG_S_Swarm_Abeille.svg"/>
+</a>
+    The SwarmUS Project
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/SwarmUS/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    SwarmUS
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+          User Guides
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="User Guides" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          User Guides
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../">
+        User Guides Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2">
+          Basic Examples
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Basic Examples" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          Basic Examples
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../led-flash-buzz/">
+        Flashing an LED Using Buzz
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../led-flash-remote-hiveboard/">
+        Flashing an LED on a remote Hiveboard
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Controlling a Robot Using Buzz and HiveMindBridge
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Controlling a Robot Using Buzz and HiveMindBridge
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#initial-setup">
+    Initial Setup
+  </a>
+<nav aria-label="Initial Setup" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#network-configuration">
+    Network configuration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-the-connection">
+    Testing the connection
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creating-a-bridge-for-the-robot">
+    Creating a Bridge for the robot
+  </a>
+<nav aria-label="Creating a Bridge for the robot" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites-to-using-hivemindbridge">
+    Prerequisites to using HiveMindBridge
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hivemindbridge-the-unique-entrypoint-to-the-library">
+    HiveMindBridge: the unique entrypoint to the library
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#full-example">
+    Full example
+  </a>
+<nav aria-label="Full example" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creating-a-hivemindbridge-object">
+    Creating a HiveMindBridge object
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#registering-custom-actions">
+    Registering custom actions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#registering-event-hooks">
+    Registering event hooks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#spinning-the-bridge">
+    Spinning the Bridge
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#writing-a-buzz-script-to-control-the-robot">
+    Writing a Buzz Script to Control the Robot
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#greeting-the-hiveboard">
+    Greeting the HiveBoard
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-the-moveby-command">
+    Testing the moveBy command
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../basic-interloc/">
+        Using Interlocalisation Between Swarm Agents
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Reference" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/">
+        Reference Home
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/architecture/">
+        Architecture of the System
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/Buzz/">
+        Buzz
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4">
+          HiveMind
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="HiveMind" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+          HiveMind
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/HiveMind/hivemind-preface/">
+        About HiveMind
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/HiveMind/hivemind-host/">
+        HiveMind and the Host
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/HiveMind/hivemind-swarm/">
+        HiveMind and the Swarm
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/HiveMind/hivemind-api/">
+        HiveMind API
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" id="__nav_3_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_5">
+          HiveMindBridge
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="HiveMindBridge" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+          HiveMindBridge
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/HiveMindBridge/about-hivemindbridge/">
+        About HiveMindBridge
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/HiveMindBridge/registering-custom-actions/">
+        Registering Custom Actions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/HiveMindBridge/defining-callbacks/">
+        Defining Callbacks
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/HiveMindBridge/defining-manifests/">
+        Defining Manifests
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/HiveMindBridge/logger/">
+        Example Logger Implementation
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" id="__nav_3_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_6">
+          Interlocalisation
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Interlocalisation" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_6">
+<span class="md-nav__icon md-icon"></span>
+          Interlocalisation
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1" id="__nav_3_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_6_1">
+          How it Works
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="How it Works" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_6_1">
+<span class="md-nav__icon md-icon"></span>
+          How it Works
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/Interloc/how_it_works/intro/">
+        Introduction
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/Interloc/how_it_works/distance/">
+        Distance Measurement
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/Interloc/how_it_works/angle/">
+        Angle Measurement
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/Interloc/how_it_works/sync/">
+        Synchronization
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/Interloc/calibrating_a_hiveboard/">
+        Calibrating a Hiveboard
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" id="__nav_3_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7">
+          Networking
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Networking" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_7">
+<span class="md-nav__icon md-icon"></span>
+          Networking
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/Networking/configure-wifi/">
+        Configuring the Wi-Fi network
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/Networking/hiveconnect/">
+        HiveConnect
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8" id="__nav_3_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_8">
+          HiveAR
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="HiveAR" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_8">
+<span class="md-nav__icon md-icon"></span>
+          HiveAR
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/HiveAR/hivear-preface/">
+        About HiveAR
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/HiveAR/hivear-setup/">
+        Setup HiveAR
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/HiveAR/hivear-commands/">
+        Sending Commands
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/HiveAR/hivear-visualization/">
+        Swarm Visualization
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/HiveAR/hivear-configuration/">
+        Configuration
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_9" id="__nav_3_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_9">
+          Development
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Development" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_9">
+<span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_9_1" id="__nav_3_9_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_9_1">
+          Embedded development with CLion
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Embedded development with CLion" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_9_1">
+<span class="md-nav__icon md-icon"></span>
+          Embedded development with CLion
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/Development/clion-setup/getting_started/">
+        Getting Started
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/Development/clion-setup/hive_mind_setup/">
+        HiveMind CLion setup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/Development/clion-setup/hive_connect_setup/">
+        HiveConnect CLion setup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/Development/clion-setup/logging/">
+        Logging in CLion
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+          Hardware
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Hardware" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Hardware
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hardware/">
+        Hardware Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" id="__nav_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2">
+          HiveBoard
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="HiveBoard" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+          HiveBoard
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hardware/HiveBoard/HiveBoard_V1.000/">
+        V1.000
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hardware/HiveBoard/hiveboard-ui/">
+        Available UI
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3">
+          BeeBoard
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="BeeBoard" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+          BeeBoard
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hardware/BeeBoard/BeeBoard_V1.000/">
+        V1.000
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../about/about/">
+        About
+      </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#initial-setup">
+    Initial Setup
+  </a>
+<nav aria-label="Initial Setup" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#network-configuration">
+    Network configuration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-the-connection">
+    Testing the connection
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creating-a-bridge-for-the-robot">
+    Creating a Bridge for the robot
+  </a>
+<nav aria-label="Creating a Bridge for the robot" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites-to-using-hivemindbridge">
+    Prerequisites to using HiveMindBridge
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hivemindbridge-the-unique-entrypoint-to-the-library">
+    HiveMindBridge: the unique entrypoint to the library
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#full-example">
+    Full example
+  </a>
+<nav aria-label="Full example" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creating-a-hivemindbridge-object">
+    Creating a HiveMindBridge object
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#registering-custom-actions">
+    Registering custom actions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#registering-event-hooks">
+    Registering event hooks
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#spinning-the-bridge">
+    Spinning the Bridge
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#writing-a-buzz-script-to-control-the-robot">
+    Writing a Buzz Script to Control the Robot
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#greeting-the-hiveboard">
+    Greeting the HiveBoard
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-the-moveby-command">
+    Testing the moveBy command
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="controlling-a-robot-using-buzz-and-hivemindbridge">Controlling a robot using Buzz and HiveMindBridge</h1>
+<p>Now that the code that runs on your Hiveboard can flash an LED <a href="../led-flash-buzz/">of its own</a> or one from a <a href="../led-flash-remote-hiveboard/">remote board</a>, let's establish a connection between a Hiveboard and a robot's embedded computer. The goal here is to use a Buzz script to tele-operate a robot.</p>
+<figure>
+<p><img alt="Controlling a robot using a Buzz script running on a HiveBoard" src="../img/buzz-control-robot-case.png"/></p>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>To follow this user guide, you will need:</strong></p>
+<ul>
+<li>A computer running Linux</li>
+<li>A robot running ROS. You really just need a computer running ROS to go through this tutorial, but you might want to have a full robot to test the integration.</li>
+<li>One HiveBoard and its power supply (wall adapter)</li>
+<li>A micro-USB to USB type A cable</li>
+<li>An Ethernet cable</li>
+</ul>
+</div>
+<h2 id="initial-setup">Initial Setup</h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Before we start, make sure that the HiveBoard has a HiveMind firmware flashed. Follow the instructions from <a href="../led-flash-buzz/">this previous tutorial</a> to flash a firmware on the device.</p>
+</div>
+<p>The HiveBoard connects to the robot's embedded computer using an Ethernet cable. Communication between the two is established via TCP. Connect the HiveBoard as shown in the image below. The micro-USB cable should be plugged into your computer since we will be flashing some Buzz code on the device. The Ethernet must be plugged into the robot's embedded computer. Power on the HiveBoard by setting the switch to the <code>CON</code> position.</p>
+<p><img alt="Connecting and Powering a HiveBoard (Ethernet)" src="../img/connect-hiveboard-ethernet.png"/></p>
+<h3 id="network-configuration">Network configuration</h3>
+<p>The HiveMind firmware expects the robot's computer to have a precise IP address. In the robot's embedded computer, set a static IP address on the Ethernet network adapter with the following parameters:</p>
+<ul>
+<li>IPv4 address : <code>192.168.1.101</code></li>
+<li>Subnet mask: <code>255.255.255.0</code></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The network configuration expected by HiveMind can be changed by using CMake variables. See <a href="https://github.com/SwarmUS/HiveMind#readme">HiveMind readme</a> for more on this. The robot's embedded computer is refered to as the <em>HOST</em>.</p>
+</div>
+<h3 id="testing-the-connection">Testing the connection</h3>
+<p>The HiveBoard has a static IP address set to <code>192.168.1.10</code>. From the embedded computer (we will call this the <em>host</em> from now on), try to ping the HiveBoard to see if the Ethernet connection works.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If ping fails, double check the previous steps and make sure that the power switch is indeed to the <code>CON</code> position, and not to <code>USB</code>.</p>
+</div>
+<p>Next, open the COM port to see the HiveBoard's logs (usually <code>dev/ttyUSB2</code>). You should see that the HiveBoard attempts to connect to a host:</p>
+<p><img alt="Connecting and Powering a HiveBoard (Ethernet)" src="../img/could-not-connect.png"/></p>
+<p>This is expected at this point since there is no HiveMindBridge running on the host computer yet. </p>
+<h2 id="creating-a-bridge-for-the-robot">Creating a Bridge for the robot</h2>
+<p>Now that there is an Ethernet link between the HiveBoard and the host, we need to write some software that will act as a bridge between HiveMind (the HiveBoard's firmware) and the rest of the robot's software stack. From now on, we will assume that the robot runs ROS1 and has a fully working navigation stack, so we will show the setup accordignly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This User Guide aims to show how to interface the SwarmUS platform with robots that use ROS. However the platform is ROS-agnostic and the HiveMindBridge library could be used in any C++ code. See <a href="https://github.com/SwarmUS/HiveMindBridge/blob/master/examples/hello-world.cpp">this example</a> for a basic "hello world" example.</p>
+</div>
+<p>The SwarmUS project comprises a C++ library named <a href="https://github.com/SwarmUS/HiveMindBridge">HiveMindBridge</a> that helps interfacing the HiveBoard with the outside world. Using HiveMindBridge, you can define and expose an API from the robot to the swarm.</p>
+<p>Let's create a minimal ROS node that uses HiveMindBridge to show some basic capabilities. The robot will expose two simple functions to the swarm. Both functions are callable by other swarm agents or by the robot's HiveBoard:</p>
+<ul>
+<li><code>moveBy(float x, float y)</code>: this function will forward moving commands to the robot's navigtion stack. <code>moveBy</code> is the entrypoint to control the robot's position remotely. The arguments <code>x</code> and <code>y</code> are displacement values relative to the robot's own position. The function does not return any payload.</li>
+<li><code>getStatus()</code>: this function will return some payload containing some information about the robot's state.</li>
+</ul>
+<p>This (minimal) configuration will yield a simple robot that can be remote-controlled and that can inform on its state.</p>
+<h3 id="prerequisites-to-using-hivemindbridge">Prerequisites to using HiveMindBridge</h3>
+<p>HiveMindBridge is a C++ library that must be installed on a system, and then included to a software project using CMake. Before implementing the ROS node that uses HiveMindBridge, follow <a href="https://github.com/SwarmUS/HiveMindBridge#readme">these instructions</a> to build and install HiveMindBridge on the host computer. Make sure to use the provided commands from the CMake example within your ROS package's <code>CMakeLists.txt</code>. You might want to check <a href="https://github.com/SwarmUS/SwarmUS-ROS/tree/master/src/swarmus_turtlebot">this example</a> implementation of a Bridge with a TurtleBot 3.</p>
+<h3 id="hivemindbridge-the-unique-entrypoint-to-the-library"><code>HiveMindBridge</code>: the unique entrypoint to the library</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The full API documentation for HiveMindBridge is hosted <a href="https://swarmus.github.io/HiveMindBridge/classIHiveMindBridge.html">here</a>.</p>
+</div>
+<p>HiveMindBridge is a simple library that supports registering asynchronous callbacks to serve as a bridge between the communication services encapsulated in the swarm services and the local ROS environment. The user will mainly use the <code>HiveMindBridge</code> class to register custom actions, send some data over the messaging service and control the execution flow.</p>
+<p>Instantiating a <code>HiveMindBridge</code> object is done using the class' only constructor : </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// HiveMindBridge.h</span>
+<span class="n">HiveMindBridge</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">tcpPort</span><span class="p">,</span><span class="w"> </span><span class="n">ILogger</span><span class="o">&amp;</span><span class="w"> </span><span class="n">logger</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>HiveMindBridge uses a TCP socket server underneath and requires that the user provide a port for the connection. The second input argument is a logger that must be injected. The logger must implement the <code>ILogger</code> interface (a basic working implementation is provided <a href="../../../reference/HiveMindBridge/logger/">here</a>).</p>
+<h3 id="full-example">Full example</h3>
+<p>The following listing shows the basic example, where the two aforementioned functions are registered (<code>moveBy(x, y)</code> and <code>getStatus()</code>). This example is used within a ROS application context. We left the ROS-specific calls in the example to ease understanding. Note however that HiveMindBridge is completely ROS-agnostic, and could be used in a plain C++ project.</p>
+<p>We will break everything down after this listing.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"hivemind-bridge/Callback.h"</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"hivemind-bridge/HiveMindBridge.h"</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"ros/ros.h"</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"swarmus_ros_navigation/MoveByMessage.h"</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cpp-common/ILogger.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdarg&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;pheromones/FunctionCallArgumentDTO.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="s">"hive_mind_bridge"</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span><span class="w"> </span><span class="n">nodeHandle</span><span class="p">(</span><span class="s">"~"</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// ROS publisher: this will publish the moveBy command to the navigation stack</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">moveByTopic</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">        </span><span class="n">nodeHandle</span><span class="p">.</span><span class="n">param</span><span class="p">(</span><span class="s">"moveByTopic"</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">"/agent1/navigation/moveBy"</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">ros</span><span class="o">::</span><span class="n">Publisher</span><span class="w"> </span><span class="n">moveByPublisher</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">        </span><span class="n">nodeHandle</span><span class="p">.</span><span class="n">advertise</span><span class="o">&lt;</span><span class="n">swarmus_ros_navigation</span><span class="o">::</span><span class="n">MoveByMessage</span><span class="o">&gt;</span><span class="p">(</span><span class="n">moveByTopic</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7001</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Logger</span><span class="w"> </span><span class="n">logger</span><span class="p">;</span><span class="w"> </span><span class="c1">// See above for more info on loggers. For this example, </span>
+<span class="w">    </span><span class="c1">// let's just assume the class is accessible within the scope of this file.</span>
+
+<span class="w">    </span><span class="c1">// Create a HiveMindBridge object</span>
+<span class="w">    </span><span class="n">HiveMindBridge</span><span class="w"> </span><span class="n">bridge</span><span class="p">(</span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="n">logger</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Register the first custom action: moveBy(x, y). This function will simply forward the x and y values </span>
+<span class="w">    </span><span class="c1">// to the navigation stack using a ROS publisher.</span>
+<span class="w">    </span><span class="n">CallbackFunction</span><span class="w"> </span><span class="n">moveByCallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="n">CallbackArgs</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">CallbackReturn</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argsLength</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">ROS_WARN</span><span class="p">(</span><span class="s">"Received incorrect number of arguments in moveBy"</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">swarmus_ros_navigation</span><span class="o">::</span><span class="n">MoveByMessage</span><span class="w"> </span><span class="n">moveByMessage</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get_if</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">getArgument</span><span class="p">());</span><span class="w"> </span><span class="c1">// The arguments are contained </span>
+<span class="w">        </span><span class="c1">// in `args`. The body of the function is where users should define the position of the arguments.</span>
+<span class="w">        </span><span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get_if</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">getArgument</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">ROS_WARN</span><span class="p">(</span><span class="s">"Received invalid argument type in moveBy"</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">moveByMessage</span><span class="p">.</span><span class="n">distance_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">moveByMessage</span><span class="p">.</span><span class="n">distance_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Publish on moveby topic</span>
+<span class="w">        </span><span class="n">moveByPublisher</span><span class="p">.</span><span class="n">publish</span><span class="p">(</span><span class="n">moveByMessage</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span><span class="w"> </span><span class="c1">// This function does not return any payload, so we return an empty struct</span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Register the function's manifest, name and pointer in our `HiveMindBridge` object.</span>
+<span class="w">    </span><span class="n">CallbackArgsManifest</span><span class="w"> </span><span class="n">moveByManifest</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">moveByManifest</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">UserCallbackArgumentDescription</span><span class="p">(</span><span class="s">"x"</span><span class="p">,</span><span class="w"> </span><span class="n">FunctionDescriptionArgumentTypeDTO</span><span class="o">::</span><span class="n">Float</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">moveByManifest</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">UserCallbackArgumentDescription</span><span class="p">(</span><span class="s">"y"</span><span class="p">,</span><span class="w"> </span><span class="n">FunctionDescriptionArgumentTypeDTO</span><span class="o">::</span><span class="n">Float</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">bridge</span><span class="p">.</span><span class="n">registerCustomAction</span><span class="p">(</span><span class="s">"moveBy"</span><span class="p">,</span><span class="w"> </span><span class="n">moveByCallback</span><span class="p">,</span><span class="w"> </span><span class="n">moveByManifest</span><span class="p">);</span><span class="w"></span>
+
+
+<span class="w">    </span><span class="c1">// Register the second custom action: getStatus()</span>
+<span class="w">    </span><span class="n">CallbackFunction</span><span class="w"> </span><span class="n">getStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="n">CallbackArgs</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">CallbackReturn</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">isRobotOk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Let's assume there is some complex logic here </span>
+<span class="w">        </span><span class="c1">// to check the status of the robot's components...</span>
+
+<span class="w">        </span><span class="c1">// Build the return payload and return. </span>
+<span class="w">        </span><span class="n">CallbackArgs</span><span class="w"> </span><span class="n">returnArgs</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">returnArgs</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">FunctionCallArgumentDTO</span><span class="p">(</span><span class="n">isRobotOk</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">CallbackReturn</span><span class="w"> </span><span class="n">cbReturn</span><span class="p">(</span><span class="s">"getStatusReturn"</span><span class="p">,</span><span class="w"> </span><span class="n">returnArgs</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cbReturn</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Register the name and pointer for the getStatus() function. </span>
+<span class="w">    </span><span class="c1">// Notice that no manifest is passed, since this function takes no input argument.</span>
+<span class="w">    </span><span class="n">bridge</span><span class="p">.</span><span class="n">registerCustomAction</span><span class="p">(</span><span class="s">"getStatus"</span><span class="p">,</span><span class="w"> </span><span class="n">getStatus</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Register event hooks. HiveMindBridge provides a few event hooks that allow </span>
+<span class="w">    </span><span class="c1">// the user to control the execution flow.</span>
+<span class="w">    </span><span class="n">bridge</span><span class="p">.</span><span class="n">onConnect</span><span class="p">([]()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ROS_INFO</span><span class="p">(</span><span class="s">"Client connected."</span><span class="p">);</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">bridge</span><span class="p">.</span><span class="n">onDisconnect</span><span class="p">([]()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ROS_INFO</span><span class="p">(</span><span class="s">"Client disconnected."</span><span class="p">);</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// The main application loop</span>
+<span class="w">    </span><span class="n">ros</span><span class="o">::</span><span class="n">Rate</span><span class="w"> </span><span class="n">loopRate</span><span class="p">(</span><span class="n">RATE_HZ</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">ros</span><span class="o">::</span><span class="n">ok</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">ros</span><span class="o">::</span><span class="n">spinOnce</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">bridge</span><span class="p">.</span><span class="n">spin</span><span class="p">();</span><span class="w"> </span>
+
+<span class="w">        </span><span class="n">loopRate</span><span class="p">.</span><span class="n">sleep</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h4 id="creating-a-hivemindbridge-object">Creating a <code>HiveMindBridge</code> object</h4>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7001</span><span class="p">;</span><span class="w"></span>
+<span class="n">Logger</span><span class="w"> </span><span class="n">logger</span><span class="p">;</span><span class="w"> </span>
+
+<span class="n">HiveMindBridge</span><span class="w"> </span><span class="nf">bridge</span><span class="p">(</span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="n">logger</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>To create a <code>HiveMindBridge</code> instance, the user must provide a logger that implements the <code>ILogger</code> interface (see <a href="../../../reference/HiveMindBridge/logger/">here</a> for a full example). The <code>port</code> input argument is needed in order to bind the TCP socket used by HiveMindBridge. </p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>HiveMindBridge acts as a TCP <em>server</em> and will wait for clients to initiate a connection.</p>
+</div>
+<h4 id="registering-custom-actions">Registering custom actions</h4>
+<p>The example above shows the registration of two functions, <code>moveBy(x, y)</code> and <code>getStatus()</code>. Both have their own characteristics which help illustrate the capabilities of HiveMindBridge.</p>
+<p>Registering custom actions is always done by following three steps : </p>
+<ol>
+<li>Define the callback that describes the behaviour of the custom action (see <a href="../../../reference/HiveMindBridge/defining-callbacks/">Defining Callbacks</a>).</li>
+<li>Define the manifest that describes the input arguments of the callback (see <a href="../../../reference/HiveMindBridge/defining-manifests/">Defining Manifests</a>. This is optional, as some callbacks will not require any input arguments)</li>
+<li>Register the custom action in the <code>HiveMindBridge</code> object (see <a href="../../../reference/HiveMindBridge/registering-custom-actions/">Registering Custom Actions</a>).</li>
+</ol>
+<p><strong>Registering <code>moveBy(float x, float y)</code></strong></p>
+<p>The <code>moveBy(float x, float y)</code> function takes two arguments and returns no payload. This function simply forwards the two input arguments to the navigation stack by publishing on a ROS topic.</p>
+<div class="highlight"><pre><span></span><code><span class="n">CallbackFunction</span><span class="w"> </span><span class="n">moveByCallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="n">CallbackArgs</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">CallbackReturn</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argsLength</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">ROS_WARN</span><span class="p">(</span><span class="s">"Received incorrect number of arguments in moveBy"</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">swarmus_ros_navigation</span><span class="o">::</span><span class="n">MoveByMessage</span><span class="w"> </span><span class="n">moveByMessage</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get_if</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">getArgument</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get_if</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">getArgument</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">ROS_WARN</span><span class="p">(</span><span class="s">"Received invalid argument type in moveBy"</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">moveByMessage</span><span class="p">.</span><span class="n">distance_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">moveByMessage</span><span class="p">.</span><span class="n">distance_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">moveByPublisher</span><span class="p">.</span><span class="n">publish</span><span class="p">(</span><span class="n">moveByMessage</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="n">CallbackArgsManifest</span><span class="w"> </span><span class="n">moveByManifest</span><span class="p">;</span><span class="w"></span>
+<span class="n">moveByManifest</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">UserCallbackArgumentDescription</span><span class="p">(</span><span class="s">"x"</span><span class="p">,</span><span class="w"> </span><span class="n">FunctionDescriptionArgumentTypeDTO</span><span class="o">::</span><span class="n">Float</span><span class="p">));</span><span class="w"></span>
+<span class="n">moveByManifest</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">UserCallbackArgumentDescription</span><span class="p">(</span><span class="s">"y"</span><span class="p">,</span><span class="w"> </span><span class="n">FunctionDescriptionArgumentTypeDTO</span><span class="o">::</span><span class="n">Float</span><span class="p">));</span><span class="w"></span>
+<span class="n">bridge</span><span class="p">.</span><span class="n">registerCustomAction</span><span class="p">(</span><span class="s">"moveBy"</span><span class="p">,</span><span class="w"> </span><span class="n">moveByCallback</span><span class="p">,</span><span class="w"> </span><span class="n">moveByManifest</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>Since the function returns no payload, the user must simply return an empty struct.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Notice that the order of the arguments match between the manifest and the callback's body. This allows the other swarm element to send the arguments correctly. For more information on this, see <a href="../../../reference/HiveMindBridge/defining-manifests/">Defining Manifests</a>.</p>
+</div>
+<p><strong>Registering <code>getStatus()</code></strong></p>
+<p>The <code>getStatus()</code> function takes no input arguments, but will return some payload. The return payload is wrapped in  a CallbackReturn type that takes the return values in a vector. This is because the return payload is wrapped in a function call request that will be placed on the remote caller. See <a href="../../../reference/HiveMindBridge/defining-callbacks/">Defining Callbacks</a> for more details.</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">CallbackFunction</span><span class="w"> </span><span class="n">getStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="n">CallbackArgs</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">CallbackReturn</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">isRobotOk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span>
+
+<span class="w">        </span><span class="c1">// Build the return payload and return. </span>
+<span class="w">        </span><span class="n">CallbackArgs</span><span class="w"> </span><span class="n">returnArgs</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">returnArgs</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">FunctionCallArgumentDTO</span><span class="p">(</span><span class="n">isRobotOk</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">CallbackReturn</span><span class="w"> </span><span class="nf">cbReturn</span><span class="p">(</span><span class="s">"getStatusReturn"</span><span class="p">,</span><span class="w"> </span><span class="n">returnArgs</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cbReturn</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">bridge</span><span class="p">.</span><span class="n">registerCustomAction</span><span class="p">(</span><span class="s">"getStatus"</span><span class="p">,</span><span class="w"> </span><span class="n">getStatus</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example does not have any real logic. In some cases, there could be a need to implement some complex logic, and even some blocking calls to check the state of some robot peripherals. Since all callbacks are run asynchronously, the user can use blocking calls in the body of the callback. See <a href="../../../reference/HiveMindBridge/defining-callbacks/">Defining Callbacks</a> for more information on this.</p>
+</div>
+<h4 id="registering-event-hooks">Registering event hooks</h4>
+<p>HiveMindBridge provides some events that the user can attach hooks to, in order to control the execution flow. For example, the <code>onConnect</code> and <code>onDisconnect</code> event can fire user-defined callbacks when the TCP socket's state changes. This can prove useful to halt a robot in the event of a connection error.</p>
+<div class="highlight"><pre><span></span><code><span class="n">bridge</span><span class="p">.</span><span class="n">onConnect</span><span class="p">([]()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ROS_INFO</span><span class="p">(</span><span class="s">"Client connected."</span><span class="p">);</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+
+<span class="n">bridge</span><span class="p">.</span><span class="n">onDisconnect</span><span class="p">([]()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ROS_INFO</span><span class="p">(</span><span class="s">"Client disconnected."</span><span class="p">);</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+</code></pre></div>
+<h4 id="spinning-the-bridge">Spinning the Bridge</h4>
+<p>HiveMindBridge has a main thread that must attach to the main application loop. The <code>HiveMindBridge</code> object must be spun for it to process the incoming data.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// The main application loop</span>
+<span class="n">ros</span><span class="o">::</span><span class="n">Rate</span><span class="w"> </span><span class="nf">loopRate</span><span class="p">(</span><span class="n">RATE_HZ</span><span class="p">);</span><span class="w"></span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">ros</span><span class="o">::</span><span class="n">ok</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ros</span><span class="o">::</span><span class="n">spinOnce</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">bridge</span><span class="p">.</span><span class="n">spin</span><span class="p">();</span><span class="w"> </span><span class="c1">// Spinning the bridge</span>
+
+<span class="w">    </span><span class="n">loopRate</span><span class="p">.</span><span class="n">sleep</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h2 id="writing-a-buzz-script-to-control-the-robot">Writing a Buzz Script to Control the Robot</h2>
+<p>Now that we have written a bridge for the host-side, let's write a Buzz script that sends <code>MoveBy</code> commands over to the host.</p>
+<p>Open the <code>HiveMind</code> codebase and navigate to the folder <code>src/bittybuzz/buzz_scripts</code>, where the user-defined Buzz scripts are located.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The basics on how create and flash a Buzz script to a HiveBoard are explained in a <a href="../led-flash-buzz/">previous User Guide</a>.</p>
+</div>
+<p>Create a new file called <code>teleop.bzz</code> containing the following commands. In <code>main.bzz</code>, make sure to include <code>teleop.bzz</code> at the top of the file.</p>
+<div class="highlight"><pre><span></span><code><span class="n">include</span> <span class="s2">"utils/executor.bzz"</span>
+
+<span class="n">ctx</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="n">function</span> <span class="n">tick</span><span class="p">(){</span>
+    <span class="n">log</span><span class="p">(</span><span class="s2">"Calling host function..."</span><span class="p">);</span>
+    <span class="n">call_host_function</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="s2">"moveBy"</span><span class="p">,</span> <span class="p">{</span><span class="mf">.0</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">.1</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="n">function</span> <span class="n">create_exec</span><span class="p">(){</span>
+    <span class="n">exec</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">tick</span><span class="p">,</span> <span class="n">ctx</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">exec</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This script creates an <code>executor</code> (see <a href="../led-flash-buzz/">this previous User Guide</a> for more on <code>executors</code>) which will run the <code>tick</code> function periodically. This function contains a <code>call_host_function()</code> command that will call a function that was exposed by the host's bridge.</p>
+<p>You must provide three arguments to this function:</p>
+<ul>
+<li>
+<p>The <code>id</code> of the current HiveBoard. This is accessed via a global object <code>id</code>. The Agent ID is specific to each board and is destined to be shared between the HiveBoard and its host.</p>
+</li>
+<li>
+<p>The name of the function to be called on the host. <strong>The spelling of this string must be exactly the same as the function registered against the host's bridge</strong>.</p>
+</li>
+<li>
+<p>An array of parameters that are to be passed to the function.</p>
+</li>
+</ul>
+<p>Refer to the <a href="https://swarmus.github.io/HiveMind/namespaceBittyBuzzUserFunctions.html">API documentation</a> for a complete description of all the available functions.</p>
+<p>You may now flash the HiveBoard with this code.</p>
+<h2 id="greeting-the-hiveboard">Greeting the HiveBoard</h2>
+<p>Now that we have a working bridge implementation, let's test that it can talk with HiveMind, the HiveBoard's firmware. First, make sure that everything is connected like in the <a href="#initial-setup">image shown earlier</a>.</p>
+<p>On you PC, open the COM port to view the logs from the HiveBoard (Usually <code>dev/ttyUSB2</code>). You should see some messages indicating that the HiveBoard <code>Could not connect to server 192.168.1.101 : 7001</code>.</p>
+<p>Next, run the ROS node that we just created on the host computer. Watch the logs from the COM port. After a few seconds, you should see that the host greeted the HiveBoard:</p>
+<div class="highlight"><pre><span></span><code>Greet succeeded in host_monitor
+</code></pre></div>
+<p>The RGB LED at the bottom of the board should turn from purple to blue when the greet succeeds.</p>
+<p><img alt="Greet LED blue" src="../img/greet-led-blue.png"/></p>
+<p>This means that the HiveBoard and the host computer now form an <strong>agent</strong> of the swarm. Both share the same <em>Swarm Agent ID</em>, a unique identifier that each agent must hold for as long as it is a part of the swarm. The greeting procedure ensures that the host picks up the ID from the HiveBoard.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The Swarm IDs are determined by the HiveBoards themselves. Each HiveBoard has a UUID saved in its non-volatile memory that is provided to the host upon greeting. The instructions on how to flash an ID to the HiveBoard are written in <a href="https://github.com/SwarmUS/HiveMind#readme">HiveMind's Readme</a>.</p>
+</div>
+<h2 id="testing-the-moveby-command">Testing the <code>moveBy</code> command</h2>
+<p>Now that the HiveBoard and the bridge running on the host computer are both communicating together, we'll make sure that the <code>moveBy</code> function called from the Buzz script is indeed forwarded to the ROS environment.</p>
+<p>Open a terminal on the host computer and run <code>rostopic echo /agent1/navigation/moveBy</code>. You should see some messages:</p>
+<div class="highlight"><pre><span></span><code>---
+distance_x: 1.0
+distance_y: 1.0
+</code></pre></div>
+<h2 id="__comments">Comments</h2>
+<div id="disqus_thread"></div>
+<script>var disqus_config=function(){this.page.url="https://swarmus.github.io/SwarmUS-doc/sections/user-guide/basic-examples/buzz-control-robot/",this.page.identifier="sections/user-guide/basic-examples/buzz-control-robot/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//swarmus.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Flashing an LED on a remote Hiveboard" class="md-footer__link md-footer__link--prev" href="../led-flash-remote-hiveboard/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Flashing an LED on a remote Hiveboard
+            </div>
+</div>
+</a>
+<a aria-label="Next: Using Interlocalisation Between Swarm Agents" class="md-footer__link md-footer__link--next" href="../basic-interloc/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Using Interlocalisation Between Swarm Agents
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            Copyright © 2021 - SwarmUS
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+            Material for MkDocs
+          </a>
+</div>
+<div class="md-footer-social">
+<a class="md-footer-social__link" href="https://www.linkedin.com/company/swarmus/" rel="noopener" target="_blank" title="www.linkedin.com">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+</a>
+<a class="md-footer-social__link" href="https://github.com/SwarmUS" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+<script src="../../../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+<script src="../../../../extra/refresh_on_toggle_dark_light.js"></script>
+<script>
+    var elements = document.getElementsByClassName("lightgallery");
+    for(var i=0; i<elements.length; i++) {
+       lightGallery(elements[i]);
+    }
+    </script>
+</body>
+</html>
